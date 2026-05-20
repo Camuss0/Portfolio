@@ -1,0 +1,42 @@
+---
+import type { Project } from "../../types/data";
+export interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const topStack = project.tech_stack.slice(0, 3);
+---
+
+<button
+  class="group block w-full text-left bg-[#111113] border border-[#1f1f22] rounded-xl p-7 cursor-pointer hover:border-[#2e2e33] transition-all duration-300 reveal-scale"
+  data-project-id={project.id}
+  data-open-modal=""
+>
+  <div class="flex items-start justify-between gap-3 mb-4">
+    <h3 class="font-semibold text-[#f4f4f5] text-[1.125rem] leading-snug group-hover:text-[#fbbf24] transition-colors duration-300">
+      {project.name}
+    </h3>
+    <span class="inline-block text-[0.625rem] text-[#71717a] bg-[#1f1f22] px-2 py-0.5 rounded-full font-medium tracking-wide whitespace-nowrap">
+      {project.type}
+    </span>
+  </div>
+
+  <p class="text-[0.8125rem] text-[#a1a1aa] leading-[1.65] mb-5 line-clamp-2">
+    {project.short_description}
+  </p>
+
+  {topStack.length > 0 && (
+    <div class="flex flex-wrap gap-x-3 gap-y-1">
+      {topStack.map((s) => (
+        <span class="font-mono text-[0.6875rem] text-[#52525b]">{s}</span>
+      ))}
+    </div>
+  )}
+
+  <div class="mt-5 flex items-center gap-2 text-[0.75rem] text-[#52525b] group-hover:text-[#fbbf24] transition-colors duration-300">
+    <span class="font-medium">Details</span>
+    <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </div>
+</button>

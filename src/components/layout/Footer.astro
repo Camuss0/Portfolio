@@ -1,0 +1,23 @@
+---
+import type { Personal } from "../../types/data";
+export interface Props {
+  personal: Personal;
+}
+const { personal } = Astro.props;
+---
+
+<footer class="border-t border-[#1f1f22]/40 mt-0">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-[#f4f4f5] font-bold text-sm">Camuss0</span>
+        <span class="text-[#2e2e33]">&middot;</span>
+        <span class="text-[0.8125rem] text-[#52525b]">{personal.location}</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <span class="text-[0.75rem] text-[#52525b]">Built with Astro + Tailwind</span>
+        <span class="text-[0.75rem] text-[#52525b]">&copy; {new Date().getFullYear()}</span>
+      </div>
+    </div>
+  </div>
+</footer>

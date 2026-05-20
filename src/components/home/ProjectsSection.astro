@@ -1,0 +1,62 @@
+---
+import type { Project } from "../../types/data";
+import FeaturedProject from "./FeaturedProject.astro";
+import ProjectCard from "./ProjectCard.astro";
+export interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+
+const featuredIds = [
+  "medical-management-platform",
+  "aspros-diesel",
+  "dynamic-forms-system",
+];
+
+const featured = featuredIds
+  .map((id) => projects.find((p) => p.id === id))
+  .filter((p): p is Project => !!p);
+
+const compact = projects.filter((p) => !featuredIds.includes(p.id));
+---
+
+<section id="projects" class="py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-20 reveal">
+      <div>
+        <span class="text-[0.6875rem] text-[#fbbf24] font-mono tracking-wider mb-3 block">SELECTED WORK</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
+          Projects
+        </h2>
+      </div>
+      <p class="text-[0.9375rem] text-[#71717a] max-w-md leading-[1.6]">
+        Real systems built for production. Each project represents complex engineering, real-world problem solving, and tangible impact.
+      </p>
+    </div>
+
+    <!-- Featured Projects -->
+    <div class="space-y-16 md:space-y-24">
+      {featured.map((p, i) => (
+        <FeaturedProject project={p} index={i} />
+      ))}
+    </div>
+
+    <!-- Compact Projects -->
+    {
+      compact.length > 0 && (
+        <div class="mt-24 md:mt-32">
+          <div class="flex items-center gap-4 mb-10 reveal">
+            <span class="text-[0.6875rem] text-[#71717a] font-mono tracking-wider">ADDITIONAL</span>
+            <span class="flex-1 h-px bg-[#1f1f22]"></span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {compact.map((p) => (
+              <ProjectCard project={p} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import type { Personal } from "../../types/data";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import "../../styles/global.css";
+export interface Props {
+  title?: string;
+  description?: string;
+  personal: Personal;
+}
+const { title = "Camuss0", description = "Full Stack Developer", personal } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#0a0a0b] text-[#f4f4f5]">
+    <Header />
+    <main class="flex-1 relative">
+      <slot />
+    </main>
+    <Footer personal={personal} />
+  </body>
+</html>

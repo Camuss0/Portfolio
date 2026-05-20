@@ -1,0 +1,15 @@
+---
+export interface Props {
+  label: string;
+  mono?: boolean;
+}
+const { label, mono = false } = Astro.props;
+---
+
+<span
+  class={mono
+    ? "inline-block font-mono text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200 cursor-default"
+    : "inline-block text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200 cursor-default"}
+>
+  {label}
+</span>

@@ -1,0 +1,10 @@
+---
+export interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<h2 class="text-xs font-medium tracking-[0.1em] uppercase text-[#71717a] mb-6">
+  {text}
+</h2>

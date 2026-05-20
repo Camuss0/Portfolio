@@ -1,0 +1,203 @@
+---
+import type { Project } from "../../types/data";
+import Tag from "../ui/Tag.astro";
+import ProjectGallery from "./ProjectGallery.astro";
+export interface Props {
+  project: Project | undefined;
+}
+const { project } = Astro.props;
+if (!project) return;
+---
+
+<article>
+  <!-- Header -->
+  <div class="flex items-start justify-between gap-4 mb-8">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-[0.6875rem] text-[#fbbf24] font-mono tracking-wider">{project.type}</span>
+        <span class="w-1 h-1 rounded-full bg-[#2e2e33]"></span>
+        <span class="text-[0.6875rem] text-[#52525b] font-mono">{project.status}</span>
+      </div>
+      <h3 class="text-[1.75rem] font-bold text-[#f4f4f5] leading-[1.15] -tracking-[0.02em]">
+        {project.name}
+      </h3>
+    </div>
+  </div>
+
+  <!-- Short Description -->
+  {
+    project.short_description && (
+      <p class="text-base text-[#f4f4f5] font-medium mb-6 leading-[1.6]">
+        {project.short_description}
+      </p>
+    )
+  }
+
+  <!-- Full Description -->
+  {
+    project.full_description && (
+      <p class="text-[0.875rem] text-[#a1a1aa] leading-[1.7] mb-8">
+        {project.full_description}
+      </p>
+    )
+  }
+
+  <!-- Problem Solved -->
+  {
+    project.problem_solved && (
+      <div class="mb-8 p-5 bg-[#111113] border border-[#1f1f22] rounded-xl">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#fbbf24] mb-2">
+          Problem Solved
+        </h4>
+        <p class="text-[0.8125rem] text-[#a1a1aa] leading-[1.65]">
+          {project.problem_solved}
+        </p>
+      </div>
+    )
+  }
+
+  <!-- Key Features -->
+  {
+    project.key_features.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
+          Key Features
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {project.key_features.map((f) => <Tag label={f} />)}
+        </div>
+      </div>
+    )
+  }
+
+  <!-- Technical Overview -->
+  {
+    project.technical_overview && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
+          Technical Overview
+        </h4>
+        <p class="text-[0.8125rem] text-[#a1a1aa] leading-[1.65]">
+          {project.technical_overview}
+        </p>
+      </div>
+    )
+  }
+
+  <!-- Two Column Layout for Notes -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    {
+      project.architecture_notes.length > 0 && (
+        <div>
+          <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
+            Architecture Notes
+          </h4>
+          <ul class="space-y-2">
+            {project.architecture_notes.map((note) => (
+              <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
+                <span class="w-1 h-1 rounded-full bg-[#fbbf24]/50 mt-2 flex-shrink-0"></span>
+                {note}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {
+      project.engineering_challenges.length > 0 && (
+        <div>
+          <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
+            Engineering Challenges
+          </h4>
+          <ul class="space-y-2">
+            {project.engineering_challenges.map((c) => (
+              <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
+                <span class="w-1 h-1 rounded-full bg-[#fbbf24]/50 mt-2 flex-shrink-0"></span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+
+  {/* Tech Stack & Integrations */}
+  {
+    project.tech_stack.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
+          Tech Stack
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {project.tech_stack.map((s) => <Tag label={s} mono={true} />)}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project.integrations.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
+          Integrations
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {project.integrations.map((i) => <Tag label={i} mono={true} />)}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project.automation_or_ai_usage.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
+          Automation & AI
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {project.automation_or_ai_usage.map((a) => <Tag label={a} />)}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project.design_notes.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
+          Design Notes
+        </h4>
+        <ul class="space-y-2">
+          {project.design_notes.map((note) => (
+            <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
+              <span class="w-1 h-1 rounded-full bg-[#fbbf24]/50 mt-2 flex-shrink-0"></span>
+              {note}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    project.future_ideas.length > 0 && (
+      <div class="mb-8">
+        <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
+          Future Ideas
+        </h4>
+        <ul class="space-y-2">
+          {project.future_ideas.map((idea) => (
+            <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
+              <span class="w-1 h-1 rounded-full bg-[#fbbf24]/50 mt-2 flex-shrink-0"></span>
+              {idea}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {project.screenshots_available && <ProjectGallery projectId={project.id} />}
+</article>

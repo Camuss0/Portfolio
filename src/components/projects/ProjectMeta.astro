@@ -1,0 +1,12 @@
+---
+import type { Project } from "../../types/data";
+import Tag from "../ui/Tag.astro";
+export interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-1.5">
+  {project.tech_stack.map((t) => <Tag label={t} />)}
+</div>
