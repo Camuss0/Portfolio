@@ -41,8 +41,8 @@
   "projects": [
     {
       "id": "dynamic-forms-system",
-      "name": "Plataforma de Formularios Dinámicos y Reportes",
-      "type": "Plataforma Web",
+      "name": "Módulo de Formularios Dinámicos y Reportes",
+      "type": "Módulo Web",
       "status": "completado",
       "visibility": "privado",
       "short_description": "Plataforma de formularios dinámicos con recolección móvil de datos, manejo de evidencias y generación de reportes PDF/Excel.",
@@ -76,6 +76,7 @@
         "Generación dinámica de reportes estructurados"
       ],
       "future_ideas": [],
+      "screenshots": ["Forms-1.png", "Forms-2.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -119,6 +120,7 @@
         "Lógica de selección geoespacial"
       ],
       "future_ideas": [],
+      "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -188,6 +190,7 @@
         "Analíticas avanzadas",
         "Mejoras de autoservicio para pacientes"
       ],
+      "screenshots": [],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -257,6 +260,7 @@
         "Alertas predictivas más avanzadas",
         "Detección más precisa de anomalías de combustible"
       ],
+      "screenshots": ["diesel-map-blur.png", "diesel-report-blur.png", "diesel-mobile.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -309,6 +313,7 @@
         "Matching de candidatos con IA",
         "Flujos de contratación asistidos por IA"
       ],
+      "screenshots": [],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -368,5 +373,29 @@
       "Integración con WhatsApp",
       "Interfaces Geoespaciales"
     ]
-  }
+  },
+  "studies": [
+    {
+      "title": "Técnico Universitario en Desarrollo Web",
+      "institution": "UNCO — Universidad Nacional del Comahue",
+      "period": "2022 - 2024",
+      "completed": true,
+      "highlights": ["Promedio 8.6 sin aplazos", "Duración 2 años y medio"]
+    },
+    {
+      "title": "Licenciatura en Ciencias de la Computación",
+      "institution": "UNCO — Universidad Nacional del Comahue",
+      "period": "2021 - 2022",
+      "completed": false
+    }
+  ],
+  "certifications": [
+    {
+      "name": "EF SET English Certificate",
+      "score": "63/100",
+      "level": "C1 Advanced",
+      "date": "08 Jan 2025",
+      "url": "https://cert.efset.org/en/MuTrda"
+    }
+  ]
 }

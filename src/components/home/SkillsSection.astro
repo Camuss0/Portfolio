@@ -1,17 +1,19 @@
 ---
 import type { Skills } from "../../types/data";
+import { t, type Lang } from "../../i18n/ui";
 export interface Props {
   skills: Skills;
+  lang: Lang;
 }
-const { skills } = Astro.props;
+const { skills, lang } = Astro.props;
 
 const categories: [string, string[], boolean][] = [
-  ["Frontend", skills.frontend, true],
-  ["Backend", skills.backend, true],
-  ["Infrastructure", skills.infrastructure, true],
-  ["Automation", skills.automation, false],
-  ["AI Tools", skills.ai_tools, false],
-  ["Other", skills.other, false],
+  ["skill.frontend", skills.frontend, true],
+  ["skill.backend", skills.backend, true],
+  ["skill.infrastructure", skills.infrastructure, true],
+  ["skill.automation", skills.automation, false],
+  ["skill.aiTools", skills.ai_tools, false],
+  ["skill.other", skills.other, false],
 ].filter(([, items]) => items.length > 0);
 ---
 
@@ -20,24 +22,21 @@ const categories: [string, string[], boolean][] = [
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
       <!-- Left Column: Header -->
       <div class="lg:w-[30%] lg:sticky lg:top-24">
-        <span class="text-[0.6875rem] text-[#fbbf24] font-mono tracking-wider mb-3 block">CAPABILITIES</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em] mb-4">
-          Skills
+        <div class="w-6 h-[3px] bg-[#fbbf24] rounded-full mb-4"></div>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
+          {t(lang, "section.skills")}
         </h2>
-        <p class="text-[0.9375rem] text-[#71717a] leading-[1.6]">
-          Technologies and domains where I deliver production-grade work.
-        </p>
       </div>
 
       <!-- Right Column: Skills Grid -->
       <div class="lg:w-[65%]">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
           {
-            categories.map(([category, items, useMono]) => (
+            categories.map(([key, items, useMono]) => (
               <div>
-                <h3 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#52525b] mb-3 flex items-center gap-2">
+                <h3 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#7a7a85] mb-3 flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-[#fbbf24]/50"></span>
-                  {category}
+                  {t(lang, key)}
                 </h3>
                 <div class="flex flex-wrap gap-2">
                   {items.map((skill) => (

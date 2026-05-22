@@ -1,9 +1,11 @@
 ---
 import type { Project } from "../../types/data";
+import { t, type Lang } from "../../i18n/ui";
 export interface Props {
   project: Project;
+  lang: Lang;
 }
-const { project } = Astro.props;
+const { project, lang } = Astro.props;
 const topStack = project.tech_stack.slice(0, 3);
 ---
 
@@ -28,13 +30,13 @@ const topStack = project.tech_stack.slice(0, 3);
   {topStack.length > 0 && (
     <div class="flex flex-wrap gap-x-3 gap-y-1">
       {topStack.map((s) => (
-        <span class="font-mono text-[0.6875rem] text-[#52525b]">{s}</span>
+        <span class="font-mono text-[0.6875rem] text-[#7a7a85]">{s}</span>
       ))}
     </div>
   )}
 
-  <div class="mt-5 flex items-center gap-2 text-[0.75rem] text-[#52525b] group-hover:text-[#fbbf24] transition-colors duration-300">
-    <span class="font-medium">Details</span>
+  <div class="mt-5 flex items-center gap-2 text-[0.75rem] text-[#7a7a85] group-hover:text-[#fbbf24] transition-colors duration-300">
+    <span class="font-medium">{t(lang, "cta.details")}</span>
     <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
     </svg>

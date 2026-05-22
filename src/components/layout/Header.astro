@@ -1,43 +1,114 @@
 ---
+import { t, type Lang } from "../../i18n/ui";
+export interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0b]/80 backdrop-blur-md border-b border-[#1f1f22]/40">
-  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#" class="text-[#f4f4f5] font-bold text-lg tracking-tight no-underline font-feature-ss relative group">
-      <span class="relative z-10">Camuss0</span>
-      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#fbbf24] transition-all duration-300 group-hover:w-full"></span>
-    </a>
-
-    <!-- Center Navigation -->
-    <div class="hidden md:flex items-center gap-1 bg-[#111113]/80 border border-[#1f1f22]/60 rounded-full px-2 py-1">
-      <a href="#projects" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-4 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
-        Projects
-      </a>
-      <a href="#skills" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-4 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
-        Skills
-      </a>
-      <a href="#experience" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-4 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
-        Experience
-      </a>
-    </div>
-
-    <!-- Language Selector -->
-    <div class="flex items-center gap-2">
-      <button class="language-btn text-[0.75rem] text-[#52525b] hover:text-[#f4f4f5] transition-colors duration-200 font-medium" data-lang="en">
-        EN
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+  <nav class="flex items-center gap-3">
+    <div class="hidden md:flex items-center bg-[#111113]/80 backdrop-blur-md border border-[#1f1f22]/60 rounded-full overflow-hidden">
+      <div class="flex items-center gap-1 px-2 py-1">
+        <a href="#projects" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
+          <span class="lang-text-es">Proyectos</span>
+          <span class="lang-text-en" style="display: none;">Projects</span>
+        </a>
+        <a href="#skills" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
+          <span class="lang-text-es">Habilidades</span>
+          <span class="lang-text-en" style="display: none;">Skills</span>
+        </a>
+        <a href="#experience" class="nav-link text-[0.8125rem] text-[#71717a] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
+          <span class="lang-text-es">Experiencia</span>
+          <span class="lang-text-en" style="display: none;">Experience</span>
+        </a>
+      </div>
+      <div class="w-px self-stretch bg-[#1f1f22]"></div>
+      <div class="flex items-center px-2 ml-3">
+      <button
+        class="language-btn flex items-center gap-1.5 px-3 py-1.5 text-[0.8125rem] font-medium tracking-wide transition-all duration-200 cursor-pointer text-[#71717a] hover:text-[#f4f4f5] hover:bg-[#1f1f22] rounded-s-full"
+        data-lang="es"
+        style="cursor: pointer;"
+      >
+        <svg width="16" height="12" viewBox="0 0 16 12" class="rounded-[1px] flex-shrink-0">
+          <rect width="16" height="4" fill="#75AADB"/>
+          <rect y="4" width="16" height="4" fill="#FFF"/>
+          <rect y="8" width="16" height="4" fill="#75AADB"/>
+          <circle cx="8" cy="6" r="1.6" fill="#C8A84E"/>
+        </svg>
+        <span class="relative">
+          ES
+          <span class="lang-indicator absolute -bottom-[1px] left-0 right-0 h-[1.5px] bg-[#fbbf24] rounded-full" style="opacity: 0;"></span>
+        </span>
       </button>
-      <span class="text-[#2e2e33] text-[0.75rem]">/</span>
-      <button class="language-btn text-[0.75rem] text-[#52525b] hover:text-[#f4f4f5] transition-colors duration-200 font-medium" data-lang="es">
-        ES
+      <div class="w-px h-3 bg-[#1f1f22]"></div>
+      <button
+        class="language-btn flex items-center gap-1.5 px-3 py-1.5 text-[0.8125rem] font-medium tracking-wide transition-all duration-200 cursor-pointer text-[#71717a] hover:text-[#f4f4f5] hover:bg-[#1f1f22] rounded-e-full"
+        data-lang="en"
+        style="cursor: pointer;"
+      >
+        <svg width="16" height="12" viewBox="0 0 16 12" class="rounded-[1px] flex-shrink-0">
+          <rect width="16" height="12" fill="#FFF"/>
+          <rect y="0" width="16" height="1.1" fill="#B22234"/>
+          <rect y="2.2" width="16" height="1.1" fill="#B22234"/>
+          <rect y="4.4" width="16" height="1.1" fill="#B22234"/>
+          <rect y="6.6" width="16" height="1.1" fill="#B22234"/>
+          <rect y="8.8" width="16" height="1.1" fill="#B22234"/>
+          <rect y="11" width="16" height="1" fill="#B22234"/>
+          <rect width="7.2" height="6" fill="#3C3B6E"/>
+          <g fill="#FFF">
+            <circle cx="0.8" cy="0.8" r="0.3"/>
+            <circle cx="2.4" cy="0.8" r="0.3"/>
+            <circle cx="4" cy="0.8" r="0.3"/>
+            <circle cx="5.6" cy="0.8" r="0.3"/>
+            <circle cx="1.6" cy="2" r="0.3"/>
+            <circle cx="3.2" cy="2" r="0.3"/>
+            <circle cx="4.8" cy="2" r="0.3"/>
+            <circle cx="6.4" cy="2" r="0.3"/>
+            <circle cx="0.8" cy="3.2" r="0.3"/>
+            <circle cx="2.4" cy="3.2" r="0.3"/>
+            <circle cx="4" cy="3.2" r="0.3"/>
+            <circle cx="5.6" cy="3.2" r="0.3"/>
+            <circle cx="1.6" cy="4.4" r="0.3"/>
+            <circle cx="3.2" cy="4.4" r="0.3"/>
+            <circle cx="4.8" cy="4.4" r="0.3"/>
+            <circle cx="6.4" cy="4.4" r="0.3"/>
+            <circle cx="0.8" cy="5.6" r="0.3"/>
+            <circle cx="2.4" cy="5.6" r="0.3"/>
+            <circle cx="4" cy="5.6" r="0.3"/>
+            <circle cx="5.6" cy="5.6" r="0.3"/>
+          </g>
+        </svg>
+        <span class="relative">
+          EN
+          <span class="lang-indicator absolute -bottom-[1px] left-0 right-0 h-[1.5px] bg-[#fbbf24] rounded-full" style="opacity: 0;"></span>
+        </span>
       </button>
+      </div>
     </div>
   </nav>
 </header>
+
+<script is:inline>
+  (function() {
+    document.querySelectorAll(".language-btn").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var l = btn.getAttribute("data-lang");
+        if (l && typeof window.setLanguage === "function") {
+          window.setLanguage(l);
+        }
+      });
+    });
+  })();
+</script>
 
 <style>
   .nav-link.active {
     color: #f4f4f5;
     background: rgba(255, 255, 255, 0.05);
+  }
+  .language-btn.lang-active {
+    color: #f4f4f5;
+    background: #1f1f22;
   }
 </style>

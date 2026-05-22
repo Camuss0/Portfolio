@@ -1,33 +1,65 @@
 ---
+import { t, type Lang } from "../../i18n/ui";
 export interface Props {
   projectId: string;
+  screenshots: string[];
+  lang: Lang;
 }
-const { projectId } = Astro.props;
-const images = ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"];
+const { projectId, screenshots, lang } = Astro.props;
 ---
 
 {
-  images.length > 0 && (
+  screenshots.length > 0 && (
     <div class="pt-4">
       <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-4">
-        Screenshots
+        {t(lang, "gallery.screenshots")}
       </h4>
-      <div class="grid grid-cols-1 gap-4">
-        {images.map((img, i) => (
-          <div class="relative bg-[#111113] border border-[#1f1f22] rounded-xl overflow-hidden group">
-            <img
-              src={`/images/projects/${projectId}/${img}`}
-              alt={`Screenshot ${i + 1}`}
-              class="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-              loading="lazy"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-            />
-            <div class="hidden w-full h-64 items-center justify-center text-xs text-[#2e2e33] font-mono">
-              {projectId}/{img}
+
+      {
+        screenshots.length === 3 ? (
+          <div class="flex flex-col sm:flex-row gap-4 items-start">
+            <div class="flex-1 flex flex-col gap-4 w-full">
+              <div class="bg-[#111113] border border-[#1f1f22] rounded-xl overflow-hidden">
+                <img
+                  src={`/images/projects/${projectId}/${screenshots[0]}`}
+                  alt={`${t(lang, "gallery.screenshotAlt")} 1`}
+                  class="w-full h-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="bg-[#111113] border border-[#1f1f22] rounded-xl overflow-hidden">
+                <img
+                  src={`/images/projects/${projectId}/${screenshots[1]}`}
+                  alt={`${t(lang, "gallery.screenshotAlt")} 2`}
+                  class="w-full h-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-full sm:w-[280px] bg-[#111113] border border-[#1f1f22] rounded-xl overflow-hidden">
+              <img
+                src={`/images/projects/${projectId}/${screenshots[2]}`}
+                alt={`${t(lang, "gallery.screenshotAlt")} 3`}
+                class="w-full h-auto object-contain"
+                loading="lazy"
+              />
             </div>
           </div>
-        ))}
-      </div>
+        ) : (
+          <div class="space-y-4">
+            {screenshots.map((img, i) => (
+              <div class="bg-[#111113] border border-[#1f1f22] rounded-xl overflow-hidden">
+                <img
+                  src={`/images/projects/${projectId}/${img}`}
+                  alt={`${t(lang, "gallery.screenshotAlt")} ${i + 1}`}
+                  class="w-full h-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        )
+      }
     </div>
   )
 }

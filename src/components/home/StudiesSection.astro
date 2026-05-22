@@ -1,44 +1,91 @@
 ---
-export interface Props {}
+import { t, type Lang } from "../../i18n/ui";
+import type { Study, Certification } from "../../types/data";
+export interface Props {
+  studies: Study[];
+  certifications: Certification[];
+  lang: Lang;
+}
+const { studies, certifications, lang } = Astro.props;
 ---
 
 <section id="studies" class="py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-      <div class="max-w-xl">
-        <span class="text-[0.6875rem] text-[#fbbf24] font-mono tracking-wider mb-3 block">BACKGROUND</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em] mb-4">
-          Education & Training
-        </h2>
-        <p class="text-[0.9375rem] text-[#71717a] leading-[1.6]">
-          Web Development Technician with continuous self-directed learning in systems architecture, 
-          AI-assisted development, and modern full-stack technologies.
-        </p>
-      </div>
-      <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-4 px-5 py-4 bg-[#111113] border border-[#1f1f22] rounded-xl">
-          <div class="w-10 h-10 rounded-lg bg-[#fbbf24]/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-[#fbbf24]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.221 51.137 51.137 0 00-2.658.813m-15.482 0A50.55 50.55 0 0112 13.489a50.55 50.55 0 0112-3.342" />
-            </svg>
+    <div class="w-6 h-[3px] bg-[#fbbf24] rounded-full mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em] mb-12">
+      {t(lang, "section.education")}
+    </h2>
+
+    <div class="flex flex-col gap-6 max-w-2xl">
+      {studies.map((study) => (
+        <div class="flex items-start gap-5 px-5 py-5 bg-[#111113] border border-[#1f1f22] rounded-xl">
+          <!-- Icon -->
+          <div class="w-10 h-10 rounded-lg bg-[#fbbf24]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            {study.completed ? (
+              <svg class="w-5 h-5 text-[#fbbf24]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.221 51.137 51.137 0 00-2.658.813m-15.482 0A50.55 50.55 0 0112 13.489a50.55 50.55 0 0112-3.342" />
+              </svg>
+            ) : (
+              <svg class="w-5 h-5 text-[#7a7a85]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+              </svg>
+            )}
           </div>
-          <div>
-            <h3 class="text-[0.875rem] text-[#f4f4f5] font-semibold">Web Development Technician</h3>
-            <p class="text-[0.75rem] text-[#52525b] mt-0.5">Technical Degree</p>
+          <!-- Content -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3 flex-wrap">
+              <h3 class="text-[0.9375rem] text-[#f4f4f5] font-semibold">{study.title}</h3>
+              {study.completed && (
+                <span class="text-[0.625rem] font-medium tracking-wide text-[#fbbf24] bg-[#fbbf24]/10 px-2 py-0.5 rounded-full uppercase">Completado</span>
+              )}
+              {!study.completed && (
+                <span class="text-[0.625rem] font-medium tracking-wide text-[#7a7a85] bg-[#1f1f22] px-2 py-0.5 rounded-full uppercase">Incompleto</span>
+              )}
+            </div>
+            <p class="text-[0.75rem] text-[#71717a] mt-1">{study.institution}</p>
+            <p class="text-[0.75rem] text-[#52525b] mt-0.5">{study.period}</p>
+            {study.highlights && study.highlights.length > 0 && (
+              <div class="flex flex-wrap gap-2 mt-3">
+                {study.highlights.map((h) => (
+                  <span class="text-[0.6875rem] text-[#a1a1aa] bg-[#0a0a0b] border border-[#1f1f22] px-2.5 py-1 rounded-full font-mono">{h}</span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
-        <div class="flex items-center gap-4 px-5 py-4 bg-[#111113] border border-[#1f1f22] rounded-xl">
-          <div class="w-10 h-10 rounded-lg bg-[#fbbf24]/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-[#fbbf24]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-[0.875rem] text-[#f4f4f5] font-semibold">Continuous Learning</h3>
-            <p class="text-[0.75rem] text-[#52525b] mt-0.5">Self-directed, AI-assisted</p>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
+
+    <!-- Certifications -->
+    {certifications.length > 0 && (
+      <div class="mt-12">
+        <h3 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-4">
+          Certificaciones
+        </h3>
+        <div class="flex flex-col gap-4 max-w-2xl">
+          {certifications.map((cert) => (
+            <a href={cert.url} target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 px-5 py-4 bg-[#111113] border border-[#1f1f22] rounded-xl hover:border-[#2e2e33] transition-all duration-200 no-underline group">
+              <div class="w-10 h-10 rounded-lg bg-[#fbbf24]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#fbbf24]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <h4 class="text-[0.875rem] text-[#f4f4f5] font-semibold group-hover:text-[#fbbf24] transition-colors duration-200">{cert.name}</h4>
+                  <svg class="w-3.5 h-3.5 text-[#71717a] group-hover:text-[#fbbf24] transition-colors duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </div>
+                <p class="text-[0.75rem] text-[#a1a1aa] mt-0.5">
+                  {cert.score} · {cert.level}
+                </p>
+                <p class="text-[0.6875rem] text-[#52525b] mt-0.5">{cert.date}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 </section>

@@ -101,6 +101,7 @@
         "Generating structured reports dynamically"
       ],
       "future_ideas": [],
+      "screenshots": ["Forms-1.png", "Forms-2.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -148,6 +149,7 @@
         "Geospatial selection logic"
       ],
       "future_ideas": [],
+      "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -193,16 +195,8 @@
         "Multi-company configuration support"
       ],
       "automation_or_ai_usage": [],
-      "tech_stack": [
-        "Laravel",
-        "Vue.js",
-        "WhatsApp Web APIs"
-      ],
-      "integrations": [
-        "Twilio",
-        "WhatsApp Web",
-        "Google Calendar"
-      ],
+      "tech_stack": ["Laravel", "Vue.js", "WhatsApp Web APIs"],
+      "integrations": ["Twilio", "WhatsApp Web", "Google Calendar"],
       "infrastructure": [],
       "database": [],
       "deployment": [],
@@ -225,6 +219,7 @@
         "Advanced analytics",
         "Patient self-service improvements"
       ],
+      "screenshots": [],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -271,22 +266,11 @@
       "automation_or_ai_usage": [
         "Project heavily developed with Codex AI assistance"
       ],
-      "tech_stack": [
-        "Mobile App",
-        "Web Dashboard",
-        "Android Studio",
-        "Expo"
-      ],
-      "integrations": [
-        "GPS services",
-        "Maps"
-      ],
+      "tech_stack": ["Mobile App", "Web Dashboard", "Android Studio", "Expo"],
+      "integrations": ["GPS services", "Maps"],
       "infrastructure": [],
       "database": [],
-      "deployment": [
-        "APK builds",
-        "OTA updates"
-      ],
+      "deployment": ["APK builds", "OTA updates"],
       "design_notes": [
         "Operational usability prioritized",
         "Map-heavy interfaces",
@@ -305,6 +289,7 @@
         "More predictive alerts",
         "Advanced fuel anomaly detection"
       ],
+      "screenshots": ["diesel-map-blur.png", "diesel-report-blur.png", "diesel-mobile.png"],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -359,6 +344,7 @@
         "AI candidate matching",
         "AI-assisted hiring workflows"
       ],
+      "screenshots": [],
       "screenshots_available": true,
       "demo_available": false,
       "github_available": false,
@@ -449,5 +435,7 @@
     ],
     "tone": "Technical, modern, builder-focused, practical, systems-oriented.",
     "portfolio_strategy": "Emphasize engineering complexity, real-world systems, integrations, workflows, architecture decisions, and AI-assisted development processes instead of generic project showcases."
-  }
+  },
+  "studies": [],
+  "certifications": []
 }

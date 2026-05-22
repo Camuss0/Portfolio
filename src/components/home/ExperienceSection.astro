@@ -1,9 +1,11 @@
 ---
 import type { Experience } from "../../types/data";
+import { t, type Lang } from "../../i18n/ui";
 export interface Props {
   experience: Experience[];
+  lang: Lang;
 }
-const { experience } = Astro.props;
+const { experience, lang } = Astro.props;
 ---
 
 <section id="experience" class="py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
@@ -11,9 +13,9 @@ const { experience } = Astro.props;
     <div class="flex flex-col lg:flex-row lg:items-start gap-12">
       <!-- Left Column -->
       <div class="lg:w-[35%]">
-        <span class="text-[0.6875rem] text-[#fbbf24] font-mono tracking-wider mb-3 block">JOURNEY</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em] mb-4">
-          Experience
+        <div class="w-6 h-[3px] bg-[#fbbf24] rounded-full mb-4"></div>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
+          {t(lang, "section.experience")}
         </h2>
       </div>
 
@@ -24,7 +26,7 @@ const { experience } = Astro.props;
             <div class="group">
               <div class="flex items-start gap-6 pb-8 border-b border-[#1f1f22]/60 last:border-0">
                 <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#111113] border border-[#1f1f22] flex items-center justify-center group-hover:border-[#2e2e33] transition-colors duration-300">
-                  <svg class="w-5 h-5 text-[#52525b] group-hover:text-[#fbbf24] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="w-5 h-5 text-[#7a7a85] group-hover:text-[#fbbf24] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.083.3-4.35.717-6.728.737-2.378.02-4.623-.354-6.63-.862a18.634 18.634 0 01-1.87-.663c-.597-.268-1.026-.79-1.026-1.43V7.852c0-1.077.768-2.015 1.837-2.175a47.22 47.22 0 015.653-.594c2.378-.02 4.644.355 6.651.863.229.063.456.13.678.204a2.25 2.25 0 011.87 2.17v4.25m-5.75 2.25h-9m9 0h3m-3 2.25h-9m9 0h3m-3 2.25h-9m9 0h3" />
                   </svg>
                 </div>

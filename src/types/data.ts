@@ -38,6 +38,7 @@ export interface Project {
   design_notes: string[];
   engineering_challenges: string[];
   future_ideas: string[];
+  screenshots: string[];
   screenshots_available: boolean;
   demo_available: boolean;
   github_available: boolean;
@@ -48,6 +49,22 @@ export interface Experience {
   title: string;
   description: string;
   skills_demonstrated: string[];
+}
+
+export interface Study {
+  title: string;
+  institution: string;
+  period: string;
+  completed: boolean;
+  highlights?: string[];
+}
+
+export interface Certification {
+  name: string;
+  score: string;
+  level: string;
+  date: string;
+  url: string;
 }
 
 export interface Skills {
@@ -64,4 +81,6 @@ export interface PortfolioData {
   projects: Project[];
   experience: Experience[];
   skills: Skills;
+  studies: Study[];
+  certifications: Certification[];
 }

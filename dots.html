@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Dots Premium</title>
+  <style>
+    :root{
+      --bg:#050507;
+      --panel:rgba(11,12,18,.78);
+      --panel-border:rgba(255,255,255,.08);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.58);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:var(--bg);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      cursor:default;
+    }
+
+    canvas{
+      position:fixed;
+      inset:0;
+      width:100vw;
+      height:100vh;
+      display:block;
+      z-index:1;
+    }
+
+    .panel{
+      position:fixed;
+      top:16px;
+      left:16px;
+      bottom:16px;
+      width:320px;
+      z-index:3;
+      padding:16px;
+      overflow:auto;
+      border:1px solid var(--panel-border);
+      border-radius:18px;
+      background:var(--panel);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+      color:var(--text);
+    }
+
+    .title{
+      margin:0 0 8px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .subtitle{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .section{
+      padding-top:14px;
+      margin-top:14px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .section:first-of-type{
+      border-top:0;
+      margin-top:0;
+      padding-top:0;
+    }
+
+    .section h3{
+      margin:0 0 12px;
+      font-size:13px;
+      color:rgba(255,255,255,.92);
+    }
+
+    .control{
+      margin-bottom:12px;
+    }
+
+    .control label{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:6px;
+      font-size:12px;
+      color:rgba(255,255,255,.82);
+    }
+
+    .control label span:last-child{
+      color:rgba(255,255,255,.52);
+      font-variant-numeric:tabular-nums;
+      min-width:52px;
+      text-align:right;
+    }
+
+    input[type="range"]{
+      width:100%;
+      appearance:none;
+      height:4px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      outline:none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb{
+      appearance:none;
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      border:0;
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      border:0;
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+
+    .note{
+      margin-top:14px;
+      font-size:11px;
+      line-height:1.5;
+      color:rgba(255,255,255,.48);
+    }
+
+    @media (max-width: 720px){
+      .panel{
+        width:calc(100vw - 24px);
+        top:auto;
+        bottom:12px;
+        height:44vh;
+        left:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <div style="position:fixed; inset:0; z-index:2; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+    <h1 style="font-size:clamp(2.5rem,8vw,6rem); font-weight:800; color:#fff; letter-spacing:-0.03em; margin:0; font-family:'Inter',system-ui,sans-serif; text-shadow:0 0 80px rgba(0,0,0,.6);">
+      VALENTIN CAMUSSO
+    </h1>
+  </div>
+
+  <aside class="panel">
+    <p class="title">Interactive Dots</p>
+    <p class="subtitle">
+      Fondo con puntos de color, movimiento sutil en radio amplio y oscurecimiento cerca del cursor para mantener legible el texto.
+    </p>
+
+    <div class="section">
+      <h3>Grid</h3>
+
+      <div class="control">
+        <label><span>Spacing</span><span id="spacingVal"></span></label>
+        <input id="spacing" type="range" min="14" max="64" step="1">
+      </div>
+
+      <div class="control">
+        <label><span>Radius</span><span id="radiusVal"></span></label>
+        <input id="radius" type="range" min="0.5" max="3.5" step="0.05">
+      </div>
+
+      <div class="control">
+        <label><span>Base Alpha</span><span id="baseAlphaVal"></span></label>
+        <input id="baseAlpha" type="range" min="0.03" max="0.45" step="0.01">
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Motion</h3>
+
+      <div class="control">
+        <label><span>Drift</span><span id="driftVal"></span></label>
+        <input id="drift" type="range" min="0" max="10" step="0.05">
+      </div>
+
+      <div class="control">
+        <label><span>Motion Radius</span><span id="motionRadiusVal"></span></label>
+        <input id="motionRadius" type="range" min="0" max="60" step="1">
+      </div>
+
+      <div class="control">
+        <label><span>Motion Speed</span><span id="motionSpeedVal"></span></label>
+        <input id="motionSpeed" type="range" min="0" max="0.02" step="0.0001">
+      </div>
+
+      <div class="control">
+        <label><span>Ease</span><span id="easeVal"></span></label>
+        <input id="ease" type="range" min="0.01" max="0.25" step="0.005">
+      </div>
+
+      <div class="control">
+        <label><span>Return Ease</span><span id="returnEaseVal"></span></label>
+        <input id="returnEase" type="range" min="0.002" max="0.15" step="0.002">
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Mouse</h3>
+
+      <div class="control">
+        <label><span>Influence</span><span id="influenceVal"></span></label>
+        <input id="influence" type="range" min="60" max="420" step="1">
+      </div>
+
+      <div class="control">
+        <label><span>Darkness</span><span id="darknessVal"></span></label>
+        <input id="darkness" type="range" min="0" max="1" step="0.01">
+      </div>
+
+      <div class="control">
+        <label><span>Dark. Radius</span><span id="darknessRadiusVal"></span></label>
+        <input id="darknessRadius" type="range" min="30" max="400" step="1">
+      </div>
+
+      <div class="control">
+        <label><span>Falloff</span><span id="falloffVal"></span></label>
+        <input id="falloff" type="range" min="0.8" max="4" step="0.05">
+      </div>
+
+      <div class="control">
+        <label><span>Mouse Push</span><span id="mousePushVal"></span></label>
+        <input id="mousePush" type="range" min="0" max="60" step="1">
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Color</h3>
+
+      <div class="control">
+        <label><span>Color 1</span><span id="color1Val"></span></label>
+        <input id="color1" type="color" value="#0066ff">
+      </div>
+
+      <div class="control">
+        <label><span>Color 2</span><span id="color2Val"></span></label>
+        <input id="color2" type="color" value="#ff6600">
+      </div>
+
+      <div class="control">
+        <label><span>Wave Speed</span><span id="waveSpeedVal"></span></label>
+        <input id="waveSpeed" type="range" min="0" max="0.005" step="0.00005">
+      </div>
+
+
+    </div>
+
+    <p class="note">Se guarda automáticamente en localStorage.</p>
+  </aside>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const STORAGE_KEY = "premium_interactive_dots_v2";
+
+    const defaults = {
+      spacing: 24,
+      radius: 1.05,
+      baseAlpha: 0.18,
+
+      drift: 4,
+      motionRadius: 28,
+      motionSpeed: 0.0032,
+      ease: 0.075,
+      returnEase: 0.015,
+
+      influence: 210,
+      darkness: 0.9,
+      darknessRadius: 120,
+      falloff: 1.7,
+      mousePush: 20,
+
+      color1: "#0066ff",
+      color2: "#ff6600",
+      waveSpeed: 0.0006
+    };
+
+    let config = loadConfig(); try { console.log("config", JSON.parse(localStorage.getItem("premium_interactive_dots_v2"))) } catch(e) {};
+
+    function loadConfig() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return { ...defaults };
+        const parsed = JSON.parse(raw);
+        if (parsed.hueSpread !== undefined) {
+          localStorage.removeItem(STORAGE_KEY);
+          return { ...defaults };
+        }
+        return { ...defaults, ...parsed };
+      } catch {
+        return { ...defaults };
+      }
+    }
+
+    function saveConfig() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    }
+
+    const controls = [
+      ["spacing", "spacingVal", v => Math.round(v)],
+      ["radius", "radiusVal", v => Number(v).toFixed(2)],
+      ["baseAlpha", "baseAlphaVal", v => Number(v).toFixed(2)],
+
+      ["drift", "driftVal", v => Number(v).toFixed(2)],
+      ["motionRadius", "motionRadiusVal", v => Math.round(v)],
+      ["motionSpeed", "motionSpeedVal", v => Number(v).toFixed(4)],
+      ["ease", "easeVal", v => Number(v).toFixed(3)],
+      ["returnEase", "returnEaseVal", v => Number(v).toFixed(3)],
+
+      ["influence", "influenceVal", v => Math.round(v)],
+      ["darkness", "darknessVal", v => Number(v).toFixed(2)],
+      ["darknessRadius", "darknessRadiusVal", v => Math.round(v)],
+      ["falloff", "falloffVal", v => Number(v).toFixed(2)],
+      ["mousePush", "mousePushVal", v => Math.round(v)],
+
+      ["color1", "color1Val", v => v],
+      ["color2", "color2Val", v => v],
+      ["waveSpeed", "waveSpeedVal", v => Number(v).toFixed(4)]
+    ];
+
+    for (const [id, labelId, format] of controls) {
+      const input = document.getElementById(id);
+      const label = document.getElementById(labelId);
+      if (input.type === "color" && (typeof config[id] !== "string" || config[id][0] !== "#")) {
+        config[id] = defaults[id];
+      }
+      input.value = config[id];
+      label.textContent = format(config[id]);
+
+      input.addEventListener("input", () => {
+        config[id] = input.type === "color" ? input.value : Number(input.value);
+        label.textContent = format(config[id]);
+        saveConfig();
+        if (id === "spacing") buildDots();
+      });
+    }
+
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
+    let dots = [];
+
+    const mouse = {
+      x: -9999,
+      y: -9999
+    };
+
+    function clamp(v, min, max) {
+      return Math.max(min, Math.min(max, v));
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function hexToRgb(hex) {
+      if (!hex || typeof hex !== "string" || hex[0] !== "#") hex = "#0066ff";
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return { r, g, b };
+    }
+
+    function lerpColor(c1, c2, t) {
+      return {
+        r: Math.round(lerp(c1.r, c2.r, t)),
+        g: Math.round(lerp(c1.g, c2.g, t)),
+        b: Math.round(lerp(c1.b, c2.b, t))
+      };
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      buildDots();
+    }
+
+    function buildDots() {
+      dots = [];
+
+      const spacing = config.spacing;
+      const cols = Math.ceil(w / spacing) + 2;
+      const rows = Math.ceil(h / spacing) + 2;
+      const offsetX = (w - (cols - 1) * spacing) * 0.5;
+      const offsetY = (h - (rows - 1) * spacing) * 0.5;
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const ox = offsetX + col * spacing;
+          const oy = offsetY + row * spacing;
+          dots.push({
+            ox, oy,
+            x: ox, y: oy,
+            tx: ox, ty: oy,
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+    }
+
+    function drawBackground() {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function animate(t) {
+      drawBackground();
+
+      const c1 = hexToRgb(config.color1);
+      const c2 = hexToRgb(config.color2);
+
+      for (const dot of dots) {
+        const dx = dot.ox - mouse.x;
+        const dy = dot.oy - mouse.y;
+        const dist = Math.hypot(dx, dy);
+
+        const influence = config.influence;
+        const p = clamp(1 - dist / influence, 0, 1);
+        const shaped = Math.pow(p, config.falloff);
+
+        const fieldX =
+          (Math.sin(t * config.motionSpeed + dot.oy * 0.008 + dot.phase) *
+          config.drift +
+          Math.sin(t * 0.0018 + dot.ox * 0.0035 + dot.phase * 1.7) *
+          config.motionRadius) * p * 0.12;
+
+        const fieldY =
+          (Math.cos(t * config.motionSpeed + dot.ox * 0.007 + dot.phase) *
+          config.drift +
+          Math.cos(t * 0.0016 + dot.oy * 0.003 + dot.phase * 1.4) *
+          config.motionRadius) * p * 0.12;
+
+        const push =
+          p * config.mousePush;
+
+        dot.tx = dot.ox + fieldX + (dx === 0 ? 0 : dx / dist) * push;
+        dot.ty = dot.oy + fieldY + (dy === 0 ? 0 : dy / dist) * push;
+
+        const atOrigin = Math.abs(dot.tx - dot.ox) < 0.5 && Math.abs(dot.ty - dot.oy) < 0.5;
+        const displaced = Math.abs(dot.x - dot.ox) > 1 || Math.abs(dot.y - dot.oy) > 1;
+        const e = (atOrigin && displaced) ? config.returnEase : config.ease;
+        dot.x += (dot.tx - dot.x) * e;
+        dot.y += (dot.ty - dot.y) * e;
+
+        const mix = 0.5 + 0.5 * Math.sin(t * config.waveSpeed + dot.ox * 0.005 + dot.oy * 0.003 + dot.phase);
+        const col = lerpColor(c1, c2, mix);
+        const dp = clamp(1 - dist / config.darknessRadius, 0, 1);
+        const dShaped = Math.pow(dp, config.falloff);
+        const dark = clamp(1 - dShaped * config.darkness, 0, 1);
+
+        const alpha = config.baseAlpha;
+        const radius = config.radius * (1 + p * 0.22);
+
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
+
+        ctx.fillStyle = `rgba(${Math.round(col.r * dark)}, ${Math.round(col.g * dark)}, ${Math.round(col.b * dark)}, ${alpha})`;
+
+        ctx.fill();
+      }
+
+      ctx.shadowBlur = 0;
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("mousemove", e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
+
+    window.addEventListener("mouseleave", () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    });
+
+    window.addEventListener("touchmove", e => {
+      if (!e.touches.length) return;
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener("resize", resize);
+
+    resize();
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
