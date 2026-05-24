@@ -17,32 +17,41 @@ export interface Personal {
   design_preferences: DesignPreferences;
 }
 
+export interface Identidad {
+  short_description: string;
+  full_description: string;
+  problem_solved: string;
+  technical_overview: string;
+}
+
+export interface Experiencia {
+  key_features: string[];
+  design_notes: string[];
+}
+
+export interface Tecnica {
+  tech_stack: string[];
+  integrations: string[];
+  architecture_notes: string[];
+  engineering_challenges: string[];
+}
+
+export interface Estado {
+  screenshots_available: boolean;
+  screenshots: string[];
+}
+
 export interface Project {
   id: string;
   name: string;
   type: string;
   status: string;
   visibility: string;
-  short_description: string;
-  full_description: string;
-  problem_solved: string;
-  technical_overview: string;
-  key_features: string[];
-  architecture_notes: string[];
-  automation_or_ai_usage: string[];
-  tech_stack: string[];
-  integrations: string[];
-  infrastructure: string[];
-  database: string[];
-  deployment: string[];
-  design_notes: string[];
-  engineering_challenges: string[];
-  future_ideas: string[];
-  screenshots: string[];
-  screenshots_available: boolean;
-  demo_available: boolean;
-  github_available: boolean;
   highlight: boolean;
+  identidad: Identidad;
+  experiencia: Experiencia;
+  tecnica: Tecnica;
+  estado: Estado;
 }
 
 export interface Experience {

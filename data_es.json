@@ -45,42 +45,43 @@
       "type": "Módulo Web",
       "status": "completado",
       "visibility": "privado",
-      "short_description": "Plataforma de formularios dinámicos con recolección móvil de datos, manejo de evidencias y generación de reportes PDF/Excel.",
-      "full_description": "Construí y mejoré un sistema de formularios dinámicos que permitía la creación personalizada de formularios, la recolección de respuestas desde móvil, la carga de evidencias y la generación de reportes. La plataforma soportaba imágenes, firmas, integraciones móviles, notificaciones y flujos de incidencias.",
-      "problem_solved": "Las organizaciones necesitaban formularios personalizables, recolección de datos en campo y flujos de reportes exportables integrados con uso móvil.",
-      "technical_overview": "Desarrollé funciones de frontend y backend para renderizado dinámico de formularios, almacenamiento de evidencias, generación de reportes, endpoints API para integración móvil y notificaciones automáticas.",
-      "key_features": [
-        "Constructor dinámico de formularios",
-        "Recolección de respuestas desde móvil",
-        "Generación de PDF",
-        "Exportación a Excel",
-        "Carga de imágenes",
-        "Soporte de firmas",
-        "Lógica de incidencias",
-        "Notificaciones automáticas"
-      ],
-      "architecture_notes": [
-        "APIs de backend expuestas para integraciones móviles",
-        "Flujos orientados a evidencias",
-        "Pipeline de generación de reportes"
-      ],
-      "automation_or_ai_usage": [],
-      "tech_stack": ["Vue.js", "Laravel"],
-      "integrations": [],
-      "infrastructure": [],
-      "database": [],
-      "deployment": [],
-      "design_notes": ["Enfocado en usabilidad para operadores en campo"],
-      "engineering_challenges": [
-        "Manejo de archivos de evidencias y firmas",
-        "Generación dinámica de reportes estructurados"
-      ],
-      "future_ideas": [],
-      "screenshots": ["Forms-1.png", "Forms-2.png"],
-      "screenshots_available": true,
-      "demo_available": false,
-      "github_available": false,
-      "highlight": true
+      "highlight": true,
+      "identidad": {
+        "short_description": "Plataforma de formularios dinámicos con recolección móvil de datos, manejo de evidencias y generación de reportes PDF/Excel.",
+        "full_description": "Construí y mejoré un sistema de formularios dinámicos que permitía la creación personalizada de formularios, la recolección de respuestas desde móvil, la carga de evidencias y la generación de reportes. La plataforma soportaba imágenes, firmas, integraciones móviles, notificaciones y flujos de incidencias.",
+        "problem_solved": "Las organizaciones necesitaban formularios personalizables, recolección de datos en campo y flujos de reportes exportables integrados con uso móvil.",
+        "technical_overview": "Desarrollé funciones de frontend y backend para renderizado dinámico de formularios, almacenamiento de evidencias, generación de reportes, endpoints API para integración móvil y notificaciones automáticas."
+      },
+      "experiencia": {
+        "key_features": [
+          "Constructor dinámico de formularios",
+          "Recolección de respuestas desde móvil",
+          "Generación de PDF",
+          "Exportación a Excel",
+          "Carga de imágenes",
+          "Soporte de firmas",
+          "Lógica de incidencias",
+          "Notificaciones automáticas"
+        ],
+        "design_notes": ["Enfocado en usabilidad para operadores en campo"]
+      },
+      "tecnica": {
+        "tech_stack": ["Vue.js", "Laravel"],
+        "integrations": [],
+        "architecture_notes": [
+          "APIs de backend expuestas para integraciones móviles",
+          "Flujos orientados a evidencias",
+          "Pipeline de generación de reportes"
+        ],
+        "engineering_challenges": [
+          "Manejo de archivos de evidencias y firmas",
+          "Generación dinámica de reportes estructurados"
+        ]
+      },
+      "estado": {
+        "screenshots_available": true,
+        "screenshots": ["Forms-1.png", "Forms-2.png"]
+      }
     },
     {
       "id": "aguasiempre-calculator",
@@ -88,43 +89,44 @@
       "type": "Aplicación Web",
       "status": "completado",
       "visibility": "privado",
-      "short_description": "Calculadora mobile-first con mapas interactivos y cálculos automáticos de pérdidas.",
-      "full_description": "Desarrollé una calculadora interactiva mobile-first con flujos de múltiples pantallas, integración con mapas Leaflet, selección de perímetro, cálculos automáticos de pérdida anual y flujos de envío por correo.",
-      "problem_solved": "Se necesitaba una forma simple de estimar pérdidas relacionadas con el agua usando interacción geográfica y flujos guiados.",
-      "technical_overview": "Implementé una interfaz responsive paso a paso con interacciones basadas en mapas, lógica de selección geométrica, cálculos y manejo automático de correos.",
-      "key_features": [
-        "Interfaz mobile-first",
-        "Mapas interactivos",
-        "Integración con Leaflet",
-        "Selección de perímetro",
-        "Cálculos automáticos",
-        "Captura del mapa",
-        "Envío por correo"
-      ],
-      "architecture_notes": [
-        "Flujo de cálculo guiado desde frontend",
-        "Interacciones geoespaciales"
-      ],
-      "automation_or_ai_usage": [],
-      "tech_stack": ["Leaflet"],
-      "integrations": ["Servicios de correo"],
-      "infrastructure": [],
-      "database": [],
-      "deployment": [],
-      "design_notes": [
-        "Optimizada para dispositivos móviles",
-        "UX tipo asistente paso a paso"
-      ],
-      "engineering_challenges": [
-        "Usabilidad de interacción con mapas",
-        "Lógica de selección geoespacial"
-      ],
-      "future_ideas": [],
-      "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"],
-      "screenshots_available": true,
-      "demo_available": false,
-      "github_available": false,
-      "highlight": true
+      "highlight": true,
+      "identidad": {
+        "short_description": "Calculadora mobile-first con mapas interactivos y cálculos automáticos de pérdidas.",
+        "full_description": "Desarrollé una calculadora interactiva mobile-first con flujos de múltiples pantallas, integración con mapas Leaflet, selección de perímetro, cálculos automáticos de pérdida anual y flujos de envío por correo.",
+        "problem_solved": "Se necesitaba una forma simple de estimar pérdidas relacionadas con el agua usando interacción geográfica y flujos guiados.",
+        "technical_overview": "Implementé una interfaz responsive paso a paso con interacciones basadas en mapas, lógica de selección geométrica, cálculos y manejo automático de correos."
+      },
+      "experiencia": {
+        "key_features": [
+          "Interfaz mobile-first",
+          "Mapas interactivos",
+          "Integración con Leaflet",
+          "Selección de perímetro",
+          "Cálculos automáticos",
+          "Captura del mapa",
+          "Envío por correo"
+        ],
+        "design_notes": [
+          "Optimizada para dispositivos móviles",
+          "UX tipo asistente paso a paso"
+        ]
+      },
+      "tecnica": {
+        "tech_stack": ["Leaflet"],
+        "integrations": ["Servicios de correo"],
+        "architecture_notes": [
+          "Flujo de cálculo guiado desde frontend",
+          "Interacciones geoespaciales"
+        ],
+        "engineering_challenges": [
+          "Usabilidad de interacción con mapas",
+          "Lógica de selección geoespacial"
+        ]
+      },
+      "estado": {
+        "screenshots_available": true,
+        "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"]
+      }
     },
     {
       "id": "medical-management-platform",
@@ -132,69 +134,72 @@
       "type": "Plataforma SaaS Full Stack",
       "status": "activo",
       "visibility": "privado",
-      "short_description": "Plataforma grande para clínicas con turnos, historia clínica, recetas digitales y mensajería integrada.",
-      "full_description": "Construí y mejoré continuamente una plataforma médica que centraliza gestión de turnos, pacientes, recetas, pagos, historia clínica, reportes, recordatorios, flujos de chatbot, y comunicaciones integradas. Incluyó flujos extensos en tiempo real, agendas médicas, generación de PDFs, exportaciones a Excel y funcionalidades de mensajería con WhatsApp y Twilio.",
-      "problem_solved": "Las clínicas necesitaban una plataforma centralizada para turnos, comunicación, flujos médicos, pagos y gestión de pacientes.",
-      "technical_overview": "Desarrollé sistemas de frontend y backend incluyendo lógica de agenda, flujos de chat/tickets, generación de recetas, exportaciones PDF/Excel, recordatorios, automatización con chatbot, permisos, dashboards de reportes e integraciones con proveedores de mensajería.",
-      "key_features": [
-        "Agendamiento de citas",
-        "Historia clínica",
-        "Recetas digitales",
-        "Calendarios de doctores",
-        "Chatbot para autogestión de citas",
-        "Mensajería por WhatsApp",
-        "Integración con Twilio",
-        "Sistema de tickets en tiempo real",
-        "Generación de PDF",
-        "Exportaciones a Excel",
-        "Seguimiento de pagos",
-        "Gestión de reembolsos",
-        "Integración con Google Calendar",
-        "Observaciones médicas",
-        "Gestión de roles",
-        "Reportes y analíticas",
-        "Carga de archivos",
-        "Sistema de recordatorios",
-        "Respuestas rápidas",
-        "Configuración por compañía",
-        "Flujos de chatbot"
-      ],
-      "architecture_notes": [
-        "Actualizaciones en tiempo real en los flujos de tickets",
-        "Permisos complejos basados en roles",
-        "Arquitectura integrada de agenda",
-        "Soporte multi-compañía"
-      ],
-      "automation_or_ai_usage": [],
-      "tech_stack": ["Laravel", "Vue.js", "APIs de WhatsApp Web"],
-      "integrations": ["Twilio", "WhatsApp Web", "Google Calendar"],
-      "infrastructure": [],
-      "database": [],
-      "deployment": [],
-      "design_notes": [
-        "Dashboard operativo complejo",
-        "Interfaz orientada a flujos médicos",
-        "Interfaces responsive para agenda"
-      ],
-      "engineering_challenges": [
-        "Sincronización en tiempo real de tickets",
-        "Estabilidad de conexión con WhatsApp",
-        "Interacciones complejas con calendario",
-        "Consistencia en generación de PDFs",
-        "Gestión de acceso por roles",
-        "Consistencia de zonas horarias",
-        "Casos límite de flujos médicos"
-      ],
-      "future_ideas": [
-        "Integraciones ampliadas con IA",
-        "Analíticas avanzadas",
-        "Mejoras de autoservicio para pacientes"
-      ],
-      "screenshots": [],
-      "screenshots_available": true,
-      "demo_available": false,
-      "github_available": false,
-      "highlight": true
+      "highlight": true,
+      "identidad": {
+        "short_description": "Plataforma grande para clínicas con turnos, historia clínica, recetas digitales y mensajería integrada.",
+        "full_description": "Construí y mejoré continuamente una plataforma médica que centraliza gestión de turnos, pacientes, recetas, pagos, historia clínica, reportes, recordatorios, flujos de chatbot y comunicaciones integradas. Incluye flujos en tiempo real, agendas médicas, generación de PDFs, exportaciones a Excel y mensajería con WhatsApp y Twilio.",
+        "problem_solved": "Las clínicas necesitaban una plataforma centralizada para turnos, comunicación, flujos médicos, pagos y gestión de pacientes.",
+        "technical_overview": "Desarrollé sistemas full stack incluyendo lógica de agenda, chat/tickets en tiempo real, generación de recetas, exportaciones PDF/Excel, recordatorios automáticos, chatbot, permisos por roles, dashboards de reportes e integraciones con mensajería."
+      },
+      "experiencia": {
+        "key_features": [
+          "Agendamiento de citas",
+          "Historia clínica",
+          "Recetas digitales",
+          "Calendarios de doctores",
+          "Chatbot para autogestión de citas",
+          "Mensajería por WhatsApp",
+          "Integración con Twilio",
+          "Sistema de tickets en tiempo real",
+          "Generación de PDF",
+          "Exportaciones a Excel",
+          "Seguimiento de pagos",
+          "Gestión de reembolsos",
+          "Integración con Google Calendar",
+          "Observaciones médicas",
+          "Gestión de roles",
+          "Reportes y analíticas",
+          "Carga de archivos",
+          "Sistema de recordatorios",
+          "Respuestas rápidas",
+          "Configuración por compañía"
+        ],
+        "design_notes": [
+          "Dashboard operativo complejo",
+          "Interfaz orientada a flujos médicos",
+          "Interfaces responsive para agenda"
+        ]
+      },
+      "tecnica": {
+        "tech_stack": [
+          "Node.js (Express + TypeScript)",
+          "React",
+          "Socket.IO (real-time communication)",
+          "PostgreSQL (Sequelize ORM)",
+          "whatsapp-web.js (WhatsApp automation)",
+          "Twilio API"
+        ],
+        "integrations": ["Twilio", "WhatsApp Web", "Google Calendar"],
+        "architecture_notes": [
+          "Sistema en tiempo real para tickets y chat",
+          "Arquitectura multi-compañía",
+          "Control de acceso basado en roles",
+          "Sincronización de agenda médica"
+        ],
+        "engineering_challenges": [
+          "Sincronización en tiempo real de tickets",
+          "Estabilidad de conexión con WhatsApp Web",
+          "Integración compleja con calendarios",
+          "Consistencia en generación de PDFs",
+          "Gestión de permisos por roles",
+          "Manejo de zonas horarias",
+          "Casos límite en flujos médicos"
+        ]
+      },
+      "estado": {
+        "screenshots_available": false,
+        "screenshots": []
+      }
     },
     {
       "id": "aspros-diesel",
@@ -202,69 +207,68 @@
       "type": "Dashboard Web + App Móvil",
       "status": "activo",
       "visibility": "privado",
-      "short_description": "Plataforma para consumo de diésel y monitoreo de maquinaria agrícola con GPS, inventarios y sincronización offline.",
-      "full_description": "Desarrollé un sistema operativo grande para gestión de diésel agrícola y monitoreo de maquinaria. Incluyó un dashboard web y una app móvil para operadores y despachadores. Las funcionalidades incluyeron rastreo GPS en primer plano/segundo plano, análisis de consumo de combustible, gestión de inventarios, visualización de rutas, alertas, sincronización offline, sistemas de mapas y reportes.",
-      "problem_solved": "Las operaciones agrícolas necesitaban seguimiento preciso de diésel, monitoreo de maquinaria, control de inventario y visibilidad de recorridos para detectar ineficiencias y gestionar el consumo de combustible.",
-      "technical_overview": "Implementé sistemas móviles de rastreo GPS, pipelines de sincronización, lógica de inventario, visualizaciones geoespaciales, flujos basados en roles, sistemas de reportes, procesamiento en segundo plano específico para Android, colas offline y dashboards operativos.",
-      "key_features": [
-        "Rastreo GPS",
-        "Rastreo en segundo plano",
-        "Sincronización offline",
-        "Monitoreo de vehículos",
-        "Cálculos de consumo de diésel",
-        "Gestión de inventarios de tanques",
-        "Sistema de alertas",
-        "Geocercas",
-        "Visualización de rutas",
-        "App móvil basada en roles",
-        "Exportaciones a Excel",
-        "Generación de APK",
-        "Actualizaciones OTA",
-        "Seguimiento de actividades",
-        "Ajustes de inventario",
-        "Diagnóstico histórico",
-        "Visualizaciones en mapa",
-        "Permisos por zona",
-        "Importaciones masivas",
-        "Sincronización en tiempo real"
-      ],
-      "architecture_notes": [
-        "Modelo de sincronización offline-first",
-        "Arquitectura de pings en segundo plano",
-        "Sistema de permisos acotado por zona",
-        "Dashboards operativos conectados a telemetría móvil"
-      ],
-      "automation_or_ai_usage": [
-        "Proyecto desarrollado fuertemente con asistencia de IA de Codex"
-      ],
-      "tech_stack": ["App Móvil", "Dashboard Web", "Android Studio", "Expo"],
-      "integrations": ["Servicios GPS", "Mapas"],
-      "infrastructure": [],
-      "database": [],
-      "deployment": ["Compilaciones APK", "Actualizaciones OTA"],
-      "design_notes": [
-        "Prioridad en usabilidad operativa",
-        "Interfaces con muchos mapas",
-        "Flujos pensados para trabajo en campo"
-      ],
-      "engineering_challenges": [
-        "Rastreo GPS confiable en modo segundo plano de Android",
-        "Consistencia de sincronización offline",
-        "Lógica de reconciliación de inventarios",
-        "Restricciones de segundo plano en Android 14/15",
-        "Confiabilidad de telemetría en tiempo real",
-        "Rendimiento de visualización geoespacial"
-      ],
-      "future_ideas": [
-        "Analítica ampliada de telemetría",
-        "Alertas predictivas más avanzadas",
-        "Detección más precisa de anomalías de combustible"
-      ],
-      "screenshots": ["diesel-map-blur.png", "diesel-report-blur.png", "diesel-mobile.png"],
-      "screenshots_available": true,
-      "demo_available": false,
-      "github_available": false,
-      "highlight": true
+      "highlight": true,
+      "identidad": {
+        "short_description": "Plataforma para consumo de diésel y monitoreo de maquinaria agrícola con GPS, inventarios y sincronización offline.",
+        "full_description": "Desarrollé un sistema operativo grande para gestión de diésel agrícola y monitoreo de maquinaria. Incluyó un dashboard web y una app móvil para operadores y despachadores. Las funcionalidades incluyeron rastreo GPS en primer plano/segundo plano, análisis de consumo de combustible, gestión de inventarios, visualización de rutas, alertas, sincronización offline, sistemas de mapas y reportes.",
+        "problem_solved": "Las operaciones agrícolas necesitaban seguimiento preciso de diésel, monitoreo de maquinaria, control de inventario y visibilidad de recorridos para detectar ineficiencias y gestionar el consumo de combustible.",
+        "technical_overview": "Implementé sistemas móviles de rastreo GPS, pipelines de sincronización, lógica de inventario, visualizaciones geoespaciales, flujos basados en roles, sistemas de reportes, procesamiento en segundo plano específico para Android, colas offline y dashboards operativos."
+      },
+      "experiencia": {
+        "key_features": [
+          "Rastreo GPS",
+          "Rastreo en segundo plano",
+          "Sincronización offline",
+          "Monitoreo de vehículos",
+          "Cálculos de consumo de diésel",
+          "Gestión de inventarios de tanques",
+          "Sistema de alertas",
+          "Geocercas",
+          "Visualización de rutas",
+          "App móvil basada en roles",
+          "Exportaciones a Excel",
+          "Generación de APK",
+          "Actualizaciones OTA",
+          "Seguimiento de actividades",
+          "Ajustes de inventario",
+          "Diagnóstico histórico",
+          "Visualizaciones en mapa",
+          "Permisos por zona",
+          "Importaciones masivas",
+          "Sincronización en tiempo real"
+        ],
+        "design_notes": [
+          "Prioridad en usabilidad operativa",
+          "Interfaces con muchos mapas",
+          "Flujos pensados para trabajo en campo"
+        ]
+      },
+      "tecnica": {
+        "tech_stack": ["App Móvil", "Dashboard Web", "Android Studio", "Expo"],
+        "integrations": ["Servicios GPS", "Mapas"],
+        "architecture_notes": [
+          "Modelo de sincronización offline-first",
+          "Arquitectura de pings en segundo plano",
+          "Sistema de permisos acotado por zona",
+          "Dashboards operativos conectados a telemetría móvil"
+        ],
+        "engineering_challenges": [
+          "Rastreo GPS confiable en modo segundo plano de Android",
+          "Consistencia de sincronización offline",
+          "Lógica de reconciliación de inventarios",
+          "Restricciones de segundo plano en Android 14/15",
+          "Confiabilidad de telemetría en tiempo real",
+          "Rendimiento de visualización geoespacial"
+        ]
+      },
+      "estado": {
+        "screenshots_available": true,
+        "screenshots": [
+          "diesel-map-blur.png",
+          "diesel-report-blur.png",
+          "diesel-mobile.png"
+        ]
+      }
     },
     {
       "id": "empleoagil",
@@ -272,52 +276,46 @@
       "type": "Plataforma de Reclutamiento Impulsada por IA",
       "status": "activo",
       "visibility": "privado",
-      "short_description": "Plataforma de empleo para candidatos y empresas con onboarding asistido por IA y flujos de vacantes.",
-      "full_description": "Actualmente desarrollo una plataforma de reclutamiento y gestión de talento enfocada en candidatos, empresas y administradores. Incluye sistemas de onboarding, perfiles, vacantes, postulaciones, evaluaciones y flujos asistidos por IA para mejorar perfiles y descripciones de vacantes.",
-      "problem_solved": "Empresas y candidatos necesitaban una plataforma moderna de reclutamiento con onboarding estructurado y mejoras de flujo asistidas por IA.",
-      "technical_overview": "Construí flujos basados en roles para candidatos, empresas y admins, incluyendo sistemas de onboarding, gestión de perfiles, evaluaciones y mejoras de contenido asistidas por IA.",
-      "key_features": [
-        "Onboarding de candidatos",
-        "Dashboards para empresas",
-        "Gestión de vacantes",
-        "Sistema de postulaciones",
-        "Evaluaciones",
-        "Notificaciones",
-        "Mejoras de perfil asistidas por IA",
-        "Descripciones de vacantes asistidas por IA",
-        "Flujos por rol"
-      ],
-      "architecture_notes": [
-        "Arquitectura de plataforma multirol",
-        "Integración de flujos asistidos por IA"
-      ],
-      "automation_or_ai_usage": [
-        "Desarrollo asistido por Codex",
-        "Generación de contenido mejorada con IA"
-      ],
-      "tech_stack": [],
-      "integrations": ["Servicios de IA"],
-      "infrastructure": [],
-      "database": [],
-      "deployment": [],
-      "design_notes": [
-        "Enfocado en UX de onboarding",
-        "Interfaces estructuradas por flujo"
-      ],
-      "engineering_challenges": [
-        "Equilibrar asistencia de IA con control del usuario",
-        "Consistencia de flujos multirol"
-      ],
-      "future_ideas": [
-        "Análisis avanzado de CV",
-        "Matching de candidatos con IA",
-        "Flujos de contratación asistidos por IA"
-      ],
-      "screenshots": [],
-      "screenshots_available": true,
-      "demo_available": false,
-      "github_available": false,
-      "highlight": true
+      "highlight": true,
+      "identidad": {
+        "short_description": "Plataforma de empleo para candidatos y empresas con onboarding asistido por IA y flujos de vacantes.",
+        "full_description": "Actualmente desarrollo una plataforma de reclutamiento y gestión de talento enfocada en candidatos, empresas y administradores. Incluye sistemas de onboarding, perfiles, vacantes, postulaciones, evaluaciones y flujos asistidos por IA para mejorar perfiles y descripciones de vacantes.",
+        "problem_solved": "Empresas y candidatos necesitaban una plataforma moderna de reclutamiento con onboarding estructurado y mejoras de flujo asistidas por IA.",
+        "technical_overview": "Construí flujos basados en roles para candidatos, empresas y admins, incluyendo sistemas de onboarding, gestión de perfiles, evaluaciones y mejoras de contenido asistidas por IA."
+      },
+      "experiencia": {
+        "key_features": [
+          "Onboarding de candidatos",
+          "Dashboards para empresas",
+          "Gestión de vacantes",
+          "Sistema de postulaciones",
+          "Evaluaciones",
+          "Notificaciones",
+          "Mejoras de perfil asistidas por IA",
+          "Descripciones de vacantes asistidas por IA",
+          "Flujos por rol"
+        ],
+        "design_notes": [
+          "Enfocado en UX de onboarding",
+          "Interfaces estructuradas por flujo"
+        ]
+      },
+      "tecnica": {
+        "tech_stack": [],
+        "integrations": ["Servicios de IA"],
+        "architecture_notes": [
+          "Arquitectura de plataforma multirol",
+          "Integración de flujos asistidos por IA"
+        ],
+        "engineering_challenges": [
+          "Equilibrar asistencia de IA con control del usuario",
+          "Consistencia de flujos multirol"
+        ]
+      },
+      "estado": {
+        "screenshots_available": true,
+        "screenshots": []
+      }
     }
   ],
   "experience": [
