@@ -1,6 +1,7 @@
 ---
 import type { Personal } from "../../types/data";
 import { t, type Lang } from "../../i18n/ui";
+import SimpleCardStack from "../ui/SimpleCardStack.astro";
 export interface Props {
   personalEs: Personal;
   personalEn: Personal;
@@ -15,7 +16,7 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
   <canvas id="dot-canvas" class="absolute inset-0 w-full h-full" style="background: #000;"></canvas>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full -mt-18">
     <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between">
       <!-- Text Content - ES -->
       <div id="hero-text-es" class="relative flex-1 lg:max-w-[60%]">
@@ -30,13 +31,13 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
             {personalEs.location}
           </p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-12">
-            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#f4f4f5] text-[#0a0a0b] rounded-full text-[0.875rem] font-semibold hover:bg-[#e4e4e5] transition-all duration-300 no-underline group">
+            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
               {t("es", "cta.projects")}
               <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#fbbf24]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
+            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
               {t("es", "cta.about")}
             </a>
           </div>
@@ -56,37 +57,22 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
             {personalEn.location}
           </p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-12">
-            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#f4f4f5] text-[#0a0a0b] rounded-full text-[0.875rem] font-semibold hover:bg-[#e4e4e5] transition-all duration-300 no-underline group">
+            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
               {t("en", "cta.projects")}
               <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#fbbf24]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
+            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
               {t("en", "cta.about")}
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Photo Carousel -->
-      <div class="flex-shrink-0 w-full max-w-[320px] lg:max-w-[380px]">
-        <div class="relative">
-          <div class="absolute -inset-4 bg-gradient-to-br from-[#fbbf24]/10 via-transparent to-[#fbbf24]/5 rounded-2xl blur-2xl"></div>
-          <div class="relative aspect-[4/5]">
-            <div id="photo-stack" class="relative w-full h-full">
-              <div class="photo-card absolute inset-0 rounded-2xl overflow-hidden border border-[#1f1f22] glow-subtle flex items-center justify-center" style="background: linear-gradient(135deg, #1a1a2e, #16213e); z-index: 3; transform: rotate(0deg); transform-origin: bottom left;">
-                <span class="text-[#2e2e33] text-sm font-mono tracking-wider opacity-60">01</span>
-              </div>
-              <div class="photo-card absolute inset-0 rounded-2xl overflow-hidden border border-[#1f1f22] glow-subtle flex items-center justify-center" style="background: linear-gradient(135deg, #1e1a2e, #2e1620); z-index: 2; transform: rotate(7deg); transform-origin: bottom left;">
-                <span class="text-[#2e2e33] text-sm font-mono tracking-wider opacity-60">02</span>
-              </div>
-              <div class="photo-card absolute inset-0 rounded-2xl overflow-hidden border border-[#1f1f22] glow-subtle flex items-center justify-center" style="background: linear-gradient(135deg, #0f1a1e, #16201a); z-index: 1; transform: rotate(14deg); transform-origin: bottom left;">
-                <span class="text-[#2e2e33] text-sm font-mono tracking-wider opacity-60">03</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Photo Card Stack -->
+      <div class="flex-shrink-0 w-full max-w-[460px]">
+        <SimpleCardStack />
       </div>
     </div>
   </div>
@@ -124,30 +110,14 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
     <!-- Marquee -->
     <div class="w-full border-t border-b border-[#1f1f22]/40 bg-[#0a0a0b]/60 backdrop-blur-sm overflow-hidden py-4">
       <div id="marquee-wrapper" class="flex" style="width: max-content; will-change: transform;">
-        <div class="marquee-group marquee-items">
-          {personal.specialties.map((specialty) => (
-            <span class="inline-flex items-center text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">
-              <span class="w-1 h-1 rounded-full bg-[#fbbf24]/40 mr-3"></span>
-              {specialty}
-            </span>
-          ))}
+        {[0,1,2].map(function(g) { return (
+        <div class="marquee-group marquee-items" style="display: flex; align-items: center;">
+          {personal.specialties.map((specialty) => [
+            <span class="text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">{specialty}</span>,
+            <span class="w-1 h-1 rounded-full bg-[#f97316]/40 inline-block mx-3"></span>
+          ])}
         </div>
-        <div class="marquee-group marquee-items" aria-hidden="true">
-          {personal.specialties.map((specialty) => (
-            <span class="inline-flex items-center text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">
-              <span class="w-1 h-1 rounded-full bg-[#fbbf24]/40 mr-3"></span>
-              {specialty}
-            </span>
-          ))}
-        </div>
-        <div class="marquee-group marquee-items" aria-hidden="true">
-          {personal.specialties.map((specialty) => (
-            <span class="inline-flex items-center text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">
-              <span class="w-1 h-1 rounded-full bg-[#fbbf24]/40 mr-3"></span>
-              {specialty}
-            </span>
-          ))}
-        </div>
+        );})}
       </div>
     </div>
 
@@ -158,20 +128,21 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
 <script is:inline>
   (function() {
     var CFG = {
-      spacing: 16, radius: 1.3, baseAlpha: 0.25,
-      drift: 2.9, motionRadius: 22, motionSpeed: 0.0144, ease: 0.1, returnEase: 0.01,
+      spacing: 16, radius: 1.45, baseAlpha: 0.35,
+      drift: 2.9, motionRadius: 22, motionSpeed: 0.0144, ease: 0.04, returnEase: 0.03,
       influence: 350, darkness: 0.6, darknessRadius: 380, falloff: 3.4, mousePush: 20,
-      color1: "#0055ff", color2: "#00ff91", waveSpeed: 0.00175
+      color1: "#172de2", color2: "#00aaff", waveSpeed: 0.00175
     };
 
     var canvas = document.getElementById('dot-canvas');
     if (!canvas) return;
+    var TOP_OFFSET = 10;
     var ctx = canvas.getContext('2d');
     var w = 0, h = 0, dpr = 1, dots = [];
     var mouse = { x: -9999, y: -9999 };
     var lastCX = -9999, lastCY = -9999;
 
-    function hex(h) { if (!h||h[0]!=="#") h="#0055ff"; return {r:parseInt(h.slice(1,3),16),g:parseInt(h.slice(3,5),16),b:parseInt(h.slice(5,7),16)}; }
+    function hex(h) { if (!h||h[0]!=="#") h="#172de2"; return {r:parseInt(h.slice(1,3),16),g:parseInt(h.slice(3,5),16),b:parseInt(h.slice(5,7),16)}; }
     function lerp(a,b,t){ return a+(b-a)*t; }
     function lr(c1,c2,t){ return {r:Math.round(lerp(c1.r,c2.r,t)),g:Math.round(lerp(c1.g,c2.g,t)),b:Math.round(lerp(c1.b,c2.b,t))}; }
     function clamp(v,mn,mx){ return Math.max(mn,Math.min(mx,v)); }
@@ -180,8 +151,8 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
       dpr = Math.min(window.devicePixelRatio||1,2);
       var r = canvas.getBoundingClientRect();
       w = r.width; h = r.height;
+      if (w < 1 || h < 1) return;
       canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr);
-      canvas.style.width = w+"px"; canvas.style.height = h+"px";
       ctx.setTransform(dpr,0,0,dpr,0,0);
       build();
     }
@@ -189,7 +160,7 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
     function build() {
       dots = [];
       var sp = CFG.spacing, cols = Math.ceil(w/sp)+2, rows = Math.ceil(h/sp)+2;
-      var ox = (w-(cols-1)*sp)*0.5, oy = (h-(rows-1)*sp)*0.5;
+      var ox = (w-(cols-1)*sp)*0.5, oy = TOP_OFFSET+(h-TOP_OFFSET-(rows-1)*sp)*0.5;
       for (var y=0; y<rows; y++) for (var x=0; x<cols; x++)
         dots.push({ox:ox+x*sp, oy:oy+y*sp, x:ox+x*sp, y:oy+y*sp, tx:ox+x*sp, ty:oy+y*sp, phase:Math.random()*Math.PI*2});
     }
@@ -233,7 +204,7 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
     window.addEventListener("mouseleave",function(){mouse.x=-9999;mouse.y=-9999;});
     window.addEventListener("touchmove",function(e){if(e.touches.length){updateMouse(e.touches[0].clientX,e.touches[0].clientY);}},{passive:true});
     window.addEventListener("scroll",function(){if(lastCX>-9998){var r=canvas.getBoundingClientRect();mouse.x=lastCX-r.left;mouse.y=lastCY-r.top;}});
-    window.addEventListener("resize",resize);
+    new ResizeObserver(resize).observe(canvas);
     resize();
     requestAnimationFrame(animate);
   })();
@@ -303,52 +274,7 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
   })();
 </script>
 
-<script is:inline>
-  (function() {
-    var stack = document.getElementById('photo-stack');
-    if (!stack) return;
-    var cards = Array.from(stack.querySelectorAll('.photo-card'));
-    if (cards.length < 2) return;
 
-    var angles = [0, 7, 14];
-    var zValues = [3, 2, 1];
-    var interval = 5000;
-    var rotating = false;
-
-    function sync() {
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.transform = 'rotate(' + angles[i] + 'deg)';
-        cards[i].style.zIndex = zValues[i];
-      }
-    }
-
-    function cycle() {
-      if (rotating) return;
-      rotating = true;
-
-      var lastAngle = angles.pop();
-      angles.unshift(lastAngle);
-      var lastZ = zValues.pop();
-      zValues.unshift(lastZ);
-
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        cards[i].style.transform = 'rotate(' + angles[i] + 'deg)';
-        cards[i].style.zIndex = zValues[i];
-      }
-
-      setTimeout(function() {
-        for (var i = 0; i < cards.length; i++) {
-          cards[i].style.transition = '';
-        }
-        rotating = false;
-      }, 900);
-    }
-
-    sync();
-    setInterval(cycle, interval);
-  })();
-</script>
 
 <style>
   @font-face {

@@ -11,6 +11,12 @@
 - `pnpm run build` — static build → `dist/`
 - `pnpm run preview` — preview built site
 
+## Colors
+- **Primary:** `#172de2` (blue) — buttons, badges, primary actions, section highlight accents
+- **Complementary:** `#f97316` (orange-500) — decorative accents (basketball, section heading underlines, hover states, bullet dots, language indicators, icons)
+- The basketball scroll indicator already uses orange (`border-orange-500`, `text-orange-500`). This is the precedent.
+- When choosing between blue/orange: use blue for interactive/action elements, orange for decorative/visual accent elements.
+
 ## Data architecture
 - All content is driven by `data_es.json` (Spanish) and `data_en.json` (English)
 - Both are read at build time in `src/pages/index.astro` via `fs.readFileSync`
@@ -48,5 +54,5 @@
 
 ## Quality
 - No tests, no linter, no typecheck script
-- `pnpm run build` is the only validation step
+- `pnpm run build` is the only validation step (ABSOLUTELY DO NOT run it unless the user explicitly asks. THIS IS A HARD RULE. NO EXCEPTIONS.)
 - Build output to `dist/` (gitignored)

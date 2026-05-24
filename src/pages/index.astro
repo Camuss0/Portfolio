@@ -106,10 +106,9 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         var data = JSON.parse(marqueeData.textContent);
         var items = data[lang];
         document.querySelectorAll(".marquee-items").forEach(function(group) {
-          var children = group.children;
-          for (var i = 0; i < children.length && i < items.length; i++) {
-            children[i].innerHTML = '<span class="w-1 h-1 rounded-full bg-[#fbbf24]/40 mr-3"></span>' + items[i];
-          }
+          group.innerHTML = items.map(function(item) {
+            return '<span class="text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">' + item + '</span><span class="w-1 h-1 rounded-full bg-[#f97316]/40 inline-block mx-3"></span>';
+          }).join('');
         });
       }
     }
