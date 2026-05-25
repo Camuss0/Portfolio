@@ -1,0 +1,124 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div id="card-stack" class="relative w-full aspect-square {className}">
+  <div class="card absolute inset-0 rounded-[32px] bg-cover bg-center cursor-grab select-none touch-none border border-[#1f1f22]" style="background-image:url('/images/personal/pro.png')"></div>
+  <div class="card absolute inset-0 rounded-[32px] bg-cover bg-center cursor-grab select-none touch-none border border-[#1f1f22]" style="background-image:url('/images/personal/diploma.png')"></div>
+  <div class="card absolute inset-0 rounded-[32px] bg-cover bg-center cursor-grab select-none touch-none border border-[#1f1f22]" style="background-image:url('/images/personal/pic.jpg')"></div>
+</div>
+
+<script is:inline>
+  (function() {
+    var CFG = {
+      depthX: 37,
+      depthY: 31,
+      scaleStep: 0.06,
+      rotationStep: 6,
+      autoplay: 3800,
+      dragDistance: 80,
+      dragElastic: 0.55,
+      dragScale: 1.03,
+      animationDuration: 1600
+    };
+
+    var cards = Array.from(document.querySelectorAll('#card-stack .card'));
+    var stack = document.getElementById('card-stack');
+    if (!stack || cards.length < 2) return;
+
+    var autoplayTimer = null;
+    var isDragging = false;
+    var activeCard = null;
+
+    function layout() {
+      if (isDragging) return;
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
+        cards[i].style.transform = 'translate3d(' + (i * CFG.depthX) + 'px,' + (i * CFG.depthY) + 'px,0) scale(' + (1 - i * CFG.scaleStep) + ') rotate(' + (i * CFG.rotationStep) + 'deg)';
+        cards[i].style.zIndex = 100 - i;
+      }
+    }
+
+    function applyNext() {
+      var next = cards.slice(1).concat(cards.slice(0, 1));
+      for (var i = 0; i < next.length; i++) {
+        next[i].style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
+        next[i].style.transform = 'translate3d(' + (i * CFG.depthX) + 'px,' + (i * CFG.depthY) + 'px,0) scale(' + (1 - i * CFG.scaleStep) + ') rotate(' + (i * CFG.rotationStep) + 'deg)';
+        next[i].style.zIndex = 100 - i;
+      }
+      setTimeout(function() {
+        cards = next;
+        for (var j = 0; j < cards.length; j++) stack.appendChild(cards[j]);
+      }, CFG.animationDuration);
+    }
+
+    function rotate() {
+      if (isDragging) return;
+      applyNext();
+    }
+
+    function startAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(rotate, CFG.autoplay);
+    }
+
+    cards.forEach(function(card) {
+      var startX = 0, startY = 0, currentX = 0, currentY = 0;
+
+      card.addEventListener('pointerdown', function(e) {
+        if (activeCard) return;
+        isDragging = true;
+        activeCard = card;
+        clearInterval(autoplayTimer);
+
+        startX = e.clientX;
+        startY = e.clientY;
+        card.style.transition = 'none';
+
+        function move(ev) {
+          var dx = ev.clientX - startX;
+          var dy = ev.clientY - startY;
+          var damping = 1 / (1 + CFG.dragElastic * 2.5);
+          currentX = dx * damping;
+          currentY = dy * damping;
+          card.style.transform = 'translate3d(' + currentX + 'px,' + currentY + 'px,0) scale(' + CFG.dragScale + ') rotate(' + (currentX * 0.04) + 'deg)';
+        }
+
+        function up() {
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+
+          var exceeded = Math.abs(currentX) > CFG.dragDistance || Math.abs(currentY) > CFG.dragDistance;
+
+          card.style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
+
+          if (exceeded) {
+            var first = cards.shift();
+            cards.push(first);
+            stack.appendChild(first);
+            requestAnimationFrame(function() {
+              isDragging = false;
+              activeCard = null;
+              layout();
+              startAutoplay();
+            });
+          } else {
+            isDragging = false;
+            activeCard = null;
+            layout();
+            startAutoplay();
+          }
+        }
+
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+      });
+    });
+
+    layout();
+    startAutoplay();
+  })();
+</script>
