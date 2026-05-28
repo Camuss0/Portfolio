@@ -1,0 +1,331 @@
+{
+  "personal": {
+    "name": "Valentin Camusso",
+    "location": "General Roca, Río Negro, Argentina",
+    "role": "Desarrollador Full Stack",
+    "academic_title": "Técnico Universitario en Desarrollo Web — UNCO(poner logo)",
+    "specialties": [
+      "Aplicaciones Web",
+      "Aplicaciones Móviles",
+      "Sistemas Backend",
+      "Funciones en Tiempo Real",
+      "Flujos Offline-First",
+      "Integraciones con APIs",
+      "Sistemas de Rastreo GPS"
+    ],
+    "short_bio": "Desarrollador full stack enfocado en construir sistemas web y móviles reales con fuerte lógica backend, integraciones, automatización y mentalidad de producto.",
+    "long_bio": "Desarrollador full stack y Técnico Universitario en Desarrollo Web con experiencia construyendo sistemas utilizados en entornos productivos en salud, logística, operaciones agrícolas y reclutamiento. Trabajé en dashboards web, apps móviles, sistemas en tiempo real, sincronización offline, rastreo GPS, sistemas de reportes, flujos con chatbot e integraciones con servicios como WhatsApp y Twilio. Enfoque fuerte en ingeniería práctica, mantenibilidad, iteración rápida y flujos de desarrollo asistidos por IA usando herramientas como Codex.",
+    "interests": [
+      "Arquitectura de Sistemas",
+      "Herramientas para Desarrolladores",
+      "Automatización",
+      "Sistemas en Tiempo Real",
+      "Ingeniería de Producto",
+      "Mapas e Interfaces Geoespaciales"
+    ],
+    "current_focus": [
+      "Productos impulsados por IA",
+      "Plataformas web escalables",
+      "Sistemas móviles sincronizados",
+      "Productividad de desarrollador con IA"
+    ],
+    "personality_traits": [
+      "Enfocado en construir",
+      "Orientado a sistemas",
+      "Pragmático",
+      "Aprendiz rápido",
+      "Mentalidad de producto",
+      "Resolutor técnico de problemas"
+    ],
+    "email": "camussovalentin10@gmail.com",
+    "social": {
+      "github": "https://github.com/Camuss0",
+      "linkedin": "https://www.linkedin.com/in/camuss0/"
+    }
+  },
+  "projects": [
+    {
+      "id": "dynamic-forms-system",
+      "name": "Formularios Dinámicos — EjeSatelital",
+      "type": "Módulo Web",
+      "status": "completado",
+      "visibility": "privado",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "Eje Satelital",
+      "client_logo": "/images/clients/eje-satelital.png",
+      "short_description": "Módulo de formularios dinámicos integrado en la plataforma EjeSatelital, con recolección de respuestas desde app móvil, visualización con gráficas y generación de reportes.",
+      "problem_solved": "La plataforma EjeSatelital necesitaba un módulo especializado de formularios dinámicos con recolección móvil de datos, capaz de integrarse con sus módulos existentes de reportes y brindar visualización de respuestas con gráficas.",
+      "description": "Desarrollé y mejoré un módulo de formularios dinámicos dentro de la plataforma EjeSatelital, trabajando sobre código existente en conjunto con otro desarrollador a cargo de la app móvil. Implementé el panel web y backend con renderizado dinámico de formularios, creación y edición de formularios desde el panel, endpoints API para recepción de respuestas, visualización de datos con gráficas, carga de evidencias (imágenes y firmas), generación de reportes PDF/Excel, notificaciones automáticas e integración con otros módulos internos de la plataforma.",
+      "key_features": [
+        "Constructor dinámico de formularios",
+        "Endpoints API para recepción móvil",
+        "Visualización de respuestas con gráficas",
+        "Generación de PDF",
+        "Exportación a Excel",
+        "Carga de imágenes",
+        "Soporte de firmas",
+        "Lógica de incidencias",
+        "Notificaciones automáticas"
+      ],
+      "tech_stack": ["Vue.js", "Laravel"],
+      "integrations": [],
+      "engineering_challenges": [
+        "Manejo de archivos de evidencias y firmas",
+        "Generación dinámica de reportes estructurados"
+      ],
+      "screenshots": ["Forms-1.png", "Forms-2.png"]
+    },
+    {
+      "id": "aguasiempre-calculator",
+      "name": "Calculadora de Pérdida — AguaSiempre",
+      "type": "Aplicación Web",
+      "status": "completado",
+      "visibility": "privado",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "AguaSiempre",
+      "client_logo": "/images/clients/agua-siempre.jpg",
+      "short_description": "Calculadora interactiva que estima la pérdida económica del ganado por distancia a bebederos, con mapas Leaflet y flujo paso a paso.",
+      "problem_solved": "Establecimientos ganaderos necesitaban cuantificar la pérdida económica del desplazamiento del ganado hasta los bebederos para evaluar la inversión en un sistema de agua por parcela.",
+      "description": "Calculadora multi-paso desarrollada en HTML, CSS y JavaScript puro siguiendo diseño de Figma con estilo marcado de AguaSiempre. El flujo guía al usuario desde la selección de ubicación y trazado de geocerca en mapa Leaflet, ubicación de bebederos y recorrido del ganado, hasta el cálculo automático de pérdida económica anual en pesos y la conversión del resultado. Incluye formulario de contacto al finalizar y envío automático de email al completarse.",
+      "key_features": [
+        "Selección de ubicación en mapa Leaflet",
+        "Trazado de geocerca del campo",
+        "Ubicación de bebederos y recorrido",
+        "Cálculo de pérdida económica anual",
+        "Conversión del resultado en pesos",
+        "Flujo guiado multi-paso",
+        "Formulario de contacto integrado",
+        "Envío automático de email",
+        "Diseño responsive con CSS puro"
+      ],
+      "tech_stack": ["HTML", "CSS", "JavaScript", "Leaflet"],
+      "integrations": ["Mailgun"],
+      "engineering_challenges": [
+        "Lógica multi-paso compleja en JavaScript vanilla",
+        "Responsive y animaciones con CSS puro",
+        "Usabilidad de interacción geoespacial en mapa"
+      ],
+      "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"]
+    },
+    {
+      "id": "medical-management-platform",
+      "name": "Gestión de Clínicas Médicas",
+      "type": "Plataforma SaaS Full Stack",
+      "status": "activo",
+      "visibility": "privado",
+      "highlight": true,
+      "company": "TiNegocios",
+      "short_description": "Plataforma grande para clínicas con turnos, historia clínica, recetas digitales y mensajería integrada.",
+      "problem_solved": "Las clínicas necesitaban una plataforma centralizada para turnos, comunicación, flujos médicos, pagos y gestión de pacientes.",
+      "description": "Plataforma SaaS full stack que centraliza turnos, historia clínica, recetas digitales y pagos. Incluye chat y tickets en tiempo real, chatbot para autogestión de citas, recordatorios automáticos, generación de PDF/Excel, integración con WhatsApp y Twilio, calendarios médicos y dashboards de reportes con control de acceso por roles.",
+      "key_features": [
+        "Agendamiento de citas",
+        "Historia clínica",
+        "Recetas digitales",
+        "Calendarios de doctores",
+        "Chatbot para autogestión de citas",
+        "Mensajería por WhatsApp",
+        "Integración con Twilio",
+        "Sistema de tickets en tiempo real",
+        "Generación de PDF",
+        "Exportaciones a Excel",
+        "Seguimiento de pagos",
+        "Gestión de reembolsos",
+        "Integración con Google Calendar",
+        "Observaciones médicas",
+        "Gestión de roles",
+        "Reportes y analíticas",
+        "Carga de archivos",
+        "Sistema de recordatorios",
+        "Respuestas rápidas",
+        "Configuración por compañía"
+      ],
+      "tech_stack": ["Node.js", "Express", "TypeScript", "React", "Socket.IO", "PostgreSQL", "Sequelize"],
+      "integrations": ["Twilio", "WhatsApp", "Google Calendar"],
+      "engineering_challenges": [
+        "Sincronización en tiempo real de tickets",
+        "Estabilidad de conexión con WhatsApp Web",
+        "Integración compleja con calendarios",
+        "Consistencia en generación de PDFs",
+        "Gestión de permisos por roles",
+        "Manejo de zonas horarias",
+        "Casos límite en flujos médicos"
+      ],
+      "screenshots": []
+    },
+    {
+      "id": "aspros-diesel",
+      "name": "Gestión de Diésel — Aspros",
+      "type": "Dashboard Web + App Móvil",
+      "status": "activo",
+      "visibility": "privado",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "Aspros",
+      "client_logo": "/images/clients/aspros.png",
+      "short_description": "Plataforma para consumo de diésel y monitoreo de maquinaria agrícola con GPS, inventarios y sincronización offline.",
+      "problem_solved": "Las operaciones agrícolas necesitaban seguimiento preciso de diésel, monitoreo de maquinaria, control de inventario y visibilidad de recorridos para detectar ineficiencias y gestionar el consumo de combustible.",
+      "description": "Sistema operativo con dashboard web y app móvil para gestión de diésel agrícola y monitoreo de maquinaria. Rastreo GPS en primer y segundo plano, sincronización offline, geocercas, visualización de rutas, gestión de inventarios de tanques, alertas, procesamiento en segundo plano en Android y dashboards operativos con permisos por zona.",
+      "key_features": [
+        "Rastreo GPS",
+        "Rastreo en segundo plano",
+        "Sincronización offline",
+        "Monitoreo de vehículos",
+        "Cálculos de consumo de diésel",
+        "Gestión de inventarios de tanques",
+        "Sistema de alertas",
+        "Geocercas",
+        "Visualización de rutas",
+        "App móvil basada en roles",
+        "Exportaciones a Excel",
+        "Generación de APK",
+        "Actualizaciones OTA",
+        "Seguimiento de actividades",
+        "Ajustes de inventario",
+        "Diagnóstico histórico",
+        "Visualizaciones en mapa",
+        "Permisos por zona",
+        "Importaciones masivas",
+        "Sincronización en tiempo real"
+      ],
+      "tech_stack": ["React Native (Expo)", "Android (Java)", "Web Dashboard"],
+      "integrations": ["GPS", "Mapas"],
+      "engineering_challenges": [
+        "Rastreo GPS confiable en modo segundo plano de Android",
+        "Consistencia de sincronización offline",
+        "Lógica de reconciliación de inventarios",
+        "Restricciones de segundo plano en Android 14/15",
+        "Confiabilidad de telemetría en tiempo real",
+        "Rendimiento de visualización geoespacial"
+      ],
+      "screenshots": ["diesel-map-blur.png", "diesel-report-blur.png", "diesel-mobile.png"]
+    },
+    {
+      "id": "empleoagil",
+      "name": "Reclutamiento con IA",
+      "type": "Plataforma de Reclutamiento Impulsada por IA",
+      "status": "activo",
+      "visibility": "privado",
+      "highlight": true,
+      "company": "TiNegocios",
+      "short_description": "Plataforma de empleo para candidatos y empresas con onboarding asistido por IA y flujos de vacantes.",
+      "problem_solved": "Empresas y candidatos necesitaban una plataforma moderna de reclutamiento con onboarding estructurado y mejoras de flujo asistidas por IA.",
+      "description": "Plataforma de reclutamiento multirol con onboarding estructurado, gestión de perfiles y vacantes, postulaciones, evaluaciones y flujos asistidos por IA para mejora de perfiles y descripciones de vacantes.",
+      "key_features": [
+        "Onboarding de candidatos",
+        "Dashboards para empresas",
+        "Gestión de vacantes",
+        "Sistema de postulaciones",
+        "Evaluaciones",
+        "Notificaciones",
+        "Mejoras de perfil asistidas por IA",
+        "Descripciones de vacantes asistidas por IA",
+        "Flujos por rol"
+      ],
+      "tech_stack": [],
+      "integrations": ["Servicios de IA"],
+      "engineering_challenges": [
+        "Equilibrar asistencia de IA con control del usuario",
+        "Consistencia de flujos multirol"
+      ],
+      "screenshots": []
+    }
+  ],
+  "experience": [
+    {
+      "title": "Desarrollador Full Stack",
+      "company": "TiNegocios",
+      "period": "2024 - Presente",
+      "description": "Construí +5 sistemas web y móviles en producción para clientes de diversos rubros (salud, logística, agricultura, reclutamiento). Participé en el ciclo completo: desarrollo, iteración con clientes, propuesta de mejoras y mantenimiento continuo. Los 5 proyectos destacados en esta web fueron desarrollados aquí.",
+      "skills_demonstrated": [
+        "Desarrollo Backend",
+        "Desarrollo Frontend",
+        "Desarrollo Móvil",
+        "Diseño de APIs",
+        "Arquitectura de Sistemas",
+        "Funciones en Tiempo Real",
+        "Sincronización Offline",
+        "Rastreo GPS",
+        "Sistemas de Reportes",
+        "Integración con APIs de Terceros",
+        "Iteración con Clientes",
+        "Mantenimiento de Sistemas en Producción"
+      ]
+    },
+    {
+      "title": "Desarrollador Web Freelance",
+      "period": "2022 - 2024",
+      "description": "Proyectos web independientes enfocados en sitios institucionales, prototipos funcionales y herramientas internas para pequeños negocios.",
+      "skills_demonstrated": [
+        "Desarrollo Frontend",
+        "Maquetación Web",
+        "Diseño Responsive",
+        "Integración Básica de APIs",
+        "Git"
+      ]
+    }
+  ],
+  "skills": {
+    "frontend": [
+      "Vue.js",
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "Diseño Responsive",
+      "Leaflet"
+    ],
+    "backend": [
+      "Laravel",
+      "Desarrollo de APIs",
+      "Sistemas en Tiempo Real",
+      "Autenticación",
+      "Control de Acceso Basado en Roles"
+    ],
+    "infrastructure": [
+      "Compilaciones Android",
+      "Actualizaciones OTA",
+      "Servicios en Segundo Plano"
+    ],
+    "automation": [
+      "Generación de PDF",
+      "Exportaciones a Excel",
+      "Sistemas de Notificaciones",
+      "Flujos de Chatbot",
+      "Colas Offline"
+    ],
+    "ai_tools": ["Codex", "Desarrollo Asistido por IA"],
+    "other": [
+      "Rastreo GPS",
+      "Mapas",
+      "Integración con Twilio",
+      "Integración con WhatsApp",
+      "Interfaces Geoespaciales"
+    ]
+  },
+  "studies": [
+    {
+      "title": "Técnico Universitario en Desarrollo Web",
+      "institution": "UNCO — Universidad Nacional del Comahue",
+      "period": "2022 - 2024",
+      "completed": true,
+      "highlights": ["Promedio 8.6 sin aplazos", "Duración 2 años y medio"]
+    },
+    {
+      "title": "Licenciatura en Ciencias de la Computación",
+      "institution": "UNCO — Universidad Nacional del Comahue",
+      "period": "2021 - 2022",
+      "completed": false
+    }
+  ],
+  "certifications": [
+    {
+      "name": "EF SET English Certificate",
+      "score": "63/100",
+      "level": "C1 Advanced",
+      "date": "08 Jan 2025",
+      "url": "https://cert.efset.org/en/MuTrda"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "personal": {
+    "name": "Camuss0",
+    "location": "Rio Negro, Argentina",
+    "role": "Full Stack Developer",
+    "specialties": [
+      "Web Applications",
+      "Mobile Applications",
+      "Backend Systems",
+      "Real-Time Features",
+      "Offline-First Workflows",
+      "API Integrations",
+      "GPS Tracking Systems",
+      "AI-Assisted Development"
+    ],
+    "short_bio": "Full stack developer focused on building real-world web and mobile systems with strong backend logic, integrations, automation, and practical product thinking.",
+    "long_bio": "Full stack developer and Web Development Technician with experience building systems used in production environments across healthcare, logistics, agricultural operations, and recruitment. Worked on web dashboards, mobile apps, real-time systems, offline synchronization, GPS tracking, reporting systems, chatbot workflows, and integrations with services such as WhatsApp and Twilio. Strong focus on practical engineering, maintainability, fast iteration, and AI-assisted development workflows using tools like Codex.",
+    "interests": [
+      "Systems Architecture",
+      "AI-Assisted Development",
+      "Developer Tooling",
+      "Automation",
+      "Real-Time Systems",
+      "Product Engineering",
+      "Maps and Geospatial Interfaces"
+    ],
+    "current_focus": [
+      "AI-powered products",
+      "Scalable web platforms",
+      "Mobile synchronization systems",
+      "Developer productivity with AI"
+    ],
+    "personality_traits": [
+      "Builder-focused",
+      "Systems-oriented",
+      "Pragmatic",
+      "Fast learner",
+      "Product-minded",
+      "Technical problem solver"
+    ],
+    "email": "camussovalentin10@gmail.com",
+    "social": {
+      "github": "https://github.com/Camuss0",
+      "linkedin": "https://www.linkedin.com/in/camuss0/"
+    },
+    "design_preferences": {
+      "theme": "dark",
+      "style_keywords": [
+        "minimal",
+        "technical",
+        "high-end",
+        "modern",
+        "clean",
+        "systems-oriented",
+        "developer-focused"
+      ],
+      "avoid": [
+        "corporate marketing language",
+        "overly colorful layouts",
+        "generic startup aesthetics",
+        "fake metrics",
+        "exaggerated claims"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "id": "dynamic-forms-system",
+      "name": "",
+      "type": "",
+      "status": "",
+      "visibility": "",
+      "highlight": false,
+      "company": "",
+      "client": "",
+      "client_logo": "",
+      "short_description": "",
+      "problem_solved": "",
+      "description": "",
+      "key_features": [],
+      "tech_stack": [],
+      "integrations": [],
+      "engineering_challenges": [],
+      "screenshots": []
+    },
+    {
+      "id": "aguasiempre-calculator",
+      "name": "",
+      "type": "",
+      "status": "",
+      "visibility": "",
+      "highlight": false,
+      "company": "",
+      "client": "",
+      "client_logo": "",
+      "short_description": "",
+      "problem_solved": "",
+      "description": "",
+      "key_features": [],
+      "tech_stack": [],
+      "integrations": [],
+      "engineering_challenges": [],
+      "screenshots": []
+    },
+    {
+      "id": "medical-management-platform",
+      "name": "",
+      "type": "",
+      "status": "",
+      "visibility": "",
+      "highlight": false,
+      "company": "",
+      "client": "",
+      "client_logo": "",
+      "short_description": "",
+      "problem_solved": "",
+      "description": "",
+      "key_features": [],
+      "tech_stack": [],
+      "integrations": [],
+      "engineering_challenges": [],
+      "screenshots": []
+    },
+    {
+      "id": "aspros-diesel",
+      "name": "",
+      "type": "",
+      "status": "",
+      "visibility": "",
+      "highlight": false,
+      "company": "",
+      "client": "",
+      "client_logo": "",
+      "short_description": "",
+      "problem_solved": "",
+      "description": "",
+      "key_features": [],
+      "tech_stack": [],
+      "integrations": [],
+      "engineering_challenges": [],
+      "screenshots": []
+    },
+    {
+      "id": "empleoagil",
+      "name": "",
+      "type": "",
+      "status": "",
+      "visibility": "",
+      "highlight": false,
+      "company": "",
+      "client": "",
+      "client_logo": "",
+      "short_description": "",
+      "problem_solved": "",
+      "description": "",
+      "key_features": [],
+      "tech_stack": [],
+      "integrations": [],
+      "engineering_challenges": [],
+      "screenshots": []
+    }
+  ],
+  "experience": [
+    {
+      "title": "Full Stack Developer",
+      "company": "TiNegocios",
+      "period": "2024 - Present",
+      "description": "Built +5 production web and mobile systems for clients across healthcare, logistics, agriculture, and recruitment. Involved in the full cycle: development, client iteration, improvement proposals, and ongoing maintenance. All 5 featured projects on this site were developed here.",
+      "skills_demonstrated": [
+        "Backend Development",
+        "Frontend Development",
+        "Mobile Development",
+        "API Design",
+        "Systems Architecture",
+        "Real-Time Features",
+        "Offline Synchronization",
+        "GPS Tracking",
+        "Reporting Systems",
+        "Third-Party API Integration",
+        "Client Iteration",
+        "Production System Maintenance"
+      ]
+    },
+    {
+      "title": "Freelance Web Developer",
+      "period": "2022 - 2024",
+      "description": "Independent web projects focused on institutional sites, functional prototypes, and internal tools for small businesses.",
+      "skills_demonstrated": [
+        "Frontend Development",
+        "Web Layout",
+        "Responsive Design",
+        "Basic API Integration",
+        "Git"
+      ]
+    }
+  ],
+  "skills": {
+    "frontend": [
+      "Vue.js",
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "Responsive Design",
+      "Leaflet"
+    ],
+    "backend": [
+      "Laravel",
+      "API Development",
+      "Real-Time Systems",
+      "Authentication",
+      "Role-Based Access Control"
+    ],
+    "infrastructure": [
+      "Android Builds",
+      "OTA Updates",
+      "Background Services"
+    ],
+    "automation": [
+      "PDF Generation",
+      "Excel Exports",
+      "Notification Systems",
+      "Chatbot Workflows",
+      "Offline Queues"
+    ],
+    "ai_tools": [
+      "Codex",
+      "AI-Assisted Development"
+    ],
+    "other": [
+      "GPS Tracking",
+      "Maps",
+      "Twilio Integration",
+      "WhatsApp Integration",
+      "Geospatial Interfaces"
+    ]
+  },
+  "portfolio_direction": {
+    "goal": "Showcase real engineering capability through complex production-oriented systems and practical problem solving.",
+    "target_impression": [
+      "Technical depth",
+      "Builder mentality",
+      "Systems thinking",
+      "Real-world engineering",
+      "Fast iteration capability",
+      "Product ownership"
+    ],
+    "visual_direction": [
+      "Dark theme",
+      "Minimal layouts",
+      "Technical dashboards aesthetic",
+      "High-end developer portfolio",
+      "Motion with restraint",
+      "Modern systems-oriented visuals"
+    ],
+    "must_avoid": [
+      "Generic portfolio templates",
+      "Corporate buzzwords",
+      "Fake startup metrics",
+      "Overdesigned visuals",
+      "Overly personal branding"
+    ],
+    "tone": "Technical, modern, builder-focused, practical, systems-oriented.",
+    "portfolio_strategy": "Emphasize engineering complexity, real-world systems, integrations, workflows, architecture decisions, and AI-assisted development processes instead of generic project showcases."
+  },
+  "studies": [],
+  "certifications": []
+}

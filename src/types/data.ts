@@ -7,38 +7,20 @@ export interface DesignPreferences {
 export interface Personal {
   name: string;
   location: string;
-  role: string;
+  role: string; // no se usa mucho
   specialties: string[];
-  short_bio: string;
-  long_bio: string;
-  interests: string[];
-  current_focus: string[];
-  personality_traits: string[];
-  design_preferences: DesignPreferences;
-}
-
-export interface Identidad {
-  short_description: string;
-  full_description: string;
-  problem_solved: string;
-  technical_overview: string;
-}
-
-export interface Experiencia {
-  key_features: string[];
-  design_notes: string[];
-}
-
-export interface Tecnica {
-  tech_stack: string[];
-  integrations: string[];
-  architecture_notes: string[];
-  engineering_challenges: string[];
-}
-
-export interface Estado {
-  screenshots_available: boolean;
-  screenshots: string[];
+  short_bio: string; // no se usa
+  //falta academic_title
+  long_bio: string; // no se usa
+  interests: string[]; // no se usa
+  current_focus: string[];  // no se usa
+  personality_traits: string[]; // no se usa
+  design_preferences: DesignPreferences; // no se usa
+  email?: string;
+  social?: {
+    github?: string;
+    linkedin?: string;
+  };
 }
 
 export interface Project {
@@ -48,14 +30,23 @@ export interface Project {
   status: string;
   visibility: string;
   highlight: boolean;
-  identidad: Identidad;
-  experiencia: Experiencia;
-  tecnica: Tecnica;
-  estado: Estado;
+  company?: string;
+  client?: string;
+  client_logo?: string;
+  short_description: string;
+  problem_solved: string;
+  description: string;
+  key_features: string[];
+  tech_stack: string[];
+  integrations: string[];
+  engineering_challenges: string[];
+  screenshots: string[];
 }
 
 export interface Experience {
   title: string;
+  company?: string;
+  period?: string;
   description: string;
   skills_demonstrated: string[];
 }

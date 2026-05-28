@@ -1,7 +1,7 @@
 ---
 import type { Project } from "../../types/data";
 import Tag from "../ui/Tag.astro";
-import ProjectGallery from "./ProjectGallery.astro";
+import ProjectCarousel from "./ProjectCarousel.astro";
 import { t, type Lang } from "../../i18n/ui";
 import { getSkillIcon } from "../../utils/icons";
 export interface Props {
@@ -10,112 +10,79 @@ export interface Props {
 }
 const { project, lang } = Astro.props;
 if (!project) return;
-const hasScreenshots = project.estado.screenshots_available && project.estado.screenshots.length > 0;
+const hasScreenshots = project.screenshots.length > 0;
 ---
 
 <article>
-  <!-- Header -->
-    <div class="flex items-start justify-between gap-4 mb-8">
-      <div>
-        <div class="flex items-center gap-3 mb-3">
-          <span class="text-[0.6875rem] text-[#f97316] font-mono tracking-wider">{project.type}</span>
-          <span class="w-1 h-1 rounded-full bg-[#2e2e33]"></span>
-          <span class="text-[0.6875rem] text-[#7a7a85] font-mono">{project.status}</span>
-        </div>
-        <h3 class="text-[1.75rem] font-bold text-[#f4f4f5] leading-[1.15] -tracking-[0.02em]">
-          {project.name}
-        </h3>
+  <!-- Header (full width) -->
+  <div class="flex items-start justify-between gap-4 mb-8">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-[0.6875rem] text-[#f97316] font-mono tracking-wider">{project.type}</span>
+        <span class="w-1 h-1 rounded-full bg-[#2e2e33]"></span>
+        <span class="text-[0.6875rem] text-[#7a7a85] font-mono">{project.status}</span>
       </div>
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        {project.company && (
+          <span class="inline-flex items-center gap-1.5 text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-3 py-1.5 rounded-full font-mono">
+            {t(lang, "badge.developed_at", { company: project.company })}
+          </span>
+        )}
+        {project.client && (
+          <span class="inline-flex items-center gap-1.5 text-[0.75rem] text-[#f4f4f5] bg-[#f97316]/10 border border-[#f97316]/20 px-3 py-1.5 rounded-full font-medium">
+            {project.client_logo && (
+              <img src={project.client_logo} alt="" class="w-5 h-5 rounded-full object-cover flex-shrink-0" />
+            )}
+            {project.client}
+          </span>
+        )}
+      </div>
+      <h3 class="text-[1.25rem] sm:text-[1.5rem] md:text-[1.75rem] font-bold text-[#f4f4f5] leading-[1.15] -tracking-[0.02em]">
+        {project.name}
+      </h3>
     </div>
+  </div>
 
-    <!-- Short Description -->
-    {
-      project.identidad.short_description && (
-        <p class="text-base text-[#f4f4f5] font-medium mb-6 leading-[1.6]">
-          {project.identidad.short_description}
+  <!-- Grid: content left + carousel right -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10">
+    <!-- Left column: content -->
+    <div class="min-w-0">
+      {project.description && (
+        <p class="text-[0.8125rem] sm:text-[0.875rem] text-[#a1a1aa] leading-[1.7] mb-8">
+          {project.description}
         </p>
-      )
-    }
+      )}
 
-    <!-- Full Description -->
-    {
-      project.identidad.full_description && (
-        <p class="text-[0.875rem] text-[#a1a1aa] leading-[1.7] mb-8">
-          {project.identidad.full_description}
-        </p>
-      )
-    }
-
-    <!-- Problem Solved -->
-    {
-      project.identidad.problem_solved && (
+      {project.problem_solved && (
         <div class="mb-8 p-5 bg-[#111113] border border-[#1f1f22] rounded-xl">
           <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#f97316] mb-2">
             {t(lang, "modal.problem")}
           </h4>
           <p class="text-[0.8125rem] text-[#a1a1aa] leading-[1.65]">
-            {project.identidad.problem_solved}
+            {project.problem_solved}
           </p>
         </div>
-      )
-    }
+      )}
 
-    <!-- Key Features -->
-    {
-      project.experiencia.key_features.length > 0 && (
+      {project.key_features.length > 0 && (
         <div class="mb-8">
           <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
             {t(lang, "modal.features")}
           </h4>
           <div class="flex flex-wrap gap-2">
-            {project.experiencia.key_features.map((f) => <Tag label={f} />)}
+            {project.key_features.map((f) => <Tag label={f} />)}
           </div>
         </div>
-      )
-    }
+      )}
 
-    <!-- Technical Overview -->
-    {
-      project.identidad.technical_overview && (
-        <div class="mb-8">
-          <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
-            {t(lang, "modal.overview")}
-          </h4>
-          <p class="text-[0.8125rem] text-[#a1a1aa] leading-[1.65]">
-            {project.identidad.technical_overview}
-          </p>
-        </div>
-      )
-    }
-
-    <!-- Two Column Layout for Notes -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-      {
-        project.tecnica.architecture_notes.length > 0 && (
-          <div>
-            <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
-              {t(lang, "modal.architecture")}
-            </h4>
-            <ul class="space-y-2">
-              {project.tecnica.architecture_notes.map((note) => (
-                <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
-                  <span class="w-1 h-1 rounded-full bg-[#f97316]/50 mt-2 flex-shrink-0"></span>
-                  {note}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-
-      {
-        project.tecnica.engineering_challenges.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        {project.engineering_challenges.length > 0 && (
           <div>
             <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
               {t(lang, "modal.challenges")}
             </h4>
             <ul class="space-y-2">
-              {project.tecnica.engineering_challenges.map((c) => (
+              {project.engineering_challenges.map((c) => (
                 <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
                   <span class="w-1 h-1 rounded-full bg-[#f97316]/50 mt-2 flex-shrink-0"></span>
                   {c}
@@ -123,57 +90,35 @@ const hasScreenshots = project.estado.screenshots_available && project.estado.sc
               ))}
             </ul>
           </div>
-        )
-      }
-    </div>
+        )}
+      </div>
 
-    {
-      project.tecnica.tech_stack.length > 0 && (
+      {project.tech_stack.length > 0 && (
         <div class="mb-8">
           <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
             {t(lang, "modal.stack")}
           </h4>
           <div class="flex flex-wrap gap-2">
-            {project.tecnica.tech_stack.map((s) => <Tag label={s} mono={true} icon={getSkillIcon(s)} />)}
+            {project.tech_stack.map((s) => <Tag label={s} mono={true} icon={getSkillIcon(s)} />)}
           </div>
         </div>
-      )
-    }
+      )}
 
-    {
-      project.tecnica.integrations.length > 0 && (
+      {project.integrations.length > 0 && (
         <div class="mb-8">
           <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-3">
             {t(lang, "modal.integrations")}
           </h4>
           <div class="flex flex-wrap gap-2">
-            {project.tecnica.integrations.map((i) => <Tag label={i} mono={true} icon={getSkillIcon(i)} />)}
+            {project.integrations.map((i) => <Tag label={i} mono={true} icon={getSkillIcon(i)} />)}
           </div>
         </div>
-      )
-    }
+      )}
+    </div>
 
-
-
-    {
-      project.experiencia.design_notes.length > 0 && (
-        <div class="mb-8">
-          <h4 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-2">
-            {t(lang, "modal.design")}
-          </h4>
-          <ul class="space-y-2">
-            {project.experiencia.design_notes.map((note) => (
-              <li class="flex items-start gap-2 text-[0.8125rem] text-[#a1a1aa] leading-[1.6]">
-                <span class="w-1 h-1 rounded-full bg-[#f97316]/50 mt-2 flex-shrink-0"></span>
-                {note}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-
-
-
-  {hasScreenshots && <ProjectGallery projectId={project.id} screenshots={project.estado.screenshots} lang={lang} />}
+    <!-- Right column: carousel -->
+    <div class="min-w-0">
+      {hasScreenshots && <ProjectCarousel projectId={project.id} screenshots={project.screenshots} lang={lang} />}
+    </div>
+  </div>
 </article>
