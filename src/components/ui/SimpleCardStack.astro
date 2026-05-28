@@ -43,16 +43,15 @@ const { class: className } = Astro.props;
     }
 
     function applyNext() {
-      var next = cards.slice(1).concat(cards.slice(0, 1));
-      for (var i = 0; i < next.length; i++) {
-        next[i].style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
-        next[i].style.transform = 'translate3d(' + (i * CFG.depthX) + 'px,' + (i * CFG.depthY) + 'px,0) scale(' + (1 - i * CFG.scaleStep) + ') rotate(' + (i * CFG.rotationStep) + 'deg)';
-        next[i].style.zIndex = 100 - i;
+      // Rotate array: first becomes last
+      var first = cards.shift();
+      cards.push(first);
+      // Apply new z-index and transforms without DOM manipulation
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
+        cards[i].style.transform = 'translate3d(' + (i * CFG.depthX) + 'px,' + (i * CFG.depthY) + 'px,0) scale(' + (1 - i * CFG.scaleStep) + ') rotate(' + (i * CFG.rotationStep) + 'deg)';
+        cards[i].style.zIndex = 100 - i;
       }
-      setTimeout(function() {
-        cards = next;
-        for (var j = 0; j < cards.length; j++) stack.appendChild(cards[j]);
-      }, CFG.animationDuration);
     }
 
     function rotate() {
@@ -70,6 +69,7 @@ const { class: className } = Astro.props;
 
       card.addEventListener('pointerdown', function(e) {
         if (activeCard) return;
+        if (card !== cards[0]) return;
         isDragging = true;
         activeCard = card;
         clearInterval(autoplayTimer);
@@ -96,10 +96,9 @@ const { class: className } = Astro.props;
           card.style.transition = 'transform ' + CFG.animationDuration + 'ms cubic-bezier(.22,1,.36,1)';
 
           if (exceeded) {
-            var first = cards.shift();
-            cards.push(first);
-            stack.appendChild(first);
             requestAnimationFrame(function() {
+              var first = cards.shift();
+              cards.push(first);
               isDragging = false;
               activeCard = null;
               layout();

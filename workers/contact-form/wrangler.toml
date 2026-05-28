@@ -1,0 +1,11 @@
+name = "portfolio-contact-form"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+
+[env.production]
+routes = [{ pattern = "tudominio.com/api/contact", zone_id = "your-zone-id" }]
+
+[[env.production.email_routing.bindings]]
+name = "SEND_EMAIL"
+type = "send_email"
+address = "contacto@tudominio.com"

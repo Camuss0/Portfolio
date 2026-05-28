@@ -47,7 +47,6 @@
 - **Modal:** defined in `index.astro` with `id="modal-overlay"`, `id="modal-container"`, `id="modal-body"`. Shows/hides via CSS classes `active` on `.modal-backdrop` and `.modal-panel`. Triggered by clicking `[data-open-modal]` elements. `Escape` key closes.
 - **Scroll reveal:** CSS classes `.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-scale` + `revealed`. Driven by `IntersectionObserver` in `index.astro`.
 - **Interactive dots:** Canvas in `Hero.astro` with color, motion, and mouse interaction. Config is a `CFG` object at the top of the `<script is:inline>` block. Accepts: `spacing`, `radius`, `baseAlpha`, `drift`, `motionRadius`, `motionSpeed`, `ease`, `returnEase`, `influence`, `darkness`, `darknessRadius`, `falloff`, `mousePush`, `color1`, `color2`, `waveSpeed`. Test/configure in `dots.html`.
-- **Hero font:** `Google Sans Flex` variable font at `/fonts/GoogleSansFlex.ttf`. Applied via `.hero-section` CSS class. Weight controlled by Tailwind (`font-medium` by default).
 - **Project gallery:** When a project has exactly 3 screenshots (2 horizontal + 1 vertical), they display as 2 horizontals stacked on the left + 1 vertical on the right (280px). Otherwise, all images stack vertically at full width.
 - **Marquee:** JS `requestAnimationFrame` loop in `Hero.astro`. 3 `.marquee-group` divs, `translate3d` with `Math.round()` to avoid sub-pixel jank, `will-change: transform`.
 - **Basketball scroll indicator:** CSS keyframes `dribble` and `shadow-pulse` in `global.css`. Click → scroll to `#projects` (same i18n-aware logic as nav).

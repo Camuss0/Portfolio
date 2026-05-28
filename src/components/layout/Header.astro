@@ -6,21 +6,74 @@ export interface Props {
 const { lang } = Astro.props;
 ---
 
-<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-  <nav class="flex items-center gap-3">
-    <div class="hidden md:flex items-center bg-[#0a0f24]/90 backdrop-blur-xl border border-[#172de2]/25 rounded-full shadow-[0_0_20px_rgba(23,45,226,0.35),0_0_50px_rgba(23,45,226,0.2),0_0_100px_rgba(23,45,226,0.1)]">
+<header class="fixed top-0 inset-x-0 z-50 w-screen md:top-4 md:left-1/2 md:w-auto md:right-auto md:-translate-x-1/2">
+  <!-- Mobile bar -->
+  <div class="md:hidden flex items-center justify-between bg-[#0a0f24] border-b border-[#172de2]/25 shadow-[0_1px_0_rgba(23,45,226,0.4)] px-3 py-2.5">
+    <span class="text-[#f4f4f5] font-bold text-[0.9375rem] tracking-tight">Camuss0</span>
+    <div class="flex items-center gap-2">
+      <div class="flex rounded-full border border-[#3f3f46]/60 bg-[#111113] overflow-hidden">
+        <button class="language-btn flex items-center justify-center px-1.5 py-1.5 rounded-l-full transition-all duration-200 cursor-pointer" data-lang="es">
+          <span class="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
+            <img src="/images/flags/es.svg" alt="ES" class="w-full h-full object-cover">
+          </span>
+        </button>
+        <div class="w-px self-stretch bg-[#172de2]/40"></div>
+        <button class="language-btn flex items-center justify-center px-1.5 py-1.5 rounded-r-full transition-all duration-200 cursor-pointer" data-lang="en">
+          <span class="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
+            <img src="/images/flags/gb.svg" alt="EN" class="w-full h-full object-cover">
+          </span>
+        </button>
+      </div>
+      <button id="mobile-menu-toggle" class="flex items-center justify-center w-9 h-9 rounded-full bg-[#111113] border border-[#172de2]/25 cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-4 h-4 text-[#a1a1aa]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="menu-icon-close" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" style="display:none" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div id="mobile-menu" class="md:hidden bg-[#0a0f24] border-b border-[#172de2]/25 shadow-[0_1px_0_rgba(23,45,226,0.4)]" style="display:none">
+    <nav class="flex flex-col gap-0.5 px-3 py-3">
+      <a href="#projects" class="mobile-nav-link text-[0.875rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-3 rounded-lg transition-all duration-200 no-underline font-medium block">
+        <span class="lang-text-es">Proyectos</span>
+        <span class="lang-text-en" style="display: none;">Projects</span>
+      </a>
+      <a href="#studies" class="mobile-nav-link text-[0.875rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-3 rounded-lg transition-all duration-200 no-underline font-medium block">
+        <span class="lang-text-es">Trayectoria</span>
+        <span class="lang-text-en" style="display: none;">Background</span>
+      </a>
+      <a href="#skills" class="mobile-nav-link text-[0.875rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-3 rounded-lg transition-all duration-200 no-underline font-medium block">
+        <span class="lang-text-es">Habilidades</span>
+        <span class="lang-text-en" style="display: none;">Skills</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link text-[0.875rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-3 rounded-lg transition-all duration-200 no-underline font-medium block">
+        <span class="lang-text-es">Contacto</span>
+        <span class="lang-text-en" style="display: none;">Contact</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Desktop nav (unchanged) -->
+  <nav class="hidden md:flex items-center gap-3">
+    <div class="flex items-center bg-[#0a0f24]/90 backdrop-blur-xl border border-[#172de2]/25 rounded-full shadow-[0_0_20px_rgba(23,45,226,0.25)]">
       <div class="flex items-center gap-1 px-2 py-2">
         <a href="#projects" class="nav-link text-[0.8125rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
           <span class="lang-text-es">Proyectos</span>
           <span class="lang-text-en" style="display: none;">Projects</span>
         </a>
+        <a href="#studies" class="nav-link text-[0.8125rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
+          <span class="lang-text-es">Trayectoria</span>
+          <span class="lang-text-en" style="display: none;">Background</span>
+        </a>
         <a href="#skills" class="nav-link text-[0.8125rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
           <span class="lang-text-es">Habilidades</span>
           <span class="lang-text-en" style="display: none;">Skills</span>
         </a>
-        <a href="#experience" class="nav-link text-[0.8125rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
-          <span class="lang-text-es">Experiencia</span>
-          <span class="lang-text-en" style="display: none;">Experience</span>
+        <a href="#contact" class="nav-link text-[0.8125rem] text-[#a1a1aa] hover:text-[#f4f4f5] px-3 py-1.5 rounded-full transition-all duration-200 no-underline font-medium">
+          <span class="lang-text-es">Contacto</span>
+          <span class="lang-text-en" style="display: none;">Contact</span>
         </a>
       </div>
       <div class="w-px self-stretch bg-[#172de2]/40 mr-3"></div>
@@ -59,6 +112,46 @@ const { lang } = Astro.props;
         }
       });
     });
+
+    // Mobile menu toggle
+    var toggle = document.getElementById("mobile-menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    var openIcon = document.getElementById("menu-icon-open");
+    var closeIcon = document.getElementById("menu-icon-close");
+    var menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      menu.style.display = "block";
+      openIcon.style.display = "none";
+      closeIcon.style.display = "";
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu() {
+      menuOpen = false;
+      menu.style.display = "none";
+      openIcon.style.display = "";
+      closeIcon.style.display = "none";
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    if (toggle && menu) {
+      toggle.addEventListener("click", function(e) {
+        e.stopPropagation();
+        menuOpen ? closeMenu() : openMenu();
+      });
+
+      // Close menu on link click
+      menu.querySelectorAll(".mobile-nav-link").forEach(function(link) {
+        link.addEventListener("click", function() { closeMenu(); });
+      });
+
+      // Close menu on scroll
+      window.addEventListener("scroll", function() {
+        if (menuOpen) closeMenu();
+      }, { passive: true });
+    }
   })();
 </script>
 

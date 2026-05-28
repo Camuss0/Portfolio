@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simple Card Stack</title>
+
+<style>
+.controls{position:relative;width:320px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);padding:16px;border-radius:24px;display:flex;flex-direction:column;gap:14px;z-index:9999}
+.control{display:flex;flex-direction:column;gap:8px}
+.control-header{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:13px}
+.control input{width:100%}
+.desc{font-size:11px;opacity:.45;line-height:1.4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#050505;display:flex;justify-content:center;align-items:center;overflow:hidden;font-family:sans-serif;padding:40px}
+.scene{position:relative;width:420px;height:420px}
+.card{position:absolute;inset:0;border-radius:32px;background-size:cover;background-position:center;cursor:grab;user-select:none;touch-action:none;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 120px rgba(0,0,0,.55);transition:transform .52s cubic-bezier(.22,1,.36,1);will-change:transform}
+</style>
+</head>
+<body>
+<div style="display:flex;align-items:flex-start;gap:48px;max-width:1200px;width:100%;justify-content:center">
+<div class="scene" id="scene">
+<div class="card" data-card style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop')"></div>
+<div class="card" data-card style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop')"></div>
+<div class="card" data-card style="background-image:url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop')"></div>
+</div>
+<div class="controls" id="controls"></div>
+</div>
+
+<script>
+var STORAGE_KEY = 'simple_card_stack_config_v1';
+
+var defaultConfig = {
+  depthX:26,
+  depthY:18,
+  scaleStep:0.06,
+  rotationStep:-5,
+  autoplay:2600,
+  dragDistance:140,
+  dragElastic:0.18,
+  dragScale:1.03,
+  animationDuration:520
+};
+
+var saved = null;
+try {
+  saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+} catch(e) {}
+
+var config = defaultConfig;
+if(saved && typeof saved === 'object'){
+  for(var k in saved){ config[k] = saved[k]; }
+}
+
+function saveConfig(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+}
+
+var cards = [].slice.call(document.querySelectorAll('[data-card]'));
+var scene = document.getElementById('scene');
+var controls = document.getElementById('controls');
+
+var sliders = [
+{key:'depthX',label:'Depth X',desc:'Separación horizontal',min:0,max:80,step:1},
+{key:'depthY',label:'Depth Y',desc:'Separación vertical',min:0,max:80,step:1},
+{key:'scaleStep',label:'Scale Step',desc:'Escala entre cards',min:0,max:0.2,step:0.01},
+{key:'rotationStep',label:'Rotation Step',desc:'Rotación entre cards',min:-20,max:20,step:1},
+{key:'autoplay',label:'Autoplay',desc:'Tiempo de rotación automática',min:500,max:6000,step:100},
+{key:'dragDistance',label:'Swipe Sensitivity',desc:'Distancia necesaria para enviar atrás',min:20,max:300,step:1},
+{key:'dragElastic',label:'Drag Elastic',desc:'Elasticidad del drag',min:0,max:1,step:0.01},
+{key:'dragScale',label:'Drag Scale',desc:'Escala al arrastrar',min:1,max:1.2,step:0.01},
+{key:'animationDuration',label:'Animation Duration',desc:'Duración de animaciones',min:120,max:3000,step:10}
+];
+
+var autoplay;
+var isDragging = false;
+var activeCard = null;
+
+function layout(){
+  if(isDragging) return;
+
+  for(var i=0;i<cards.length;i++){
+    var card = cards[i];
+    card.style.zIndex = 100 - i;
+    card.style.transition = 'transform '+config.animationDuration+'ms cubic-bezier(.22,1,.36,1)';
+    card.style.transform = 'translate3d('+(i*config.depthX)+'px,'+(i*config.depthY)+'px,0) scale('+(1-i*config.scaleStep)+') rotate('+(i*config.rotationStep)+'deg)';
+  }
+}
+
+function applyNextOrder(){
+  var next = cards.slice(1).concat(cards.slice(0,1));
+
+  for(var i=0;i<next.length;i++){
+    var card = next[i];
+    card.style.transition = 'transform '+config.animationDuration+'ms cubic-bezier(.22,1,.36,1)';
+    card.style.transform = 'translate3d('+(i*config.depthX)+'px,'+(i*config.depthY)+'px,0) scale('+(1-i*config.scaleStep)+') rotate('+(i*config.rotationStep)+'deg)';
+    card.style.zIndex = 100 - i;
+  }
+
+  setTimeout(function(){
+    cards = next;
+    for(var j=0;j<cards.length;j++) scene.appendChild(cards[j]);
+  }, config.animationDuration);
+}
+
+function rotate(){
+  if(isDragging) return;
+  applyNextOrder();
+}
+
+function startAutoplay(){
+  clearInterval(autoplay);
+  autoplay = setInterval(rotate, config.autoplay);
+}
+
+function renderControls(){
+  controls.innerHTML = '';
+
+  for(var i=0;i<sliders.length;i++){
+    (function(slider){
+      var wrapper = document.createElement('div');
+      wrapper.className = 'control';
+
+      wrapper.innerHTML =
+        '<div class="control-header">'+
+        '<div>'+slider.label+'</div>'+
+        '<div>'+config[slider.key]+'</div>'+
+        '</div>'+
+        '<div class="desc">'+slider.desc+'</div>'+
+        '<input type="range" min="'+slider.min+'" max="'+slider.max+'" step="'+slider.step+'" value="'+config[slider.key]+'">';
+
+      var input = wrapper.querySelector('input');
+      var value = wrapper.querySelector('.control-header div:last-child');
+
+      input.oninput = function(e){
+        config[slider.key] = Number(e.target.value);
+        value.innerHTML = config[slider.key];
+        saveConfig();
+
+        if(!isDragging){
+          layout();
+          startAutoplay();
+        }
+      };
+
+      controls.appendChild(wrapper);
+    })(sliders[i]);
+  }
+}
+
+cards.forEach(function(card){
+  var startX=0,startY=0,currentX=0,currentY=0;
+
+  card.addEventListener('pointerdown',function(e){
+    if(activeCard) return;
+
+    isDragging = true;
+    activeCard = card;
+    clearInterval(autoplay);
+
+    startX = e.clientX;
+    startY = e.clientY;
+    card.style.transition = 'none';
+
+    var move = function(ev){
+      var dx = ev.clientX - startX;
+      var dy = ev.clientY - startY;
+
+      var damping = 1 / (1 + config.dragElastic * 2.5);
+
+      currentX = dx * damping;
+      currentY = dy * damping;
+
+      card.style.transform =
+        'translate3d('+currentX+'px,'+currentY+'px,0) scale('+config.dragScale+') rotate('+(currentX*0.04)+'deg)';
+    };
+
+    var up = function(){
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+
+      var exceeded = Math.abs(currentX)>config.dragDistance || Math.abs(currentY)>config.dragDistance;
+
+      card.style.transition = 'transform '+config.animationDuration+'ms cubic-bezier(.22,1,.36,1)';
+
+      if(exceeded){
+        var first = cards.shift();
+        cards.push(first);
+        scene.appendChild(first);
+
+        requestAnimationFrame(function(){
+          isDragging = false;
+          activeCard = null;
+          layout();
+          startAutoplay();
+        });
+      } else {
+        isDragging = false;
+        activeCard = null;
+        layout();
+        startAutoplay();
+      }
+    };
+
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  });
+});
+
+renderControls();
+layout();
+startAutoplay();
+</script>
+</body>
+</html>

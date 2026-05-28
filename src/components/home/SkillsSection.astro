@@ -17,13 +17,13 @@ const categories: [string, string[], boolean][] = [
 ].filter(([, items]) => items.length > 0);
 ---
 
-<section id="skills" class="py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
+<section id="skills" class="py-16 sm:py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 sm:gap-12">
       <!-- Left Column: Header -->
       <div class="lg:w-[30%] lg:sticky lg:top-24">
         <div class="w-6 h-[3px] bg-[#f97316] rounded-full mb-4"></div>
-        <h2 class="text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
           {t(lang, "section.skills")}
         </h2>
       </div>
@@ -34,7 +34,7 @@ const categories: [string, string[], boolean][] = [
           {
             categories.map(([key, items, useMono]) => (
               <div>
-                <h3 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#7a7a85] mb-3 flex items-center gap-2">
+                <h3 class="text-[0.625rem] sm:text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#7a7a85] mb-3 flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-[#f97316]/50"></span>
                   {t(lang, key)}
                 </h3>
@@ -42,8 +42,8 @@ const categories: [string, string[], boolean][] = [
                   {items.map((skill) => (
                     <span
                       class={useMono
-                        ? "inline-block font-mono text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"
-                        : "inline-block text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"}
+                        ? "inline-block font-mono text-[0.625rem] sm:text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"
+                        : "inline-block text-[0.625rem] sm:text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"}
                     >
                       {skill}
                     </span>

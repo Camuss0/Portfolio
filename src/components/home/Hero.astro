@@ -9,52 +9,50 @@ export interface Props {
 }
 const { personalEs, personalEn, lang } = Astro.props;
 const personal = lang === "en" ? personalEn : personalEs;
-const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.specialties });
 ---
 
-<section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-16 hero-section">
+<section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20 sm:pt-16 hero-section">
   <canvas id="dot-canvas" class="absolute inset-0 w-full h-full" style="background: #000;"></canvas>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full -mt-18">
-    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full -mt-12 sm:-mt-14 lg:-mt-18">
+    <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-20 items-center justify-between">
       <div class="flex-1 lg:max-w-[60%]">
         <div class="text-center lg:text-left">
           <!-- ES text block -->
           <div id="hero-text-es">
             <div class="reveal" style="transition-delay: 0ms;">
-              <svg viewBox="0 0 1000 195" class="w-full overflow-visible">
+              <div class="overflow-hidden">
+              <svg viewBox="0 0 1000 290" class="w-[88%] sm:w-[92%] md:w-full mx-auto lg:mx-0 block overflow-visible">
                 <defs>
                   <linearGradient id="nameGradEs" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#172de2"/>
                     <stop offset="100%" stop-color="#00aaff"/>
                   </linearGradient>
                   <filter id="cleanStrokeEs" x="-20%" y="-20%" width="140%" height="140%">
-                    <feMorphology in="SourceGraphic" operator="dilate" radius="6" result="dilated"/>
+                    <feMorphology in="SourceGraphic" operator="dilate" radius="4" result="dilated"/>
                     <feComposite in="dilated" in2="SourceGraphic" operator="out"/>
                   </filter>
                 </defs>
-                <text x="0" y="165" fill="url(#nameGradEs)" filter="url(#cleanStrokeEs)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="220">Valentin</text>
+                <text x="500" y="230" fill="url(#nameGradEs)" filter="url(#cleanStrokeEs)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="260" text-anchor="middle" class="hero-svg-text lg:hidden">Valentin</text>
+                <text x="0" y="230" fill="url(#nameGradEs)" filter="url(#cleanStrokeEs)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="220" class="hero-svg-text hidden lg:block">Valentin</text>
               </svg>
+              </div>
             </div>
-            <h2 class="reveal text-[#f4f4f5] text-[clamp(3rem,14vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
-            <div class="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start">
-              {[personalEs.specialties.slice(0, 4), personalEs.specialties.slice(4)].map((row, ri) => (
-                <div class="flex flex-wrap gap-2 justify-center lg:justify-start w-full">
-                  {row.map((s, i) => (
-                    <span class="reveal px-4 py-1.5 rounded-full text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60" style={`transition-delay: ${250 + (ri * 4 + i) * 60}ms`}>{s}</span>
-                  ))}
-                </div>
+            <h2 class="reveal text-[#f4f4f5] text-[clamp(5rem,17vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
+            <div class="flex flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start">
+              {personalEs.specialties.map((s, i) => (
+                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
               ))}
             </div>
             <div class="reveal flex flex-wrap gap-3 mt-8 justify-center lg:justify-start" style="transition-delay: 400ms;">
-              <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
+              <a href="#projects" class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 px-5 sm:px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.8125rem] sm:text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
                 {t("es", "cta.projects")}
                 <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
+              <a href="#experience" class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.8125rem] sm:text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
                 {t("es", "cta.about")}
               </a>
             </div>
@@ -63,38 +61,37 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
           <!-- EN text block -->
           <div id="hero-text-en" style="display: none">
             <div class="reveal" style="transition-delay: 0ms;">
-              <svg viewBox="0 0 1000 195" class="w-full overflow-visible">
+              <div class="overflow-hidden">
+              <svg viewBox="0 0 1000 290" class="w-[88%] sm:w-[92%] md:w-full mx-auto lg:mx-0 block overflow-visible">
                 <defs>
                   <linearGradient id="nameGradEn" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#172de2"/>
                     <stop offset="100%" stop-color="#00aaff"/>
                   </linearGradient>
                   <filter id="cleanStrokeEn" x="-20%" y="-20%" width="140%" height="140%">
-                    <feMorphology in="SourceGraphic" operator="dilate" radius="6" result="dilated"/>
+                    <feMorphology in="SourceGraphic" operator="dilate" radius="4" result="dilated"/>
                     <feComposite in="dilated" in2="SourceGraphic" operator="out"/>
                   </filter>
                 </defs>
-                <text x="0" y="165" fill="url(#nameGradEn)" filter="url(#cleanStrokeEn)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="220">Valentin</text>
+                <text x="500" y="230" fill="url(#nameGradEn)" filter="url(#cleanStrokeEn)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="260" text-anchor="middle" class="hero-svg-text lg:hidden">Valentin</text>
+                <text x="0" y="230" fill="url(#nameGradEn)" filter="url(#cleanStrokeEn)" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="220" class="hero-svg-text hidden lg:block">Valentin</text>
               </svg>
+              </div>
             </div>
-            <h2 class="reveal text-[#f4f4f5] text-[clamp(3rem,14vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
-            <div class="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start">
-              {[personalEn.specialties.slice(0, 4), personalEn.specialties.slice(4)].map((row, ri) => (
-                <div class="flex flex-wrap gap-2 justify-center lg:justify-start w-full">
-                  {row.map((s, i) => (
-                    <span class="reveal px-4 py-1.5 rounded-full text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60" style={`transition-delay: ${250 + (ri * 4 + i) * 60}ms`}>{s}</span>
-                  ))}
-                </div>
+            <h2 class="reveal text-[#f4f4f5] text-[clamp(5rem,17vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
+            <div class="flex flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start">
+              {personalEn.specialties.map((s, i) => (
+                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
               ))}
             </div>
             <div class="reveal flex flex-wrap gap-3 mt-8 justify-center lg:justify-start" style="transition-delay: 400ms;">
-              <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
+              <a href="#projects" class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 px-5 sm:px-6 py-3 bg-[#172de2] text-white rounded-full text-[0.8125rem] sm:text-[0.875rem] font-semibold hover:bg-[#1324c0] transition-all duration-300 no-underline group">
                 {t("en", "cta.projects")}
                 <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
+              <a href="#experience" class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 px-6 py-3 border border-[#2e2e33] text-[#a1a1aa] rounded-full text-[0.8125rem] sm:text-[0.875rem] font-semibold hover:border-[#f97316]/30 hover:text-[#f4f4f5] transition-all duration-300 no-underline">
                 {t("en", "cta.about")}
               </a>
             </div>
@@ -103,13 +100,13 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
       </div>
 
       <!-- Photo Card Stack -->
-      <div class="reveal-right flex-shrink-0 w-full max-w-[460px]" style="transition-delay: 150ms;">
+      <div class="reveal-right flex-shrink-0 w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[460px]" style="transition-delay: 150ms;">
         <SimpleCardStack />
       </div>
     </div>
   </div>
 
-  <!-- Bottom bar: scroll indicator + marquee -->
+  <!-- Bottom bar: scroll indicator -->
   <div class="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center">
     <!-- Basketball Scroll Indicator -->
     <div id="scroll-ball" class="hero-reveal-up flex items-start pt-10 cursor-pointer" style="animation-delay: 500ms;">
@@ -138,22 +135,6 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
         <div id="ball-shadow" class="shadow-pulse w-7 h-[6px] rounded-full" style="background: rgba(0,0,0,0.85); margin-top: 6px;"></div>
       </div>
     </div>
-
-    <!-- Marquee -->
-    <div class="hero-reveal-up w-full border-t border-b border-[#1f1f22]/40 bg-[#0a0a0b]/60 backdrop-blur-sm overflow-hidden py-4" style="animation-delay: 500ms;">
-      <div id="marquee-wrapper" class="flex" style="width: max-content; will-change: transform;">
-        {[0,1,2].map(function(g) { return (
-        <div class="marquee-group marquee-items" style="display: flex; align-items: center;">
-          {personal.specialties.map((specialty) => [
-            <span class="text-[0.8125rem] text-[#71717a] font-mono whitespace-nowrap">{specialty}</span>,
-            <span class="w-1 h-1 rounded-full bg-[#f97316]/40 inline-block mx-3"></span>
-          ])}
-        </div>
-        );})}
-      </div>
-    </div>
-
-    <div id="marquee-data" hidden>{marqueeJSON}</div>
   </div>
 </section>
 
@@ -239,53 +220,6 @@ const marqueeJSON = JSON.stringify({ es: personalEs.specialties, en: personalEn.
     new ResizeObserver(resize).observe(canvas);
     resize();
     requestAnimationFrame(animate);
-  })();
-</script>
-
-<script is:inline>
-  (function() {
-    var wrapper = document.getElementById('marquee-wrapper');
-    if (!wrapper) return;
-    var group = wrapper.querySelector('.marquee-group');
-    if (!group) return;
-    var pos = 0;
-    var lastTime = performance.now();
-    var speed = 40;
-    var groupWidth = group.offsetWidth;
-    var lastRecalc = 0;
-
-    function recalc() {
-      var w = group.offsetWidth;
-      if (w !== groupWidth && w > 0) {
-        var ratio = w / groupWidth;
-        pos = pos * ratio;
-        groupWidth = w;
-      }
-    }
-
-    function tick(now) {
-      var dt = (now - lastTime) / 1000;
-      if (dt > 0.5) dt = 0.016;
-      lastTime = now;
-      pos -= speed * dt;
-
-      if (pos <= -groupWidth) {
-        pos += groupWidth;
-        if (pos <= -groupWidth) pos += groupWidth;
-      }
-
-      wrapper.style.transform = 'translate3d(' + Math.round(pos) + 'px, 0, 0)';
-
-      if (now - lastRecalc > 2000) {
-        recalc();
-        lastRecalc = now;
-      }
-
-      requestAnimationFrame(tick);
-    }
-
-    window.addEventListener('resize', recalc);
-    requestAnimationFrame(tick);
   })();
 </script>
 

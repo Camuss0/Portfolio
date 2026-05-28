@@ -1,0 +1,309 @@
+---
+import type { Personal } from "../../types/data";
+export interface Props {
+  personal: Personal;
+}
+const { personal } = Astro.props;
+const workerUrl = ""; // TODO: set your Cloudflare Worker URL when deployed
+---
+
+<section id="contact" class="py-16 sm:py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-4 mb-8 sm:mb-12">
+      <div class="w-6 h-[3px] bg-[#f97316] rounded-full"></div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
+        <span class="lang-text-es">Contacto</span>
+        <span class="lang-text-en" style="display: none;">Contact</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+      <!-- LEFT: Form -->
+      <div class="lg:col-span-3">
+        <form id="contact-form" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="contact-name" class="sr-only">
+                <span class="lang-text-es">Nombre</span>
+                <span class="lang-text-en" style="display: none;">Name</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                placeholder=""
+                class="w-full bg-[#111113] border border-[#1f1f22] rounded-xl px-5 py-3.5 text-[0.875rem] text-[#f4f4f5] placeholder:text-[#52525b] focus:outline-none focus:border-[#172de2] transition-colors duration-200"
+                data-placeholder-es="Nombre *"
+                data-placeholder-en="Name *"
+              />
+            </div>
+            <div>
+              <label for="contact-email" class="sr-only">
+                <span class="lang-text-es">Email</span>
+                <span class="lang-text-en" style="display: none;">Email</span>
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                placeholder=""
+                class="w-full bg-[#111113] border border-[#1f1f22] rounded-xl px-5 py-3.5 text-[0.875rem] text-[#f4f4f5] placeholder:text-[#52525b] focus:outline-none focus:border-[#172de2] transition-colors duration-200"
+                data-placeholder-es="Email *"
+                data-placeholder-en="Email *"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="contact-subject" class="sr-only">
+              <span class="lang-text-es">Asunto</span>
+              <span class="lang-text-en" style="display: none;">Subject</span>
+            </label>
+            <input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              placeholder=""
+              class="w-full bg-[#111113] border border-[#1f1f22] rounded-xl px-5 py-3.5 text-[0.875rem] text-[#f4f4f5] placeholder:text-[#52525b] focus:outline-none focus:border-[#172de2] transition-colors duration-200"
+              data-placeholder-es="Asunto"
+              data-placeholder-en="Subject"
+            />
+          </div>
+          <div>
+            <label for="contact-message" class="sr-only">
+              <span class="lang-text-es">Mensaje</span>
+              <span class="lang-text-en" style="display: none;">Message</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+              placeholder=""
+              class="w-full bg-[#111113] border border-[#1f1f22] rounded-xl px-5 py-3.5 text-[0.875rem] text-[#f4f4f5] placeholder:text-[#52525b] focus:outline-none focus:border-[#172de2] transition-colors duration-200 resize-none"
+              data-placeholder-es="Mensaje *"
+              data-placeholder-en="Message *"
+            ></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <button
+              id="contact-submit"
+              type="submit"
+              class="bg-[#172de2] hover:bg-[#2a40f0] text-white text-[0.8125rem] font-medium px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
+              data-text-es="Enviar Mensaje"
+              data-text-en="Send Message"
+              data-sending-es="Enviando..."
+              data-sending-en="Sending..."
+            >
+              <span class="lang-text-es">Enviar Mensaje</span>
+              <span class="lang-text-en" style="display: none;">Send Message</span>
+            </button>
+            <span
+              id="contact-feedback"
+              class="text-[0.75rem] text-[#71717a]"
+              data-success-es="¡Mensaje enviado! Te responderé pronto."
+              data-success-en="Message sent! I'll get back to you soon."
+              data-error-es="Error al enviar. Intentalo de nuevo o escribime directamente a mi email."
+              data-error-en="Failed to send. Try again or email me directly."
+              data-mailto-es="Redirigiendo a tu cliente de correo..."
+              data-mailto-en="Redirecting to your email client..."
+            ></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: Quick Links -->
+      <div class="lg:col-span-2">
+        <h3 class="text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#71717a] mb-5">
+          <span class="lang-text-es">Enlaces Rápidos</span>
+          <span class="lang-text-en" style="display: none;">Quick Links</span>
+        </h3>
+
+        <div class="space-y-4">
+          <!-- Email -->
+          {
+            personal.email && (
+              <button
+                id="copy-email-btn"
+                data-email={personal.email}
+                class="group w-full flex items-center gap-4 px-4 py-3 sm:px-5 sm:py-4 bg-[#111113] border border-[#1f1f22] rounded-xl hover:border-[#2e2e33] transition-all duration-200 text-left cursor-pointer"
+              >
+                <div class="w-10 h-10 rounded-lg bg-[#f97316]/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-[#f97316]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[0.875rem] text-[#f4f4f5] group-hover:text-[#f97316] transition-colors duration-200 block truncate">
+                    {personal.email}
+                  </span>
+                  <span id="copy-feedback" class="text-[0.6875rem] text-[#71717a] mt-0.5 block" data-copy-es="Copiar email" data-copy-en="Copy email" data-copied-es="¡Copiado!" data-copied-en="Copied!">
+                    <span class="lang-text-es">Copiar email</span>
+                    <span class="lang-text-en" style="display: none;">Copy email</span>
+                  </span>
+                </div>
+                <svg class="w-4 h-4 text-[#71717a] group-hover:text-[#f97316] transition-colors duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                </svg>
+              </button>
+            )
+          }
+
+          <!-- GitHub -->
+          {
+            personal.social?.github && (
+              <a
+                href={personal.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 px-5 py-4 bg-[#111113] border border-[#1f1f22] rounded-xl hover:border-[#2e2e33] transition-all duration-200 no-underline"
+              >
+                <div class="w-10 h-10 rounded-lg bg-[#111113] border border-[#1f1f22] flex items-center justify-center flex-shrink-0 group-hover:border-[#2e2e33] transition-colors duration-200">
+                  <img src="/icons/github.svg" alt="GitHub" class="w-5 h-5" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[0.875rem] text-[#f4f4f5] group-hover:text-[#f97316] transition-colors duration-200 block truncate font-medium">
+                    GitHub
+                  </span>
+                  <span class="text-[0.6875rem] text-[#71717a] mt-0.5 block truncate">
+                    /Camuss0
+                  </span>
+                </div>
+                <svg class="w-4 h-4 text-[#71717a] group-hover:text-[#f97316] transition-colors duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            )
+          }
+
+          <!-- LinkedIn -->
+          {
+            personal.social?.linkedin && (
+              <a
+                href={personal.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 px-5 py-4 bg-[#111113] border border-[#1f1f22] rounded-xl hover:border-[#2e2e33] transition-all duration-200 no-underline"
+              >
+                <div class="w-10 h-10 rounded-lg bg-[#111113] border border-[#1f1f22] flex items-center justify-center flex-shrink-0 group-hover:border-[#2e2e33] transition-colors duration-200">
+                  <img src="/icons/linkedin.svg" alt="LinkedIn" class="w-5 h-5" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[0.875rem] text-[#f4f4f5] group-hover:text-[#f97316] transition-colors duration-200 block truncate font-medium">
+                    LinkedIn
+                  </span>
+                  <span class="text-[0.6875rem] text-[#71717a] mt-0.5 block truncate">
+                    /in/camuss0
+                  </span>
+                </div>
+                <svg class="w-4 h-4 text-[#71717a] group-hover:text-[#f97316] transition-colors duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    function getLang() {
+      return localStorage.getItem("lang") || "es";
+    }
+
+    window.updateContactPlaceholders = function () {
+      var lang = getLang();
+      var inputs = document.querySelectorAll("[data-placeholder-es]");
+      inputs.forEach(function (el) {
+        el.placeholder = el.getAttribute("data-placeholder-" + lang) || "";
+      });
+    };
+
+    var form = document.getElementById("contact-form");
+    var submitBtn = document.getElementById("contact-submit");
+    var feedback = document.getElementById("contact-feedback");
+    var copyBtn = document.getElementById("copy-email-btn");
+    var copyFeedback = document.getElementById("copy-feedback");
+
+    var workerUrl = "";
+
+    window.updateContactPlaceholders();
+
+    if (copyBtn && copyFeedback) {
+      copyBtn.addEventListener("click", function () {
+        var email = copyBtn.getAttribute("data-email");
+        if (!email) return;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () {
+            var lang = getLang();
+            var copiedText = copyFeedback.getAttribute("data-copied-" + lang) || "Copied!";
+            var originalText = copyFeedback.getAttribute("data-copy-" + lang) || "Copy email";
+            copyFeedback.innerHTML = copiedText;
+            setTimeout(function () {
+              copyFeedback.innerHTML = originalText;
+            }, 2000);
+          });
+        }
+      });
+    }
+
+    if (form && submitBtn && feedback) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var lang = getLang();
+        var name = document.getElementById("contact-name").value.trim();
+        var email = document.getElementById("contact-email").value.trim();
+        var subject = document.getElementById("contact-subject").value.trim();
+        var message = document.getElementById("contact-message").value.trim();
+
+        if (!name || !email || !message) {
+          feedback.textContent = lang === "es" ? "Completá todos los campos requeridos." : "Please fill in all required fields.";
+          return;
+        }
+
+        if (workerUrl) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = submitBtn.getAttribute("data-sending-" + lang) || "Sending...";
+          feedback.textContent = "";
+
+          fetch(workerUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: name, email: email, subject: subject, message: message }),
+          })
+            .then(function (r) {
+              if (!r.ok) throw new Error("Network error");
+              return r.json();
+            })
+            .then(function () {
+              feedback.textContent = feedback.getAttribute("data-success-" + lang) || "Message sent!";
+              form.reset();
+            })
+            .catch(function () {
+              feedback.textContent = feedback.getAttribute("data-error-" + lang) || "Failed to send.";
+            })
+            .finally(function () {
+              submitBtn.disabled = false;
+              submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
+            });
+        } else {
+          var mailtoLink = "mailto:" + encodeURIComponent("camussovalentin10@gmail.com") +
+            "?subject=" + encodeURIComponent(subject || (lang === "es" ? "Mensaje desde el portfolio" : "Portfolio message")) +
+            "&body=" + encodeURIComponent(
+              (lang === "es" ? "Nombre" : "Name") + ": " + name + "\n" +
+              "Email: " + email + "\n\n" + message
+            );
+          window.location.href = mailtoLink;
+          feedback.textContent = feedback.getAttribute("data-mailto-" + lang) || "Redirecting to your email client...";
+        }
+      });
+    }
+  })();
+</script>

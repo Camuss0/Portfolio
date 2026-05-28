@@ -10,7 +10,9 @@ export interface Props {
   personal: Personal;
   lang: Lang;
 }
-const { title = "Camuss0", description = "Full Stack Developer", personal, lang } = Astro.props;
+const { title: rawTitle, description: rawDescription, personal, lang } = Astro.props;
+const title = rawTitle ?? t(lang, "layout.title");
+const description = rawDescription ?? t(lang, "layout.description");
 ---
 
 <!DOCTYPE html>
