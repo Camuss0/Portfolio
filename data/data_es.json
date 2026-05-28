@@ -74,7 +74,7 @@
         "Manejo de archivos de evidencias y firmas",
         "Generación dinámica de reportes estructurados"
       ],
-      "screenshots": ["Forms-1.png", "Forms-2.png"]
+      "screenshots": ["Forms-1.jpg", "Forms-2.png"]
     },
     {
       "id": "aguasiempre-calculator",
@@ -117,43 +117,36 @@
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
-      "short_description": "Plataforma grande para clínicas con turnos, historia clínica, recetas digitales y mensajería integrada.",
-      "problem_solved": "Las clínicas necesitaban una plataforma centralizada para turnos, comunicación, flujos médicos, pagos y gestión de pacientes.",
-      "description": "Plataforma SaaS full stack que centraliza turnos, historia clínica, recetas digitales y pagos. Incluye chat y tickets en tiempo real, chatbot para autogestión de citas, recordatorios automáticos, generación de PDF/Excel, integración con WhatsApp y Twilio, calendarios médicos y dashboards de reportes con control de acceso por roles.",
+      "short_description": "SaaS de gestión clínica con chat, turnos, recetas digitales y registro de pagos. Funcional antes que bonito.",
+      "problem_solved": "Los sistemas existentes para clínicas eran o muy caros con funcionalidades de más, o demasiado simples. Se necesitaba un punto intermedio con lo justo y necesario para manejar una clínica real.",
+      "description": "SaaS full stack basado en Whaticket (versión gratuita), adaptado y extendido para clínicas médicas. Cubre el ciclo completo: calendario de doctores con gestión de citas, chat/tickets en tiempo real conectado con WhatsApp y Twilio, historia clínica por paciente, generador de recetas digitales con plantillas (Craft.js), registro de caja y pagos, recordatorios automáticos, y configuración multi-compañía. Sin florituras visuales, pero con toda la funcionalidad que una clínica pequeña o mediana necesita para operar.",
       "key_features": [
         "Agendamiento de citas",
+        "Calendario de doctores",
         "Historia clínica",
-        "Recetas digitales",
-        "Calendarios de doctores",
-        "Chatbot para autogestión de citas",
+        "Recetas digitales con generador de plantillas",
+        "Chat/Tickets en tiempo real",
         "Mensajería por WhatsApp",
         "Integración con Twilio",
-        "Sistema de tickets en tiempo real",
-        "Generación de PDF",
-        "Exportaciones a Excel",
-        "Seguimiento de pagos",
+        "Registro de caja y pagos",
         "Gestión de reembolsos",
         "Integración con Google Calendar",
-        "Observaciones médicas",
-        "Gestión de roles",
+        "Recordatorios automáticos",
         "Reportes y analíticas",
-        "Carga de archivos",
-        "Sistema de recordatorios",
-        "Respuestas rápidas",
-        "Configuración por compañía"
+        "Gestión de roles y usuarios",
+        "Configuración por compañía",
+        "Chatbot para autogestión de citas"
       ],
       "tech_stack": ["Node.js", "Express", "TypeScript", "React", "Socket.IO", "PostgreSQL", "Sequelize"],
       "integrations": ["Twilio", "WhatsApp", "Google Calendar"],
       "engineering_challenges": [
-        "Sincronización en tiempo real de tickets",
-        "Estabilidad de conexión con WhatsApp Web",
-        "Integración compleja con calendarios",
-        "Consistencia en generación de PDFs",
-        "Gestión de permisos por roles",
-        "Manejo de zonas horarias",
-        "Casos límite en flujos médicos"
+        "Adaptar Whaticket free, código legacy de 4-5 años, a un dominio completamente distinto",
+        "Actualizar dependencias y compatibilidad con versiones modernas de Node, React y TypeScript",
+        "Estabilidad de whatsapp-web.js frente a cambios frecuentes de API de WhatsApp",
+        "Generador de recetas con plantillas variables usando Craft.js",
+        "Sincronización en tiempo real de tickets y chat"
       ],
-      "screenshots": []
+      "screenshots": ["calendario.jpg", "tickets.jpg", "receta.jpg", "reporte.jpg"]
     },
     {
       "id": "aspros-diesel",
@@ -230,7 +223,7 @@
         "Equilibrar asistencia de IA con control del usuario",
         "Consistencia de flujos multirol"
       ],
-      "screenshots": []
+      "screenshots": ["candidato1.jpg", "candidato2.jpg", "empleador1.jpg", "empleador2.jpg"]
     }
   ],
   "experience": [
