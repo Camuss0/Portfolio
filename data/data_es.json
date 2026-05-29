@@ -48,7 +48,6 @@
       "id": "dynamic-forms-system",
       "name": "Formularios Dinámicos — EjeSatelital",
       "type": "Módulo Web",
-      "status": "completado",
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
@@ -80,7 +79,6 @@
       "id": "aguasiempre-calculator",
       "name": "Calculadora de Pérdida — AguaSiempre",
       "type": "Aplicación Web",
-      "status": "completado",
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
@@ -113,7 +111,6 @@
       "id": "medical-management-platform",
       "name": "Gestión de Clínicas Médicas",
       "type": "Plataforma SaaS Full Stack",
-      "status": "activo",
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
@@ -126,10 +123,8 @@
         "Historia clínica",
         "Recetas digitales con generador de plantillas",
         "Chat/Tickets en tiempo real",
-        "Mensajería por WhatsApp",
-        "Integración con Twilio",
+        "Mensajería por WhatsApp o Twilio",
         "Registro de caja y pagos",
-        "Gestión de reembolsos",
         "Integración con Google Calendar",
         "Recordatorios automáticos",
         "Reportes y analíticas",
@@ -137,7 +132,15 @@
         "Configuración por compañía",
         "Chatbot para autogestión de citas"
       ],
-      "tech_stack": ["Node.js", "Express", "TypeScript", "React", "Socket.IO", "PostgreSQL", "Sequelize"],
+      "tech_stack": [
+        "Node.js",
+        "Express",
+        "TypeScript",
+        "React",
+        "Socket.IO",
+        "PostgreSQL",
+        "Sequelize"
+      ],
       "integrations": ["Twilio", "WhatsApp", "Google Calendar"],
       "engineering_challenges": [
         "Adaptar Whaticket free, código legacy de 4-5 años, a un dominio completamente distinto",
@@ -146,117 +149,141 @@
         "Generador de recetas con plantillas variables usando Craft.js",
         "Sincronización en tiempo real de tickets y chat"
       ],
-      "screenshots": ["calendario.jpg", "tickets.jpg", "receta.jpg", "reporte.jpg"]
+      "screenshots": [
+        "tickets.jpg",
+        "reporte.jpg",
+        "calendario.jpg",
+        "receta.jpg"
+      ]
     },
     {
       "id": "aspros-diesel",
-      "name": "Gestión de Diésel — Aspros",
+      "name": "Control de Diésel — Aspros",
       "type": "Dashboard Web + App Móvil",
-      "status": "activo",
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
       "client": "Aspros",
       "client_logo": "/images/clients/aspros.png",
-      "short_description": "Plataforma para consumo de diésel y monitoreo de maquinaria agrícola con GPS, inventarios y sincronización offline.",
-      "problem_solved": "Las operaciones agrícolas necesitaban seguimiento preciso de diésel, monitoreo de maquinaria, control de inventario y visibilidad de recorridos para detectar ineficiencias y gestionar el consumo de combustible.",
-      "description": "Sistema operativo con dashboard web y app móvil para gestión de diésel agrícola y monitoreo de maquinaria. Rastreo GPS en primer y segundo plano, sincronización offline, geocercas, visualización de rutas, gestión de inventarios de tanques, alertas, procesamiento en segundo plano en Android y dashboards operativos con permisos por zona.",
+      "short_description": "Dashboard web y app móvil para el control digital de consumo de diésel agrícola, con rastreo GPS de maquinarias y gestión de despacho desde tanques.",
+      "problem_solved": "Las operaciones agrícolas no tenían visibilidad real del consumo de diésel por maquinaria, actividad o zona. Necesitaban digitalizar el despacho de combustible y rastrear el uso por máquina para detectar ineficiencias y optimizar costos.",
+      "description": "Sistema compuesto por dashboard web y app móvil que digitaliza el control de diésel en operaciones agrícolas. Los despachadores registran en la app los despachos de combustible desde tanques a maquinarias. Los operadores inician actividades con rastreo GPS continuo (offline-first) para calcular consumo por máquina y recorrido. El dashboard web permite a administración y contadores visualizar reportes de consumo, alertas por uso anómalo, estado de tanques y rendimiento por vehículo, con permisos por zona y roles diferenciados.",
       "key_features": [
-        "Rastreo GPS",
-        "Rastreo en segundo plano",
-        "Sincronización offline",
-        "Monitoreo de vehículos",
-        "Cálculos de consumo de diésel",
+        "Rastreo GPS en actividad",
+        "Sincronización offline-first",
+        "Despacho de combustible desde tanque a vehículo",
+        "Registro de actividades con GPS continuo",
         "Gestión de inventarios de tanques",
-        "Sistema de alertas",
+        "Alertas por consumo anómalo",
         "Geocercas",
         "Visualización de rutas",
-        "App móvil basada en roles",
-        "Exportaciones a Excel",
-        "Generación de APK",
-        "Actualizaciones OTA",
-        "Seguimiento de actividades",
-        "Ajustes de inventario",
-        "Diagnóstico histórico",
-        "Visualizaciones en mapa",
+        "Dashboard web con reportes de consumo",
+        "Rol de administración y contador",
         "Permisos por zona",
-        "Importaciones masivas",
-        "Sincronización en tiempo real"
+        "Exportaciones a Excel",
+        "Actualizaciones OTA",
+        "Importaciones masivas"
       ],
-      "tech_stack": ["React Native (Expo)", "Android (Java)", "Web Dashboard"],
-      "integrations": ["GPS", "Mapas"],
+      "tech_stack": [
+        "PHP",
+        "CodeIgniter",
+        "MySQL",
+        "Vue",
+        "React Native (Expo)",
+        "TypeScript",
+        "Leaflet",
+        "Turf.js"
+      ],
+      "integrations": ["Expo Updates (OTA)"],
       "engineering_challenges": [
         "Rastreo GPS confiable en modo segundo plano de Android",
-        "Consistencia de sincronización offline",
+        "Consistencia de sincronización offline-first con SQLite local",
         "Lógica de reconciliación de inventarios",
         "Restricciones de segundo plano en Android 14/15",
         "Confiabilidad de telemetría en tiempo real",
         "Rendimiento de visualización geoespacial"
       ],
-      "screenshots": ["diesel-map-blur.png", "diesel-report-blur.png", "diesel-mobile.png"]
+      "screenshots": [
+        "diesel-map-blur.png",
+        "diesel-report-blur.png",
+        "diesel-mobile.png"
+      ]
     },
     {
       "id": "empleoagil",
-      "name": "Reclutamiento con IA",
-      "type": "Plataforma de Reclutamiento Impulsada por IA",
-      "status": "activo",
+      "name": "Portal de Empleo con IA",
+      "type": "Portal de Empleo",
       "visibility": "privado",
       "highlight": true,
       "company": "TiNegocios",
-      "short_description": "Plataforma de empleo para candidatos y empresas con onboarding asistido por IA y flujos de vacantes.",
-      "problem_solved": "Empresas y candidatos necesitaban una plataforma moderna de reclutamiento con onboarding estructurado y mejoras de flujo asistidas por IA.",
-      "description": "Plataforma de reclutamiento multirol con onboarding estructurado, gestión de perfiles y vacantes, postulaciones, evaluaciones y flujos asistidos por IA para mejora de perfiles y descripciones de vacantes.",
+      "short_description": "Portal de empleo con perfiles de candidato, vacantes, hunting y análisis IA para agilizar la selección.",
+      "problem_solved": "Empresas y candidatos necesitaban un proceso de reclutamiento centralizado que combinara gestión de vacantes, hunting, evaluaciones psicotécnicas e inteligencia artificial para agilizar la selección, en lugar de usar herramientas dispersas como formularios, correos y hojas de cálculo.",
+      "description": "Portal de empleo que cubre todo el ciclo de reclutamiento: desde el registro del candidato con optimización IA de su perfil, hasta la selección final por parte de la empresa con análisis inteligente de postulaciones. Los candidatos reciben vacantes recomendadas y pueden practicar entrevistas simuladas. Las empresas gestionan vacantes, buscan candidatos, evalúan postulaciones con IA y comparan postulantes. Panel superadmin para configuración global, integración psicométrica, multidioma y branding por empresa.",
       "key_features": [
-        "Onboarding de candidatos",
-        "Dashboards para empresas",
-        "Gestión de vacantes",
-        "Sistema de postulaciones",
-        "Evaluaciones",
-        "Notificaciones",
-        "Mejoras de perfil asistidas por IA",
-        "Descripciones de vacantes asistidas por IA",
-        "Flujos por rol"
+        "Onboarding completo de candidato con perfil enriquecido y optimización IA",
+        "Vacantes recomendadas por IA en base al perfil del candidato",
+        "Entrevistas simuladas con IA para práctica general y por vacante",
+        "Publicación y gestión de vacantes con flujo de aprobación",
+        "Gestión del proceso de selección con pipeline y análisis IA",
+        "Evaluación IA de cada postulación: fortalezas, brechas y porcentaje de match",
+        "Comparación IA entre candidatos para una misma vacante",
+        "Búsqueda avanzada de candidatos con acceso controlado por suscripción",
+        "Integración con evaluaciones psicométricas",
+        "Panel superadmin: catálogos globales, configuración de IA y políticas del sistema",
+        "Soporte multidioma ES/EN/PT",
+        "Branding configurable por empresa"
       ],
-      "tech_stack": [],
-      "integrations": ["Servicios de IA"],
+      "tech_stack": ["PHP", "CodeIgniter", "MySQL", "JavaScript", "Bootstrap"],
+      "integrations": [
+        "OpenAI Responses API",
+        "Mailgun",
+        "Sistema de evaluaciones psicométricas"
+      ],
       "engineering_challenges": [
-        "Equilibrar asistencia de IA con control del usuario",
-        "Consistencia de flujos multirol"
+        "Arquitectura multirol con permisos y flujos distintos para cada tipo de usuario",
+        "Control de cupos comerciales y operativos en tiempo real",
+        "IA configurable por feature con prompts editables y límites de uso",
+        "Soporte multidioma en toda la plataforma (ES/EN/PT)",
+        "Control de seguridad y visibilidad por plan en accesos compartidos"
       ],
-      "screenshots": ["candidato1.jpg", "candidato2.jpg", "empleador1.jpg", "empleador2.jpg"]
+      "screenshots": [
+        "candidato1.jpg",
+        "candidato2.jpg",
+        "empleador1.jpg",
+        "empleador2.jpg"
+      ]
     }
   ],
   "experience": [
     {
       "title": "Desarrollador Full Stack",
       "company": "TiNegocios",
-      "period": "2024 - Presente",
-      "description": "Construí +5 sistemas web y móviles en producción para clientes de diversos rubros (salud, logística, agricultura, reclutamiento). Participé en el ciclo completo: desarrollo, iteración con clientes, propuesta de mejoras y mantenimiento continuo. Los 5 proyectos destacados en esta web fueron desarrollados aquí.",
+      "company_logo": "/images/clients/tinegociosLogo.jpg",
+      "period": "Mayo 2025 - Actualidad",
+      "description": "Desarrollé y mantuve sistemas web y móviles en producción para clientes de salud, logística, agricultura y reclutamiento. Participé en todo el ciclo: relevamiento de requerimientos, desarrollo frontend y backend, integración con APIs de terceros, despliegue y soporte continuo, con iteración constante junto al cliente.",
       "skills_demonstrated": [
         "Desarrollo Backend",
         "Desarrollo Frontend",
         "Desarrollo Móvil",
-        "Diseño de APIs",
-        "Arquitectura de Sistemas",
-        "Funciones en Tiempo Real",
+        "Sistemas en Tiempo Real",
         "Sincronización Offline",
         "Rastreo GPS",
         "Sistemas de Reportes",
-        "Integración con APIs de Terceros",
-        "Iteración con Clientes",
-        "Mantenimiento de Sistemas en Producción"
+        "Integración con APIs",
+        "Scrum"
       ]
     },
     {
-      "title": "Desarrollador Web Freelance",
-      "period": "2022 - 2024",
-      "description": "Proyectos web independientes enfocados en sitios institucionales, prototipos funcionales y herramientas internas para pequeños negocios.",
+      "title": "Proyecto Final de Grado — Gestión Deportiva Municipal",
+      "period": "Ago 2024 - Dic 2024",
+      "description": "Junto a un compañero diseñé y desarrollé un sistema de gestión deportiva municipal como proyecto final de la carrera. Implementé generación automática de fixture, módulos de torneos, deportes, categorías y equipos con roles de usuario, e integré APIs de MapBox y OpenWeather.",
       "skills_demonstrated": [
-        "Desarrollo Frontend",
-        "Maquetación Web",
-        "Diseño Responsive",
-        "Integración Básica de APIs",
-        "Git"
+        "Laravel",
+        "React",
+        "Inertia.js",
+        "MySQL",
+        "Integración con APIs",
+        "Trabajo en equipo"
       ]
     }
   ],

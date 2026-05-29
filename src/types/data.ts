@@ -27,7 +27,6 @@ export interface Project {
   id: string;
   name: string;
   type: string;
-  status: string;
   visibility: string;
   highlight: boolean;
   company?: string;
@@ -46,6 +45,7 @@ export interface Project {
 export interface Experience {
   title: string;
   company?: string;
+  company_logo?: string;
   period?: string;
   description: string;
   skills_demonstrated: string[];

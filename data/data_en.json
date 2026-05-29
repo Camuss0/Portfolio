@@ -68,7 +68,6 @@
       "id": "dynamic-forms-system",
       "name": "",
       "type": "",
-      "status": "",
       "visibility": "",
       "highlight": false,
       "company": "",
@@ -87,7 +86,6 @@
       "id": "aguasiempre-calculator",
       "name": "",
       "type": "",
-      "status": "",
       "visibility": "",
       "highlight": false,
       "company": "",
@@ -106,7 +104,6 @@
       "id": "medical-management-platform",
       "name": "",
       "type": "",
-      "status": "",
       "visibility": "",
       "highlight": false,
       "company": "",
@@ -125,7 +122,6 @@
       "id": "aspros-diesel",
       "name": "",
       "type": "",
-      "status": "",
       "visibility": "",
       "highlight": false,
       "company": "",
@@ -144,7 +140,6 @@
       "id": "empleoagil",
       "name": "",
       "type": "",
-      "status": "",
       "visibility": "",
       "highlight": false,
       "company": "",
@@ -164,34 +159,16 @@
     {
       "title": "Full Stack Developer",
       "company": "TiNegocios",
+      "company_logo": "/images/clients/tinegociosLogo.jpg",
       "period": "2024 - Present",
-      "description": "Built +5 production web and mobile systems for clients across healthcare, logistics, agriculture, and recruitment. Involved in the full cycle: development, client iteration, improvement proposals, and ongoing maintenance. All 5 featured projects on this site were developed here.",
-      "skills_demonstrated": [
-        "Backend Development",
-        "Frontend Development",
-        "Mobile Development",
-        "API Design",
-        "Systems Architecture",
-        "Real-Time Features",
-        "Offline Synchronization",
-        "GPS Tracking",
-        "Reporting Systems",
-        "Third-Party API Integration",
-        "Client Iteration",
-        "Production System Maintenance"
-      ]
+      "description": "",
+      "skills_demonstrated": []
     },
     {
-      "title": "Freelance Web Developer",
-      "period": "2022 - 2024",
-      "description": "Independent web projects focused on institutional sites, functional prototypes, and internal tools for small businesses.",
-      "skills_demonstrated": [
-        "Frontend Development",
-        "Web Layout",
-        "Responsive Design",
-        "Basic API Integration",
-        "Git"
-      ]
+      "title": "",
+      "period": "",
+      "description": "",
+      "skills_demonstrated": []
     }
   ],
   "skills": {
