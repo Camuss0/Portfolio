@@ -4,7 +4,7 @@ export interface Props {
   personal: Personal;
 }
 const { personal } = Astro.props;
-const workerUrl = "https://camuss0.dev/api/contact";
+const workerUrl = "/api/contact";
 ---
 
 <section id="contact" class="py-16 sm:py-20 md:py-28 border-t border-[#1f1f22]/40 reveal">
@@ -230,7 +230,7 @@ const workerUrl = "https://camuss0.dev/api/contact";
     var copyBtn = document.getElementById("copy-email-btn");
     var copyFeedback = document.getElementById("copy-feedback");
 
-    var workerUrl = "https://camuss0.dev/api/contact";
+    var workerUrl = "/api/contact";
 
     window.updateContactPlaceholders();
 
