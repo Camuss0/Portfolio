@@ -1,11 +1,10 @@
 ---
 import type { Personal } from "../../types/data";
-import { t, type Lang } from "../../i18n/ui";
+import { t } from "../../i18n/ui";
 export interface Props {
   personal: Personal;
-  lang: Lang;
 }
-const { personal, lang } = Astro.props;
+const { personal } = Astro.props;
 ---
 
 <footer class="border-t border-[#1f1f22]/40 mt-0 py-12 sm:py-16">
@@ -16,7 +15,10 @@ const { personal, lang } = Astro.props;
         <span class="text-[#2e2e33]">&middot;</span>
         <span class="text-[0.75rem] sm:text-[0.8125rem] text-[#7a7a85]">{personal.location}</span>
       </div>
-      <span class="text-[0.75rem] text-[#7a7a85]">{t(lang, "footer.built")}</span>
+      <span class="text-[0.75rem] text-[#7a7a85]">
+        <span class="lang-text-es">{t("es", "footer.built")}</span>
+        <span class="lang-text-en" style="display: none;">{t("en", "footer.built")}</span>
+      </span>
       </div>
   </div>
 </footer>
