@@ -74,7 +74,7 @@
         "Handling evidence files and signatures",
         "Dynamic generation of structured reports"
       ],
-      "screenshots": ["Forms-1.jpg", "Forms-2.png"]
+      "screenshots": ["Forms-2.png", "Forms-1.jpg"]
     },
     {
       "id": "aguasiempre-calculator",
@@ -122,8 +122,8 @@
         "Appointment scheduling",
         "Doctor calendars",
         "Medical history",
-        "Digital prescriptions with template generator",
         "Real-time chat/tickets",
+        "Digital prescriptions with template generator",
         "WhatsApp & Twilio messaging",
         "Cash register and payment tracking",
         "Google Calendar integration",
@@ -275,6 +275,7 @@
       "HTML",
       "CSS",
       "Bootstrap",
+      "Tailwind",
       "Leaflet",
       "Responsive Design"
     ],
