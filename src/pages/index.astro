@@ -159,11 +159,11 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       });
 
       document.querySelectorAll(".language-btn").forEach(function(btn) {
-        var active = btn.getAttribute("data-lang") === lang;
-        btn.classList.toggle("lang-active", active);
-        var indicator = btn.querySelector(".lang-indicator");
-        if (indicator) indicator.style.opacity = active ? "1" : "0";
+        btn.classList.toggle("lang-active", btn.getAttribute("data-lang") === lang);
       });
+
+      var cvLink = document.querySelector("[data-href-es]");
+      if (cvLink) cvLink.href = cvLink.getAttribute("data-href-" + lang);
 
 
 
