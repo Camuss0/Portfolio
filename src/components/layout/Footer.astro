@@ -1,6 +1,6 @@
 ---
 import type { Personal } from "../../types/data";
-import type { Lang } from "../../i18n/ui";
+import { t, type Lang } from "../../i18n/ui";
 export interface Props {
   personal: Personal;
   lang: Lang;
@@ -16,6 +16,7 @@ const { personal, lang } = Astro.props;
         <span class="text-[#2e2e33]">&middot;</span>
         <span class="text-[0.75rem] sm:text-[0.8125rem] text-[#7a7a85]">{personal.location}</span>
       </div>
-    </div>
+      <span class="text-[0.75rem] text-[#7a7a85]">{t(lang, "footer.built")}</span>
+      </div>
   </div>
 </footer>
