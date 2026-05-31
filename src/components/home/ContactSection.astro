@@ -103,8 +103,8 @@ const workerUrl = "/api/contact";
             <span
               id="contact-feedback"
               class="text-[0.75rem] text-[#71717a]"
-              data-success-es="¡Mensaje enviado! Te responderé pronto."
-              data-success-en="Message sent! I'll get back to you soon."
+              data-success-es="Mensaje enviado. Te escribo cuando lo vea."
+              data-success-en="Message sent. I'll write back when I see it."
               data-error-es="Error al enviar. Intentalo de nuevo o escribime directamente a mi email."
               data-error-en="Failed to send. Try again or email me directly."
               data-mailto-es="Redirigiendo a tu cliente de correo..."
@@ -283,13 +283,15 @@ const workerUrl = "/api/contact";
               return r.json();
             })
             .then(function () {
-              feedback.textContent = feedback.getAttribute("data-success-" + lang) || "Message sent!";
-              form.reset();
+              setTimeout(function () {
+                feedback.textContent = feedback.getAttribute("data-success-" + lang) || "Message sent!";
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
+              }, 1200);
             })
             .catch(function () {
               feedback.textContent = feedback.getAttribute("data-error-" + lang) || "Failed to send.";
-            })
-            .finally(function () {
               submitBtn.disabled = false;
               submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
             });
