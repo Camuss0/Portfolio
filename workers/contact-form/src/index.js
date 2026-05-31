@@ -27,28 +27,48 @@ export default {
       );
     }
 
-    const htmlBody = `
-      <p><strong>Nombre:</strong> ${escape(name)}</p>
-      <p><strong>Email:</strong> ${escape(email)}</p>
-      <p><strong>Asunto:</strong> ${escape(subject || "Sin asunto")}</p>
-      <p><strong>Mensaje:</strong></p>
-      <p>${escape(message).replace(/\n/g, "<br>")}</p>
-    `;
+    const plainBody = [
+      `Nombre: ${name}`,
+      `Email: ${email}`,
+      `Asunto: ${subject || "Sin asunto"}`,
+      "",
+      message,
+    ].join("\r\n");
 
-    const raw = [
+    const htmlBody = [
+      `<p style="margin:0 0 0.5em"><strong>Nombre:</strong> ${escape(name)}</p>`,
+      `<p style="margin:0 0 0.5em"><strong>Email:</strong> ${escape(email)}</p>`,
+      `<p style="margin:0 0 0.5em"><strong>Asunto:</strong> ${escape(subject || "Sin asunto")}</p>`,
+      `<hr style="border:none;border-top:1px solid #e5e5e5;margin:1em 0">`,
+      `<p style="margin:0;white-space:pre-wrap">${escape(message)}</p>`,
+    ].join("\r\n");
+
+    var boundary = "===============" + Date.now() + "==";
+
+    var body = [
       "MIME-Version: 1.0",
       "From: Portfolio Contact <contacto@camuss0.dev>",
       "To: camussovalentin10@gmail.com",
       "Reply-To: " + email,
       "Subject: =?UTF-8?B?" + btoa(unescape(encodeURIComponent(`[Portfolio] ${subject || "Nuevo mensaje"} de ${name}`))) + "?=",
-      "Content-Type: text/html; charset=utf-8",
+      "Content-Type: multipart/alternative; boundary=\"" + boundary + "\"",
       "",
-      `<html><body>${htmlBody}</body></html>`,
+      "--" + boundary,
+      "Content-Type: text/plain; charset=utf-8",
+      "Content-Transfer-Encoding: 8bit",
+      "",
+      plainBody,
+      "--" + boundary,
+      "Content-Type: text/html; charset=utf-8",
+      "Content-Transfer-Encoding: 8bit",
+      "",
+      "<html><body style=\"font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#222;padding:16px\">" + htmlBody + "</body></html>",
+      "--" + boundary + "--",
     ].join("\r\n");
 
     try {
       await env.SEND_EMAIL.send(
-        new EmailMessage("contacto@camuss0.dev", "camussovalentin10@gmail.com", raw)
+        new EmailMessage("contacto@camuss0.dev", "camussovalentin10@gmail.com", body)
       );
 
       return new Response(
