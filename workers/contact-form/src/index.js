@@ -6,7 +6,7 @@
 import { EmailMessage } from "cloudflare:email";
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
@@ -67,8 +67,10 @@ export default {
     ].join("\r\n");
 
     try {
-      await env.SEND_EMAIL.send(
-        new EmailMessage("contacto@camuss0.dev", "camussovalentin10@gmail.com", body)
+      ctx.waitUntil(
+        env.SEND_EMAIL.send(
+          new EmailMessage("contacto@camuss0.dev", "camussovalentin10@gmail.com", body)
+        )
       );
 
       return new Response(
