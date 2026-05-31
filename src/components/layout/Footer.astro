@@ -1,6 +1,6 @@
 ---
 import type { Personal } from "../../types/data";
-import { t, type Lang } from "../../i18n/ui";
+import type { Lang } from "../../i18n/ui";
 export interface Props {
   personal: Personal;
   lang: Lang;
@@ -15,9 +15,6 @@ const { personal, lang } = Astro.props;
         <span class="text-[#f4f4f5] font-bold text-sm">Camuss0</span>
         <span class="text-[#2e2e33]">&middot;</span>
         <span class="text-[0.75rem] sm:text-[0.8125rem] text-[#7a7a85]">{personal.location}</span>
-      </div>
-      <div class="flex items-center gap-6">
-        <span class="text-[0.75rem] text-[#7a7a85]">&copy; {new Date().getFullYear()} — {t(lang, "footer.built")}</span>
       </div>
     </div>
   </div>
