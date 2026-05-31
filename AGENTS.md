@@ -30,7 +30,7 @@
 - `index.astro` renders both language versions of every section in `<div id="lang-es">` / `<div id="lang-en">`, toggling visibility client-side via an inline script.
 - Translation keys follow `namespace.key` convention (e.g. `nav.projects`, `cta.details`, `modal.features`).
 - When adding a new UI text, add entries in both `es` and `en` in `src/i18n/ui.ts`.
-- Data content (`data_es.json` / `data_en.json`) is handled separately by the user — agents should never modify those files.
+- Data content (`data_es.json` / `data_en.json`) is handled separately by the user.
 - **Section IDs are ALWAYS in Spanish** (`#projects`, `#skills`, `#experience`, `#studies`). IDs are NEVER transferred or removed. English sections do NOT have these IDs.
 - **Nav scroll in any language:** click handler finds Spanish section by ID, gets its index among `#lang-es` children, then scrolls to the same-index child in the **visible** container (`#lang-en` or `#lang-es`). Same logic applies to the basketball scroll indicator and the scroll-active nav highlight. See `index.astro` click handler.
 
