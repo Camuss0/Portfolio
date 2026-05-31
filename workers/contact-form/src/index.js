@@ -30,7 +30,7 @@ export default {
     }
 
     await env.SEND_EMAIL.send({
-      from: { name: "Portfolio Contact", email: "contacto@tudominio.com" },
+      from: { name: "Portfolio Contact", email: "contacto@camuss0.dev" },
       to: [{ email: "camussovalentin10@gmail.com" }],
       subject: `[Portfolio] ${subject || "Nuevo mensaje"} de ${name}`,
       html: `

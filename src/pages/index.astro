@@ -69,6 +69,47 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     </div>
   </div>
 
+  <!-- Mobile Slide-in -->
+  <div id="mobile-slide"
+    class="fixed inset-0 z-50 bg-[#0a0a0b] overflow-y-auto overscroll-contain transition-transform duration-300 ease-out translate-x-full"
+  >
+    <div class="sticky top-0 z-10 flex items-center justify-between bg-[#0a0a0b]/95 backdrop-blur-sm border-b border-[#1f1f22] px-4 py-3">
+      <span id="mobile-slide-title" class="text-[0.9375rem] font-semibold text-[#f4f4f5] truncate pr-2"></span>
+      <button id="mobile-slide-close"
+        class="text-[#7a7a85] hover:text-[#f4f4f5] bg-[#111113] border border-[#1f1f22] rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 cursor-pointer"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-slide-body" class="p-4">
+      <div id="mobile-slide-es">
+        {dataEs.projects.map((p) => (
+          <div id={`mobile-project-content-${p.id}`} class="hidden">
+            <ProjectModal project={p} lang="es" />
+          </div>
+        ))}
+      </div>
+      <div id="mobile-slide-en" style="display: none;">
+        {dataEn.projects.map((p) => (
+          <div id={`mobile-project-content-${p.id}`} class="hidden">
+            <ProjectModal project={p} lang="en" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    #mobile-slide-body span {
+      font-size: 0.6875rem !important;
+    }
+    #mobile-slide-body h3 {
+      display: none;
+    }
+  </style>
+
   <!-- Lightbox -->
   <div
     id="lightbox-overlay"
@@ -76,7 +117,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
   >
     <button
       id="lightbox-close"
-      class="fixed top-2 right-2 sm:top-4 sm:right-4 text-[#7a7a85] hover:text-[#f4f4f5] transition-colors duration-200 text-xl leading-none bg-[#111113] border border-[#1f1f22] rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-20"
+      class="fixed top-3 right-3 sm:top-4 sm:right-4 text-white hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer z-20 transition-all duration-200"
     >
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -84,18 +125,18 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     </button>
     <button
       id="lightbox-prev"
-      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white bg-black/60 hover:bg-black/80 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-10"
+      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20 backdrop-blur-sm"
     >
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     </button>
     <button
       id="lightbox-next"
-      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white bg-black/60 hover:bg-black/80 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-10"
+      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20 backdrop-blur-sm"
     >
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
-    <div id="lightbox-counter" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[0.75rem] text-white/60 font-mono z-10"></div>
-    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg transition-opacity duration-300 z-10" />
+    <div id="lightbox-counter" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[0.75rem] text-white/60 font-mono z-20"></div>
+    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg transition-opacity duration-300 z-10" style="touch-action: pan-y;" />
   </div>
 
   <script is:inline>
@@ -169,6 +210,34 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     }
 
     var currentId = null;
+
+    function isMobile() { return window.innerWidth < 640; }
+
+    function showMobileSlide(id) {
+      var slide = document.getElementById("mobile-slide");
+      var body = document.getElementById("mobile-slide-body");
+      var contents = body.querySelectorAll("div[id^='mobile-project-content-']");
+      for (var i = 0; i < contents.length; i++) {
+        var el = contents[i];
+        el.classList.toggle("hidden", el.id !== "mobile-project-content-" + id);
+      }
+      // Set header title from project name
+      var active = body.querySelector("#mobile-project-content-" + id + " h3");
+      var title = document.getElementById("mobile-slide-title");
+      if (title && active) title.textContent = active.textContent;
+      slide.classList.add("translate-x-0");
+      slide.classList.remove("translate-x-full");
+      document.body.style.overflow = "hidden";
+      currentId = id;
+    }
+
+    function closeMobileSlide() {
+      var slide = document.getElementById("mobile-slide");
+      slide.classList.add("translate-x-full");
+      slide.classList.remove("translate-x-0");
+      document.body.style.overflow = "";
+      currentId = null;
+    }
 
     // ===== Carousel =====
     document.addEventListener("click", function(e) {
@@ -256,6 +325,8 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       var next = document.getElementById("lightbox-next");
 
       img.style.opacity = "0";
+      img.style.transform = "translateX(0)";
+      img.style.transition = "transform 0.2s ease-out";
       setTimeout(function() {
         img.src = lbImages[lbIndex];
         img.style.opacity = "1";
@@ -273,6 +344,48 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         counter.style.display = "";
       }
     }
+
+    // Swipe support with preview
+    var touchStartX = 0;
+    var touchCurrentX = 0;
+    var touchActive = false;
+
+    var lightboxImg = document.getElementById("lightbox-img");
+
+    document.addEventListener("touchstart", function(e) {
+      if (!document.getElementById("lightbox-overlay").classList.contains("active")) return;
+      if (lbImages.length <= 1) return;
+      touchStartX = e.changedTouches[0].screenX;
+      touchCurrentX = touchStartX;
+      touchActive = true;
+      lightboxImg.style.transition = "none";
+    }, { passive: true });
+
+    document.addEventListener("touchmove", function(e) {
+      if (!touchActive) return;
+      touchCurrentX = e.changedTouches[0].screenX;
+      var diff = touchCurrentX - touchStartX;
+      lightboxImg.style.transform = "translateX(" + diff + "px)";
+    }, { passive: true });
+
+    document.addEventListener("touchend", function(e) {
+      if (!touchActive) return;
+      touchActive = false;
+      var diff = touchCurrentX - touchStartX;
+      lightboxImg.style.transition = "transform 0.2s ease-out";
+
+      if (Math.abs(diff) > 60) {
+        if (diff < 0) {
+          lbIndex = lbIndex >= lbImages.length - 1 ? 0 : lbIndex + 1;
+        } else {
+          lbIndex = lbIndex <= 0 ? lbImages.length - 1 : lbIndex - 1;
+        }
+        lightboxImg.style.transform = "translateX(0)";
+        updateLightboxImage();
+      } else {
+        lightboxImg.style.transform = "translateX(0)";
+      }
+    }, { passive: true });
 
     document.addEventListener("click", function(e) {
       // Open lightbox from carousel main image
@@ -325,20 +438,31 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         return;
       }
 
-      if (e.key === "Escape" && currentId) closeModal();
+      if (e.key === "Escape" && currentId) {
+        closeModal();
+        closeMobileSlide();
+      }
     });
 
     document.addEventListener("click", function (e) {
       var card = e.target.closest("[data-open-modal]");
       if (card) {
         var id = card.getAttribute("data-project-id");
-        if (id) showModal(id);
+        if (!id) return;
+        if (isMobile()) {
+          showMobileSlide(id);
+        } else {
+          showModal(id);
+        }
       }
       if (
         e.target.closest("#modal-close-btn") ||
         e.target === document.getElementById("modal-overlay")
       ) {
         closeModal();
+      }
+      if (e.target.closest("#mobile-slide-close")) {
+        closeMobileSlide();
       }
     });
 
@@ -382,21 +506,28 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     
     window.addEventListener("scroll", function() {
       var current = "";
-      sections.forEach(function(section) {
-        var esSec = document.getElementById(section);
-        if (!esSec) return;
-        var esParent = document.getElementById("lang-es");
-        var enParent = document.getElementById("lang-en");
-        var idx = 0; while (idx < esParent.children.length && esParent.children[idx] !== esSec) idx++;
-        var visible = enParent.style.display !== "none" ? enParent : esParent;
-        var element = visible.children[idx] || esSec;
-        if (element) {
-          var rect = element.getBoundingClientRect();
-          if (rect.top <= 200) {
-            current = section;
+      var docEl = document.documentElement;
+      var atBottom = docEl.scrollTop + window.innerHeight >= docEl.scrollHeight - 10;
+
+      if (atBottom) {
+        current = "contact";
+      } else {
+        sections.forEach(function(section) {
+          var esSec = document.getElementById(section);
+          if (!esSec) return;
+          var esParent = document.getElementById("lang-es");
+          var enParent = document.getElementById("lang-en");
+          var idx = 0; while (idx < esParent.children.length && esParent.children[idx] !== esSec) idx++;
+          var visible = enParent.style.display !== "none" ? enParent : esParent;
+          var element = visible.children[idx] || esSec;
+          if (element) {
+            var rect = element.getBoundingClientRect();
+            if (rect.top <= 200) {
+              current = section;
+            }
           }
-        }
-      });
+        });
+      }
       
       navLinks.forEach(function(link) {
         link.classList.remove("active");

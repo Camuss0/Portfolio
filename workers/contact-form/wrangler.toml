@@ -3,9 +3,9 @@ main = "src/index.js"
 compatibility_date = "2025-05-01"
 
 [env.production]
-routes = [{ pattern = "tudominio.com/api/contact", zone_id = "your-zone-id" }]
+routes = [{ pattern = "camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce437bb74ac4eeae" }]
 
 [[env.production.email_routing.bindings]]
 name = "SEND_EMAIL"
 type = "send_email"
-address = "contacto@tudominio.com"
+address = "contacto@camuss0.dev"

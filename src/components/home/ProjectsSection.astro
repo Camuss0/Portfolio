@@ -22,10 +22,10 @@ const featured = featuredIds
 const compact = projects.filter((p) => !featuredIds.includes(p.id));
 ---
 
-<section id="projects" class="py-16 sm:py-24 md:py-32">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+<section id="projects" class="py-14 sm:py-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6">
     <!-- Section Header -->
-    <div class="mb-10 sm:mb-16 md:mb-20 reveal">
+    <div class="mb-10 sm:mb-16 md:mb-20 reveal px-4 sm:px-0">
       <div class="w-6 h-[3px] bg-[#f97316] rounded-full mb-4"></div>
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f4f4f5] leading-[1.1] -tracking-[0.02em]">
         {t(lang, "section.projects")}
@@ -33,16 +33,16 @@ const compact = projects.filter((p) => !featuredIds.includes(p.id));
     </div>
 
     <!-- Featured Projects -->
-    <div class="space-y-12 sm:space-y-16 md:space-y-24">
+    <div class="space-y-10 sm:space-y-14 md:space-y-20">
       {featured.map((p, i) => (
-        <FeaturedProject project={p} index={i} lang={lang} />
+        <FeaturedProject project={p} index={i} lang={lang} isLast={i === featured.length - 1} />
       ))}
     </div>
 
     <!-- Compact Projects -->
     {
       compact.length > 0 && (
-        <div class="mt-16 sm:mt-24 md:mt-32">
+        <div class="mt-12 sm:mt-16 md:mt-20 px-4 sm:px-0">
           <div class="flex items-center gap-4 mb-10 reveal">
             <span class="text-[0.6875rem] text-[#71717a] font-mono tracking-wider">{t(lang, "label.additional")}</span>
             <span class="flex-1 h-px bg-[#1f1f22]"></span>

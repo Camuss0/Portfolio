@@ -8,8 +8,8 @@ export interface Props {
 const { personal, lang } = Astro.props;
 ---
 
-<footer class="border-t border-[#1f1f22]/40 mt-0">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+<footer class="border-t border-[#1f1f22]/40 mt-0 py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div class="flex items-center gap-3">
         <span class="text-[#f4f4f5] font-bold text-sm">Camuss0</span>
@@ -17,7 +17,7 @@ const { personal, lang } = Astro.props;
         <span class="text-[0.75rem] sm:text-[0.8125rem] text-[#7a7a85]">{personal.location}</span>
       </div>
       <div class="flex items-center gap-6">
-        <span class="text-[0.75rem] text-[#7a7a85]">&copy; {new Date().getFullYear()}</span>
+        <span class="text-[0.75rem] text-[#7a7a85]">&copy; {new Date().getFullYear()} — {t(lang, "footer.built")}</span>
       </div>
     </div>
   </div>
