@@ -13,6 +13,10 @@ export interface Props {
 const { title: rawTitle, description: rawDescription, personal, lang } = Astro.props;
 const title = rawTitle ?? t(lang, "layout.title");
 const description = rawDescription ?? t(lang, "layout.description");
+const jobTitle = lang === "es" ? "Desarrollador Full Stack" : "Full Stack Developer";
+const schemaDescription = lang === "es"
+  ? "Desarrollador Full Stack. Construyo aplicaciones web, móviles, sistemas backend y soluciones con IA."
+  : "Full Stack Developer. Building web apps, mobile apps, backend systems and AI solutions.";
 ---
 
 <!DOCTYPE html>
@@ -30,8 +34,7 @@ const description = rawDescription ?? t(lang, "layout.description");
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://camuss0.dev/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://camuss0.dev/images/personal/pic.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
 
     <!-- Hreflang -->
     <link rel="alternate" hreflang="es" href="https://camuss0.dev/" />
@@ -40,19 +43,19 @@ const description = rawDescription ?? t(lang, "layout.description");
 
     <!-- Schema -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Valentin Camusso",
-        "url": "https://camuss0.dev/",
-        "jobTitle": "Full Stack Developer",
-        "description": {description},
-        "sameAs": [
-          "https://github.com/Camuss0",
-          "https://linkedin.com/in/camuss0"
-        ],
-        "knowsAbout": ["Web Development", "Mobile Apps", "Backend Systems", "AI", "API Integration", "GPS Tracking"]
-      }
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Valentin Camusso",
+  "url": "https://camuss0.dev/",
+  "jobTitle": "{jobTitle}",
+  "description": "{schemaDescription}",
+  "sameAs": [
+    "https://github.com/Camuss0",
+    "https://linkedin.com/in/camuss0"
+  ],
+  "knowsAbout": ["Web Development", "Mobile Apps", "Backend Systems", "AI", "API Integration", "GPS Tracking"]
+}
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
