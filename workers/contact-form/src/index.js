@@ -39,6 +39,7 @@ export default {
       "MIME-Version: 1.0",
       "From: Portfolio Contact <contacto@camuss0.dev>",
       "To: camussovalentin10@gmail.com",
+      "Reply-To: " + email,
       "Subject: =?UTF-8?B?" + btoa(unescape(encodeURIComponent(`[Portfolio] ${subject || "Nuevo mensaje"} de ${name}`))) + "?=",
       "Content-Type: text/html; charset=utf-8",
       "",

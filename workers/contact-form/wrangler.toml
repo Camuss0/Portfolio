@@ -8,4 +8,4 @@ routes = [{ pattern = "camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce43
 
 [[env.production.send_email]]
 name = "SEND_EMAIL"
-destination_address = "contacto@camuss0.dev"
+destination_address = "camussovalentin10@gmail.com"
