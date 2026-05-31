@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://camuss0.dev/sitemap.xml

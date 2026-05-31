@@ -29,7 +29,7 @@ const hasScreenshots = project.screenshots.length > 0;
         {project.client && (
           <span class="inline-flex items-center gap-1.5 text-[0.75rem] text-[#f4f4f5] bg-[#f97316]/10 border border-[#f97316]/20 px-3 py-1.5 rounded-full font-medium">
             {project.client_logo && (
-              <img src={project.client_logo} alt="" class="w-5 h-5 rounded-full object-cover flex-shrink-0" />
+              <img src={project.client_logo} alt={project.client ?? ""} class="w-5 h-5 rounded-full object-cover flex-shrink-0" />
             )}
             {project.client}
           </span>

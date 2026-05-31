@@ -25,7 +25,7 @@ const topStack = project.tech_stack.slice(0, 3);
         {project.client && (
           <>
             {project.client_logo && (
-              <img src={project.client_logo} alt="" class="w-3.5 h-3.5 rounded-full object-cover flex-shrink-0" />
+              <img src={project.client_logo} alt={project.client ?? ""} class="w-3.5 h-3.5 rounded-full object-cover flex-shrink-0" />
             )}
             <span class="text-[#f4f4f5] font-medium">{project.client}</span>
           </>

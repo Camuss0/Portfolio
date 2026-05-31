@@ -12,6 +12,6 @@ const { label, mono = false, icon } = Astro.props;
     ? "inline-flex items-center gap-1.5 font-mono text-[0.75rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-3 py-1.5 rounded-lg hover:border-[#2e2e33] transition-colors duration-200 cursor-default"
     : "inline-flex items-center gap-1.5 text-[0.75rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-3 py-1.5 rounded-lg hover:border-[#2e2e33] transition-colors duration-200 cursor-default"}
 >
-  {icon && <img src={icon} alt="" class="w-4 h-4 flex-shrink-0" />}
+  {icon && <img src={icon} alt="" class="w-4 h-4 flex-shrink-0" role="presentation" />}
   {label}
 </span>
