@@ -1,3 +1,0 @@
-# This wrangler.toml is for the Pages project only (no email bindings here).
-# See workers/contact-form/wrangler.toml for the Worker that handles email sending.
-compatibility_date = "2025-05-01"

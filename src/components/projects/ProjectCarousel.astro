@@ -27,7 +27,7 @@ const images = screenshots.map((s) => `/images/projects/${projectId}/${s}`);
           <img
             src={images[0]}
             alt={`${t(lang, "carousel.screenshotAlt")} 1`}
-            class="w-full aspect-[4/3] object-contain"
+            class="w-full aspect-[4/3] object-contain transition-all duration-500 ease-out"
             loading="lazy"
           />
           <!-- Nav arrows (only when >1 image) -->

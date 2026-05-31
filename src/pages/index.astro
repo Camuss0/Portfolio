@@ -36,31 +36,23 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
   <!-- Modal -->
   <div
     id="modal-overlay"
-    class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+    class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/90 overscroll-contain"
   >
     <div
       id="modal-container"
-      class="modal-panel bg-[#161618] border border-[#1f1f22] rounded-2xl max-w-7xl w-full mx-2 sm:mx-4 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto relative"
+      class="modal-panel bg-[#161618] border border-[#1f1f22] rounded-2xl max-w-7xl w-full mx-2 sm:mx-4 max-h-[85vh] sm:max-h-[90vh] flex flex-col min-h-0 relative"
     >
-      <button
-        id="modal-close-btn"
-        class="fixed top-2 right-2 sm:top-4 sm:right-4 text-[#7a7a85] hover:text-[#f4f4f5] transition-colors duration-200 text-xl leading-none bg-[#111113] border border-[#1f1f22] rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-20"
-      >
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <div class="p-5 sm:p-8 md:p-10" id="modal-body">
-        <div id="modal-lang-es">
+      <div class="flex flex-col flex-1 min-h-0" id="modal-body">
+        <div id="modal-lang-es" class="flex flex-col flex-1 min-h-0">
           {dataEs.projects.map((p) => (
-            <div id={`project-content-${p.id}`} class="hidden">
+            <div id={`project-content-${p.id}`} class="hidden flex flex-col flex-1 min-h-0">
               <ProjectModal project={p} lang="es" />
             </div>
           ))}
         </div>
-        <div id="modal-lang-en" style="display: none;">
+        <div id="modal-lang-en" style="display: none;" class="flex flex-col flex-1 min-h-0">
           {dataEn.projects.map((p) => (
-            <div id={`project-content-${p.id}`} class="hidden">
+            <div id={`project-content-${p.id}`} class="hidden flex flex-col flex-1 min-h-0">
               <ProjectModal project={p} lang="en" />
             </div>
           ))}
@@ -71,9 +63,9 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
 
   <!-- Mobile Slide-in -->
   <div id="mobile-slide"
-    class="fixed inset-0 z-50 bg-[#0a0a0b] overflow-y-auto overscroll-contain transition-transform duration-300 ease-out translate-x-full"
+    class="fixed inset-0 z-50 bg-[#0a0a0b] flex flex-col min-h-0 overscroll-contain transition-transform duration-300 ease-out translate-x-full"
   >
-    <div class="sticky top-0 z-10 flex items-center justify-between bg-[#0a0a0b]/95 backdrop-blur-sm border-b border-[#1f1f22] px-4 py-3">
+    <div class="flex-shrink-0 z-10 flex items-center justify-between bg-[#0a0a0b]/95 border-b border-[#1f1f22] px-4 py-3">
       <span id="mobile-slide-title" class="text-[0.9375rem] font-semibold text-[#f4f4f5] truncate pr-2"></span>
       <button id="mobile-slide-close"
         class="text-[#7a7a85] hover:text-[#f4f4f5] bg-[#111113] border border-[#1f1f22] rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 cursor-pointer"
@@ -83,7 +75,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         </svg>
       </button>
     </div>
-    <div id="mobile-slide-body" class="p-4">
+    <div id="mobile-slide-body" class="flex-1 overflow-y-auto overscroll-contain p-4">
       <div id="mobile-slide-es">
         {dataEs.projects.map((p) => (
           <div id={`mobile-project-content-${p.id}`} class="hidden">
@@ -102,6 +94,9 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
   </div>
 
   <style is:global>
+    #mobile-slide-body article > div:first-child {
+      display: none;
+    }
     #mobile-slide-body span {
       font-size: 0.6875rem !important;
     }
@@ -113,11 +108,11 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
   <!-- Lightbox -->
   <div
     id="lightbox-overlay"
-    class="lightbox-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-black/95"
+    class="lightbox-backdrop fixed inset-0 z-[60] flex items-center bg-black/95 overflow-hidden"
   >
     <button
       id="lightbox-close"
-      class="fixed top-3 right-3 sm:top-4 sm:right-4 text-white hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer z-20 transition-all duration-200"
+      class="fixed top-3 right-3 sm:top-4 sm:right-4 text-white hover:text-white bg-black/40 hover:bg-black/60 rounded-full w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer z-20 transition-all duration-200"
     >
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -125,18 +120,19 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     </button>
     <button
       id="lightbox-prev"
-      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20 backdrop-blur-sm"
+      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-black/40 hover:bg-black/60 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20"
+      aria-label=""
     >
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     </button>
     <button
       id="lightbox-next"
-      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20 backdrop-blur-sm"
+      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:text-white bg-black/40 hover:bg-black/60 rounded-full w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 cursor-pointer z-20"
     >
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
     <div id="lightbox-counter" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[0.75rem] text-white/60 font-mono z-20"></div>
-    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg transition-opacity duration-300 z-10" style="touch-action: pan-y;" />
+    <div id="lightbox-track" class="flex"></div>
   </div>
 
   <script is:inline>
@@ -152,8 +148,8 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
 
       var modalEs = document.getElementById("modal-lang-es");
       var modalEn = document.getElementById("modal-lang-en");
-      if (modalEs) modalEs.style.display = isEn ? "none" : "block";
-      if (modalEn) modalEn.style.display = isEn ? "block" : "none";
+      if (modalEs) modalEs.style.display = isEn ? "none" : "flex";
+      if (modalEn) modalEn.style.display = isEn ? "flex" : "none";
 
       document.querySelectorAll(".lang-text-es").forEach(function(el) {
         el.style.display = isEn ? "none" : "";
@@ -180,6 +176,23 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
   </script>
 
   <script is:inline>
+    var bodyLockCount = 0;
+    function lockBody() {
+      if (bodyLockCount === 0) {
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+        document.body.style.touchAction = "none";
+      }
+      bodyLockCount++;
+    }
+    function unlockBody() {
+      bodyLockCount--;
+      if (bodyLockCount > 0) return;
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
     function showModal(id) {
       var overlay = document.getElementById("modal-overlay");
       var container = document.getElementById("modal-container");
@@ -196,7 +209,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       }
       overlay.classList.add("active");
       container.classList.add("active");
-      document.body.style.overflow = "hidden";
+      lockBody();
       currentId = id;
     }
 
@@ -205,7 +218,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       var container = document.getElementById("modal-container");
       overlay.classList.remove("active");
       container.classList.remove("active");
-      document.body.style.overflow = "";
+      unlockBody();
       currentId = null;
     }
 
@@ -227,7 +240,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       if (title && active) title.textContent = active.textContent;
       slide.classList.add("translate-x-0");
       slide.classList.remove("translate-x-full");
-      document.body.style.overflow = "hidden";
+      lockBody();
       currentId = id;
     }
 
@@ -235,7 +248,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
       var slide = document.getElementById("mobile-slide");
       slide.classList.add("translate-x-full");
       slide.classList.remove("translate-x-0");
-      document.body.style.overflow = "";
+      unlockBody();
       currentId = null;
     }
 
@@ -257,15 +270,20 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         if (newIdx < 0) newIdx = images.length - 1;
         if (newIdx >= images.length) newIdx = 0;
         carousel.setAttribute("data-current", newIdx);
-        mainImg.src = images[newIdx];
-        mainImg.alt = mainImg.alt.replace(/\d+/, String(newIdx + 1));
+        mainImg.classList.add("opacity-0", "scale-95");
+        // Preload next image before fading
+        var preload = new Image();
+        preload.onload = function() {
+          mainImg.src = images[newIdx];
+          mainImg.alt = mainImg.alt.replace(/\d+/, String(newIdx + 1));
+          mainImg.classList.remove("opacity-0", "scale-95");
+        };
+        preload.src = images[newIdx];
         if (counterEl) counterEl.textContent = (newIdx + 1) + " / " + images.length;
-        // Update active thumbnail
         carousel.querySelectorAll(".carousel-thumb").forEach(function(t, i) {
           t.style.borderColor = i === newIdx ? "#f97316" : "";
           t.style.opacity = i === newIdx ? "1" : "0.5";
         });
-        // Update lightbox trigger index
         var lightboxTrigger = carousel.querySelector("[data-open-lightbox]");
         if (lightboxTrigger) lightboxTrigger.setAttribute("data-index", newIdx);
       }
@@ -278,8 +296,14 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         var mainImg = carousel.querySelector("img:first-of-type");
         var counterEl = carousel.querySelector(".carousel-counter");
         carousel.setAttribute("data-current", index);
-        mainImg.src = images[index];
-        mainImg.alt = mainImg.alt.replace(/\d+/, String(index + 1));
+        mainImg.classList.add("opacity-0", "scale-95");
+        var preload = new Image();
+        preload.onload = function() {
+          mainImg.src = images[index];
+          mainImg.alt = mainImg.alt.replace(/\d+/, String(index + 1));
+          mainImg.classList.remove("opacity-0", "scale-95");
+        };
+        preload.src = images[index];
         if (counterEl) counterEl.textContent = (index + 1) + " / " + images.length;
         carousel.querySelectorAll(".carousel-thumb").forEach(function(t, i) {
           t.style.borderColor = i === index ? "#f97316" : "";
@@ -302,90 +326,97 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     // ===== Lightbox =====
     var lbImages = [];
     var lbIndex = 0;
+    var lbTrack = document.getElementById("lightbox-track");
+    var lbCounter = document.getElementById("lightbox-counter");
+    var lbPrev = document.getElementById("lightbox-prev");
+    var lbNext = document.getElementById("lightbox-next");
+
+    function buildLightboxImages() {
+      lbTrack.innerHTML = "";
+      for (var i = 0; i < lbImages.length; i++) {
+        var img = document.createElement("img");
+        img.src = lbImages[i];
+        img.alt = "Screenshot " + (i + 1);
+        img.className = "flex-shrink-0 w-screen max-h-[85vh] object-contain select-none";
+        img.style.width = "100vw";
+        img.draggable = false;
+        lbTrack.appendChild(img);
+      }
+      positionLightboxTrack(false);
+    }
+
+    function positionLightboxTrack(animate) {
+      lbTrack.style.transition = animate ? "transform 0.3s ease-out" : "none";
+      lbTrack.style.transform = "translateX(calc(-" + lbIndex + " * 100vw))";
+      lbCounter.textContent = (lbIndex + 1) + " / " + lbImages.length;
+      if (lbImages.length <= 1) {
+        lbPrev.style.display = "none";
+        lbNext.style.display = "none";
+      } else {
+        lbPrev.style.display = "";
+        lbNext.style.display = "";
+      }
+    }
 
     function showLightbox(images, index) {
       lbImages = images;
       lbIndex = index;
-      updateLightboxImage();
+      buildLightboxImages();
       var overlay = document.getElementById("lightbox-overlay");
       overlay.classList.add("active");
-      document.body.style.overflow = "hidden";
+      lockBody();
     }
 
     function closeLightbox() {
       var overlay = document.getElementById("lightbox-overlay");
       overlay.classList.remove("active");
-      document.body.style.overflow = "";
+      unlockBody();
     }
 
-    function updateLightboxImage() {
-      var img = document.getElementById("lightbox-img");
-      var counter = document.getElementById("lightbox-counter");
-      var prev = document.getElementById("lightbox-prev");
-      var next = document.getElementById("lightbox-next");
+    // Swipe with track preview
+    var swipeStartX = 0;
+    var swipeCurrentX = 0;
+    var swipeActive = false;
 
-      img.style.opacity = "0";
-      img.style.transform = "translateX(0)";
-      img.style.transition = "transform 0.2s ease-out";
-      setTimeout(function() {
-        img.src = lbImages[lbIndex];
-        img.style.opacity = "1";
-      }, 150);
-
-      counter.textContent = (lbIndex + 1) + " / " + lbImages.length;
-
-      if (lbImages.length <= 1) {
-        prev.style.display = "none";
-        next.style.display = "none";
-        counter.style.display = "none";
-      } else {
-        prev.style.display = "";
-        next.style.display = "";
-        counter.style.display = "";
-      }
-    }
-
-    // Swipe support with preview
-    var touchStartX = 0;
-    var touchCurrentX = 0;
-    var touchActive = false;
-
-    var lightboxImg = document.getElementById("lightbox-img");
-
-    document.addEventListener("touchstart", function(e) {
-      if (!document.getElementById("lightbox-overlay").classList.contains("active")) return;
+    lbTrack.addEventListener("touchstart", function(e) {
       if (lbImages.length <= 1) return;
-      touchStartX = e.changedTouches[0].screenX;
-      touchCurrentX = touchStartX;
-      touchActive = true;
-      lightboxImg.style.transition = "none";
+      swipeStartX = e.changedTouches[0].screenX;
+      swipeCurrentX = swipeStartX;
+      swipeActive = true;
+      lbTrack.style.transition = "none";
     }, { passive: true });
 
-    document.addEventListener("touchmove", function(e) {
-      if (!touchActive) return;
-      touchCurrentX = e.changedTouches[0].screenX;
-      var diff = touchCurrentX - touchStartX;
-      lightboxImg.style.transform = "translateX(" + diff + "px)";
+    lbTrack.addEventListener("touchmove", function(e) {
+      if (!swipeActive) return;
+      swipeCurrentX = e.changedTouches[0].screenX;
+      var diff = swipeCurrentX - swipeStartX;
+      lbTrack.style.transform = "translateX(calc(-" + lbIndex + " * 100vw + " + diff + "px))";
     }, { passive: true });
 
-    document.addEventListener("touchend", function(e) {
-      if (!touchActive) return;
-      touchActive = false;
-      var diff = touchCurrentX - touchStartX;
-      lightboxImg.style.transition = "transform 0.2s ease-out";
+    lbTrack.addEventListener("touchend", function() {
+      if (!swipeActive) return;
+      swipeActive = false;
+      var diff = swipeCurrentX - swipeStartX;
 
-      if (Math.abs(diff) > 60) {
+      if (Math.abs(diff) > 50) {
         if (diff < 0) {
           lbIndex = lbIndex >= lbImages.length - 1 ? 0 : lbIndex + 1;
         } else {
           lbIndex = lbIndex <= 0 ? lbImages.length - 1 : lbIndex - 1;
         }
-        lightboxImg.style.transform = "translateX(0)";
-        updateLightboxImage();
-      } else {
-        lightboxImg.style.transform = "translateX(0)";
       }
-    }, { passive: true });
+      positionLightboxTrack(true);
+    });
+
+    // Prev/Next buttons
+    function lbPrevClick() {
+      lbIndex = lbIndex <= 0 ? lbImages.length - 1 : lbIndex - 1;
+      positionLightboxTrack(true);
+    }
+    function lbNextClick() {
+      lbIndex = lbIndex >= lbImages.length - 1 ? 0 : lbIndex + 1;
+      positionLightboxTrack(true);
+    }
 
     document.addEventListener("click", function(e) {
       // Open lightbox from carousel main image
@@ -413,12 +444,10 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
 
       // Lightbox prev/next
       if (e.target.closest("#lightbox-prev")) {
-        lbIndex = lbIndex <= 0 ? lbImages.length - 1 : lbIndex - 1;
-        updateLightboxImage();
+        lbPrevClick();
       }
       if (e.target.closest("#lightbox-next")) {
-        lbIndex = lbIndex >= lbImages.length - 1 ? 0 : lbIndex + 1;
-        updateLightboxImage();
+        lbNextClick();
       }
 
       // Close lightbox
@@ -456,7 +485,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         }
       }
       if (
-        e.target.closest("#modal-close-btn") ||
+        e.target.closest(".modal-close-btn") ||
         e.target === document.getElementById("modal-overlay")
       ) {
         closeModal();
@@ -486,7 +515,7 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
     var navLinks = document.querySelectorAll(".nav-link");
 
     document.addEventListener("click", function(e) {
-      var link = e.target.closest(".nav-link");
+      var link = e.target.closest(".nav-link, .mobile-nav-link");
       if (link) {
         var href = link.getAttribute("href");
         if (href && href[0] === "#") {

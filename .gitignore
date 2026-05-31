@@ -37,3 +37,6 @@ pnpm-debug.log*
 
 # Debug
 *.map
+
+# Wrangler
+.wrangler/
