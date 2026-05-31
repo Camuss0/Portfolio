@@ -5,10 +5,31 @@
 
 import { EmailMessage } from "cloudflare:email";
 
+const rateMap = new Map();
+const RATE_LIMIT = 3;
+const RATE_WINDOW = 15 * 60 * 1000;
+
 export default {
   async fetch(request, env, ctx) {
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
+    }
+
+    const ip = request.headers.get("cf-connecting-ip") || "unknown";
+    const now = Date.now();
+    const entry = rateMap.get(ip);
+
+    if (entry && now < entry.resetTime && entry.count >= RATE_LIMIT) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests" }),
+        { status: 429, headers: { "content-type": "application/json", "retry-after": Math.ceil((entry.resetTime - now) / 1000).toString() } }
+      );
+    }
+
+    if (!entry || now >= entry.resetTime) {
+      rateMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
+    } else {
+      entry.count += 1;
     }
 
     const { name, email, subject, message } = await request.json();

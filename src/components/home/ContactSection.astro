@@ -109,6 +109,8 @@ const workerUrl = "/api/contact";
               data-error-en="Failed to send. Try again or email me directly."
               data-mailto-es="Redirigiendo a tu cliente de correo..."
               data-mailto-en="Redirecting to your email client..."
+              data-ratelimit-es="Demasiados mensajes. Esperá unos minutos."
+              data-ratelimit-en="Too many messages. Wait a few minutes."
             ></span>
           </div>
         </form>
@@ -279,6 +281,10 @@ const workerUrl = "/api/contact";
             body: JSON.stringify({ name: name, email: email, subject: subject, message: message }),
           })
             .then(function (r) {
+              if (r.status === 429) {
+                feedback.textContent = feedback.getAttribute("data-ratelimit-" + lang) || "Too many messages. Wait a few minutes.";
+                throw new Error("rate-limited");
+              }
               if (!r.ok) throw new Error("Network error");
               return r.json();
             })
@@ -290,7 +296,12 @@ const workerUrl = "/api/contact";
                 submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
               }, 1200);
             })
-            .catch(function () {
+            .catch(function (e) {
+              if (e && e.message === "rate-limited") {
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
+                return;
+              }
               feedback.textContent = feedback.getAttribute("data-error-" + lang) || "Failed to send.";
               submitBtn.disabled = false;
               submitBtn.textContent = submitBtn.getAttribute("data-text-" + lang) || "Send Message";
