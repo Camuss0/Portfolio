@@ -1,28 +1,28 @@
 {
   "personal": {
-    "name": "Camuss0",
-    "location": "Rio Negro, Argentina",
+    "name": "Valentin Camusso",
+    "location": "General Roca, Río Negro, Argentina",
     "role": "Full Stack Developer",
+    "academic_title": "University Technician in Web Development — UNCO",
     "specialties": [
       "Web Applications",
       "Mobile Applications",
       "Backend Systems",
+      "AI Solutions",
       "Real-Time Features",
       "Offline-First Workflows",
       "API Integrations",
-      "GPS Tracking Systems",
-      "AI-Assisted Development"
+      "GPS Tracking Systems"
     ],
-    "short_bio": "Full stack developer focused on building real-world web and mobile systems with strong backend logic, integrations, automation, and practical product thinking.",
-    "long_bio": "Full stack developer and Web Development Technician with experience building systems used in production environments across healthcare, logistics, agricultural operations, and recruitment. Worked on web dashboards, mobile apps, real-time systems, offline synchronization, GPS tracking, reporting systems, chatbot workflows, and integrations with services such as WhatsApp and Twilio. Strong focus on practical engineering, maintainability, fast iteration, and AI-assisted development workflows using tools like Codex.",
+    "short_bio": "Full stack developer focused on building real-world web and mobile systems with strong backend logic, integrations, automation, and product mindset.",
+    "long_bio": "Full stack developer and University Technician in Web Development with experience building systems used in production environments across healthcare, logistics, agricultural operations, and recruitment. Worked on web dashboards, mobile apps, real-time systems, offline synchronization, GPS tracking, reporting systems, chatbot workflows, and integrations with services such as WhatsApp and Twilio. Strong focus on practical engineering, maintainability, fast iteration, and AI-assisted development workflows using tools like Codex.",
     "interests": [
       "Systems Architecture",
-      "AI-Assisted Development",
       "Developer Tooling",
       "Automation",
       "Real-Time Systems",
       "Product Engineering",
-      "Maps and Geospatial Interfaces"
+      "Maps & Geospatial Interfaces"
     ],
     "current_focus": [
       "AI-powered products",
@@ -42,117 +42,195 @@
     "social": {
       "github": "https://github.com/Camuss0",
       "linkedin": "https://www.linkedin.com/in/camuss0/"
-    },
-    "design_preferences": {
-      "theme": "dark",
-      "style_keywords": [
-        "minimal",
-        "technical",
-        "high-end",
-        "modern",
-        "clean",
-        "systems-oriented",
-        "developer-focused"
-      ],
-      "avoid": [
-        "corporate marketing language",
-        "overly colorful layouts",
-        "generic startup aesthetics",
-        "fake metrics",
-        "exaggerated claims"
-      ]
     }
   },
   "projects": [
     {
       "id": "dynamic-forms-system",
-      "name": "",
-      "type": "",
-      "visibility": "",
-      "highlight": false,
-      "company": "",
-      "client": "",
-      "client_logo": "",
-      "short_description": "",
-      "problem_solved": "",
-      "description": "",
-      "key_features": [],
-      "tech_stack": [],
+      "name": "Dynamic Forms — EjeSatelital",
+      "type": "Web Module",
+      "visibility": "private",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "Eje Satelital",
+      "client_logo": "/images/clients/eje-satelital.png",
+      "short_description": "Dynamic forms module integrated into the EjeSatelital platform, with mobile response collection, chart visualization and report generation.",
+      "problem_solved": "The EjeSatelital platform needed a specialized dynamic forms module with mobile data collection, capable of integrating with its existing reporting modules and providing response visualization with charts.",
+      "description": "Developed and improved a dynamic forms module within the EjeSatelital platform, working on existing code alongside another developer in charge of the mobile app. I implemented the web panel and backend with dynamic form rendering, form creation and editing from the panel, API endpoints for response reception, data visualization with charts, evidence upload (images and signatures), PDF/Excel report generation, automated notifications, and integration with other internal platform modules.",
+      "key_features": [
+        "Dynamic form builder",
+        "API endpoints for mobile reception",
+        "Response visualization with charts",
+        "PDF generation",
+        "Excel export",
+        "Image uploads",
+        "Signature support",
+        "Incident logic",
+        "Automated notifications"
+      ],
+      "tech_stack": ["Vue.js", "Laravel"],
       "integrations": [],
-      "engineering_challenges": [],
-      "screenshots": []
+      "engineering_challenges": [
+        "Handling evidence files and signatures",
+        "Dynamic generation of structured reports"
+      ],
+      "screenshots": ["Forms-1.jpg", "Forms-2.png"]
     },
     {
       "id": "aguasiempre-calculator",
-      "name": "",
-      "type": "",
-      "visibility": "",
-      "highlight": false,
-      "company": "",
-      "client": "",
-      "client_logo": "",
-      "short_description": "",
-      "problem_solved": "",
-      "description": "",
-      "key_features": [],
-      "tech_stack": [],
-      "integrations": [],
-      "engineering_challenges": [],
-      "screenshots": []
+      "name": "Loss Calculator — AguaSiempre",
+      "type": "Web Application",
+      "visibility": "private",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "AguaSiempre",
+      "client_logo": "/images/clients/agua-siempre.jpg",
+      "short_description": "Interactive calculator that estimates livestock economic loss based on distance to watering points, with Leaflet maps and step-by-step workflow.",
+      "problem_solved": "Livestock operations needed to quantify the economic loss from cattle walking to watering points in order to evaluate investment in a per-parcel water system.",
+      "description": "Multi-step calculator built with pure HTML, CSS and JavaScript following Figma designs with AguaSiempre's distinctive branding. The workflow guides users from location selection and geofence drawing on a Leaflet map, through watering point placement and cattle routes, to automatic annual economic loss calculation and result conversion. Includes an integrated contact form at the end and automatic email notifications upon completion.",
+      "key_features": [
+        "Location selection on Leaflet map",
+        "Field geofence drawing",
+        "Watering point and route placement",
+        "Annual economic loss calculation",
+        "Result conversion",
+        "Guided multi-step workflow",
+        "Integrated contact form",
+        "Automatic email notifications",
+        "Responsive design with pure CSS"
+      ],
+      "tech_stack": ["HTML", "CSS", "JavaScript", "Leaflet"],
+      "integrations": ["Mailgun"],
+      "engineering_challenges": [
+        "Complex multi-step logic in vanilla JavaScript",
+        "Responsive design and animations with pure CSS",
+        "Geospatial map interaction usability"
+      ],
+      "screenshots": ["bebederos1.png", "bebederos2.png", "bebederos3.png"]
     },
     {
       "id": "medical-management-platform",
-      "name": "",
-      "type": "",
-      "visibility": "",
-      "highlight": false,
-      "company": "",
-      "client": "",
-      "client_logo": "",
-      "short_description": "",
-      "problem_solved": "",
-      "description": "",
-      "key_features": [],
-      "tech_stack": [],
-      "integrations": [],
-      "engineering_challenges": [],
-      "screenshots": []
+      "name": "Medical Clinic Management",
+      "type": "Full Stack SaaS Platform",
+      "visibility": "private",
+      "highlight": true,
+      "company": "TiNegocios",
+      "short_description": "Clinical management SaaS with chat, appointments, digital prescriptions and payment tracking. Functional before pretty.",
+      "problem_solved": "Existing clinic systems were either too expensive with unnecessary features, or too basic. An in-between solution was needed with exactly what a real clinic requires to operate.",
+      "description": "Full stack SaaS built on Whaticket (free version), adapted and extended for medical clinics. Covers the full cycle: doctor calendars with appointment management, real-time chat/tickets connected to WhatsApp and Twilio, patient medical history, digital prescription generator with templates (Craft.js), cash register and payment tracking, automatic reminders, and multi-company configuration. No visual frills, but all the functionality a small to mid-size clinic needs to run its operations.",
+      "key_features": [
+        "Appointment scheduling",
+        "Doctor calendars",
+        "Medical history",
+        "Digital prescriptions with template generator",
+        "Real-time chat/tickets",
+        "WhatsApp & Twilio messaging",
+        "Cash register and payment tracking",
+        "Google Calendar integration",
+        "Automatic reminders",
+        "Reports and analytics",
+        "Role and user management",
+        "Company-level configuration",
+        "Chatbot for appointment self-management"
+      ],
+      "tech_stack": ["Node.js", "Express", "TypeScript", "React", "Socket.IO", "PostgreSQL", "Sequelize"],
+      "integrations": ["Twilio", "WhatsApp", "Google Calendar"],
+      "engineering_challenges": [
+        "Adapting Whaticket free, 4-5 year-old legacy code, to a completely different domain",
+        "Updating dependencies and compatibility with modern Node, React and TypeScript versions",
+        "Stability of whatsapp-web.js against frequent WhatsApp API changes",
+        "Prescription generator with variable templates using Craft.js",
+        "Real-time ticket and chat synchronization"
+      ],
+      "screenshots": ["tickets.jpg", "reporte.jpg", "calendario.jpg", "receta.jpg"]
     },
     {
       "id": "aspros-diesel",
-      "name": "",
-      "type": "",
-      "visibility": "",
-      "highlight": false,
-      "company": "",
-      "client": "",
-      "client_logo": "",
-      "short_description": "",
-      "problem_solved": "",
-      "description": "",
-      "key_features": [],
-      "tech_stack": [],
-      "integrations": [],
-      "engineering_challenges": [],
-      "screenshots": []
+      "name": "Diesel Control — Aspros",
+      "type": "Web Dashboard + Mobile App",
+      "visibility": "private",
+      "highlight": true,
+      "company": "TiNegocios",
+      "client": "Aspros",
+      "client_logo": "/images/clients/aspros.png",
+      "short_description": "Web dashboard and mobile app for digital control of agricultural diesel consumption, with GPS machinery tracking and tank-to-vehicle dispatch management.",
+      "problem_solved": "Agricultural operations lacked real visibility into diesel consumption per machine, activity, or zone. They needed to digitize fuel dispatch and track per-machine usage to detect inefficiencies and optimize costs.",
+      "description": "System composed of a web dashboard and mobile app that digitizes diesel control in agricultural operations. Dispatchers log fuel dispatching from tanks to machinery in the app. Operators start activities with continuous GPS tracking (offline-first) to calculate per-machine consumption and routes. The web dashboard allows management and accountants to view consumption reports, anomaly alerts, tank status and per-vehicle performance, with zone-based permissions and differentiated roles.",
+      "key_features": [
+        "GPS activity tracking",
+        "Offline-first synchronization",
+        "Fuel dispatch from tank to vehicle",
+        "Activity logging with continuous GPS",
+        "Tank inventory management",
+        "Anomaly consumption alerts",
+        "Geofencing",
+        "Route visualization",
+        "Web dashboard with consumption reports",
+        "Management and accountant roles",
+        "Zone-based permissions",
+        "Excel exports",
+        "OTA updates",
+        "Bulk imports"
+      ],
+      "tech_stack": ["PHP", "CodeIgniter", "MySQL", "Vue", "React Native (Expo)", "TypeScript", "Leaflet", "Turf.js"],
+      "integrations": ["Expo Updates (OTA)"],
+      "engineering_challenges": [
+        "Reliable GPS tracking in Android background mode",
+        "Offline-first synchronization consistency with local SQLite",
+        "Inventory reconciliation logic",
+        "Android 14/15 background restrictions",
+        "Real-time telemetry reliability",
+        "Geospatial visualization performance"
+      ],
+      "screenshots": [
+        "diesel-map-blur.png",
+        "diesel-report-blur.png",
+        "diesel-mobile.png"
+      ]
     },
     {
       "id": "empleoagil",
-      "name": "",
-      "type": "",
-      "visibility": "",
-      "highlight": false,
-      "company": "",
-      "client": "",
-      "client_logo": "",
-      "short_description": "",
-      "problem_solved": "",
-      "description": "",
-      "key_features": [],
-      "tech_stack": [],
-      "integrations": [],
-      "engineering_challenges": [],
-      "screenshots": []
+      "name": "AI-Powered Job Portal",
+      "type": "Job Portal",
+      "visibility": "private",
+      "highlight": true,
+      "company": "TiNegocios",
+      "short_description": "Job portal with candidate profiles, job listings, talent hunting and AI analysis to streamline hiring.",
+      "problem_solved": "Companies and candidates needed a centralized recruitment process combining job management, talent hunting, psychometric evaluations and artificial intelligence to speed up selection, instead of relying on scattered tools like forms, email and spreadsheets.",
+      "description": "Job portal covering the full recruitment cycle: from candidate registration with AI-optimized profiles to final company selection with intelligent application analysis. Candidates receive job recommendations and can practice mock interviews. Companies manage job listings, search for candidates, evaluate applications with AI and compare applicants. Superadmin panel for global configuration, psychometric integration, multilingual support and per-company branding.",
+      "key_features": [
+        "Complete candidate onboarding with enriched profile and AI optimization",
+        "AI-recommended jobs based on candidate profile",
+        "AI-simulated interviews for general and job-specific practice",
+        "Job posting and management with approval workflow",
+        "Selection pipeline management with AI analysis",
+        "AI evaluation of each application: strengths, gaps and match percentage",
+        "AI comparison between candidates for the same job",
+        "Advanced candidate search with subscription-controlled access",
+        "Psychometric evaluation integration",
+        "Superadmin panel: global catalogs, AI configuration and system policies",
+        "ES/EN/PT multilingual support",
+        "Per-company branding"
+      ],
+      "tech_stack": ["PHP", "CodeIgniter", "MySQL", "JavaScript", "Bootstrap"],
+      "integrations": [
+        "OpenAI Responses API",
+        "Mailgun",
+        "Psychometric evaluation system"
+      ],
+      "engineering_challenges": [
+        "Multi-role architecture with distinct permissions and workflows per user type",
+        "Real-time commercial and operational quota control",
+        "Configurable AI per feature with editable prompts and usage limits",
+        "Multilingual support across the entire platform (ES/EN/PT)",
+        "Security and visibility control by plan on shared access"
+      ],
+      "screenshots": [
+        "candidato1.jpg",
+        "candidato2.jpg",
+        "empleador1.jpg",
+        "empleador2.jpg"
+      ]
     }
   ],
   "experience": [
@@ -160,15 +238,32 @@
       "title": "Full Stack Developer",
       "company": "TiNegocios",
       "company_logo": "/images/clients/tinegociosLogo.jpg",
-      "period": "2024 - Present",
-      "description": "",
-      "skills_demonstrated": []
+      "period": "May 2025 - Present",
+      "description": "Developed and maintained web and mobile systems in production for clients in healthcare, logistics, agriculture and recruitment. Involved in the full cycle: requirements gathering, frontend and backend development, third-party API integration, deployment and continuous support, with constant client iteration.",
+      "skills_demonstrated": [
+        "Backend Development",
+        "Frontend Development",
+        "Mobile Development",
+        "Real-Time Systems",
+        "Offline Synchronization",
+        "GPS Tracking",
+        "Reporting Systems",
+        "API Integration",
+        "Scrum"
+      ]
     },
     {
-      "title": "",
-      "period": "",
-      "description": "",
-      "skills_demonstrated": []
+      "title": "Degree Final Project — Municipal Sports Management",
+      "period": "Aug 2024 - Dec 2024",
+      "description": "Alongside a teammate, I designed and developed a municipal sports management system as the final project of my degree. I implemented automatic fixture generation, modules for tournaments, sports, categories and teams with user roles, and integrated MapBox and OpenWeather APIs.",
+      "skills_demonstrated": [
+        "Laravel",
+        "React",
+        "Inertia.js",
+        "MySQL",
+        "API Integration",
+        "Teamwork"
+      ]
     }
   ],
   "skills": {
@@ -177,11 +272,21 @@
       "React",
       "JavaScript",
       "TypeScript",
-      "Responsive Design",
-      "Leaflet"
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Leaflet",
+      "Responsive Design"
     ],
     "backend": [
       "Laravel",
+      "Node.js",
+      "Express",
+      "PHP",
+      "CodeIgniter",
+      "MySQL",
+      "PostgreSQL",
+      "Socket.IO",
       "API Development",
       "Real-Time Systems",
       "Authentication",
@@ -199,10 +304,7 @@
       "Chatbot Workflows",
       "Offline Queues"
     ],
-    "ai_tools": [
-      "Codex",
-      "AI-Assisted Development"
-    ],
+    "ai_tools": ["Codex", "Opencode"],
     "other": [
       "GPS Tracking",
       "Maps",
@@ -211,34 +313,28 @@
       "Geospatial Interfaces"
     ]
   },
-  "portfolio_direction": {
-    "goal": "Showcase real engineering capability through complex production-oriented systems and practical problem solving.",
-    "target_impression": [
-      "Technical depth",
-      "Builder mentality",
-      "Systems thinking",
-      "Real-world engineering",
-      "Fast iteration capability",
-      "Product ownership"
-    ],
-    "visual_direction": [
-      "Dark theme",
-      "Minimal layouts",
-      "Technical dashboards aesthetic",
-      "High-end developer portfolio",
-      "Motion with restraint",
-      "Modern systems-oriented visuals"
-    ],
-    "must_avoid": [
-      "Generic portfolio templates",
-      "Corporate buzzwords",
-      "Fake startup metrics",
-      "Overdesigned visuals",
-      "Overly personal branding"
-    ],
-    "tone": "Technical, modern, builder-focused, practical, systems-oriented.",
-    "portfolio_strategy": "Emphasize engineering complexity, real-world systems, integrations, workflows, architecture decisions, and AI-assisted development processes instead of generic project showcases."
-  },
-  "studies": [],
-  "certifications": []
+  "studies": [
+    {
+      "title": "University Technician in Web Development",
+      "institution": "UNCO — National University of Comahue",
+      "period": "2022 - 2024",
+      "completed": true,
+      "highlights": ["GPA 8.6", "Duration 2.5 years"]
+    },
+    {
+      "title": "Bachelor's Degree in Computer Science",
+      "institution": "UNCO — National University of Comahue",
+      "period": "2021 - 2022",
+      "completed": false
+    }
+  ],
+  "certifications": [
+    {
+      "name": "EF SET English Certificate",
+      "score": "63/100",
+      "level": "C1 Advanced",
+      "date": "08 Jan 2025",
+      "url": "https://cert.efset.org/en/MuTrda"
+    }
+  ]
 }

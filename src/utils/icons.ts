@@ -1,9 +1,12 @@
 const brandIcons: Record<string, string> = {
   "Vue.js": "vuedotjs",
+  "Vue": "vuedotjs",
   "React": "react",
   "Laravel": "laravel",
   "Leaflet": "leaflet",
   "Node.js": "nodedotjs",
+  "Express": "express",
+  "TypeScript": "typescript",
   "Socket.IO": "socketdotio",
   "PostgreSQL": "postgresql",
   "Sequelize": "sequelize",
@@ -12,6 +15,15 @@ const brandIcons: Record<string, string> = {
   "Android Studio": "androidstudio",
   "Google Calendar": "googlecalendar",
   "Expo": "expo",
+  "PHP": "php",
+  "CodeIgniter": "codeigniter",
+  "MySQL": "mysql",
+  "JavaScript": "javascript",
+  "HTML": "html5",
+  "CSS": "css3",
+  "Bootstrap": "bootstrap",
+  "Mailgun": "mailgun",
+  "OpenAI": "openai",
 };
 
 const genericIcons: Record<string, string> = {
@@ -41,10 +53,15 @@ const genericMap: [string, string][] = [
   ["Servicios de IA", "ai"],
   ["AI services", "ai"],
   ["IA", "ai"],
+  ["Turf", "map"],
+  ["evaluaciones psicométricas", "ai"],
+  ["psicométrica", "ai"],
 ];
 
 export function getSkillIcon(skill: string): string | undefined {
   if (brandIcons[skill]) return `/icons/${brandIcons[skill]}.svg`;
+  if (skill === "Opencode") return "/icons/opencode.png";
+  if (skill === "Codex") return "/icons/codex.png";
   for (const [key, value] of Object.entries(brandIcons)) {
     if (skill.includes(key)) return `/icons/${value}.svg`;
   }

@@ -8,6 +8,7 @@
       "Aplicaciones Web",
       "Aplicaciones Móviles",
       "Sistemas Backend",
+      "Soluciones con IA",
       "Funciones en Tiempo Real",
       "Flujos Offline-First",
       "Integraciones con APIs",
@@ -293,11 +294,21 @@
       "React",
       "JavaScript",
       "TypeScript",
-      "Diseño Responsive",
-      "Leaflet"
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Leaflet",
+      "Diseño Responsive"
     ],
     "backend": [
       "Laravel",
+      "Node.js",
+      "Express",
+      "PHP",
+      "CodeIgniter",
+      "MySQL",
+      "PostgreSQL",
+      "Socket.IO",
       "Desarrollo de APIs",
       "Sistemas en Tiempo Real",
       "Autenticación",
@@ -315,7 +326,7 @@
       "Flujos de Chatbot",
       "Colas Offline"
     ],
-    "ai_tools": ["Codex", "Desarrollo Asistido por IA"],
+    "ai_tools": ["Codex", "Opencode"],
     "other": [
       "Rastreo GPS",
       "Mapas",
@@ -330,7 +341,7 @@
       "institution": "UNCO — Universidad Nacional del Comahue",
       "period": "2022 - 2024",
       "completed": true,
-      "highlights": ["Promedio 8.6 sin aplazos", "Duración 2 años y medio"]
+      "highlights": ["Promedio 8.6", "Duración 2 años y medio"]
     },
     {
       "title": "Licenciatura en Ciencias de la Computación",

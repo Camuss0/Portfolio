@@ -1,19 +1,21 @@
 ---
 import type { Skills } from "../../types/data";
+import Tag from "../ui/Tag.astro";
 import { t, type Lang } from "../../i18n/ui";
+import { getSkillIcon } from "../../utils/icons";
 export interface Props {
   skills: Skills;
   lang: Lang;
 }
 const { skills, lang } = Astro.props;
 
-const categories: [string, string[], boolean][] = [
-  ["skill.frontend", skills.frontend, true],
-  ["skill.backend", skills.backend, true],
-  ["skill.infrastructure", skills.infrastructure, true],
-  ["skill.automation", skills.automation, false],
-  ["skill.aiTools", skills.ai_tools, false],
-  ["skill.other", skills.other, false],
+const categories: [string, string[]][] = [
+  ["skill.frontend", skills.frontend],
+  ["skill.backend", skills.backend],
+  ["skill.infrastructure", skills.infrastructure],
+  ["skill.automation", skills.automation],
+  ["skill.aiTools", skills.ai_tools],
+  ["skill.other", skills.other],
 ].filter(([, items]) => items.length > 0);
 ---
 
@@ -32,7 +34,7 @@ const categories: [string, string[], boolean][] = [
       <div class="lg:w-[65%]">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
           {
-            categories.map(([key, items, useMono]) => (
+            categories.map(([key, items]) => (
               <div>
                 <h3 class="text-[0.625rem] sm:text-[0.6875rem] font-medium tracking-[0.08em] uppercase text-[#7a7a85] mb-3 flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-[#f97316]/50"></span>
@@ -40,13 +42,7 @@ const categories: [string, string[], boolean][] = [
                 </h3>
                 <div class="flex flex-wrap gap-2">
                   {items.map((skill) => (
-                    <span
-                      class={useMono
-                        ? "inline-block font-mono text-[0.625rem] sm:text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"
-                        : "inline-block text-[0.625rem] sm:text-[0.6875rem] text-[#a1a1aa] bg-[#111113] border border-[#1f1f22] px-2.5 py-1 rounded-md hover:border-[#2e2e33] transition-colors duration-200"}
-                    >
-                      {skill}
-                    </span>
+                    <Tag label={skill} mono={true} icon={getSkillIcon(skill)} />
                   ))}
                 </div>
               </div>
