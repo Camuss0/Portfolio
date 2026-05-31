@@ -1,11 +1,11 @@
 name = "portfolio-contact-form"
 main = "src/index.js"
 compatibility_date = "2025-05-01"
+account_id = "210dd9fed80c3bdc063672dd08484e55"
 
 [env.production]
 routes = [{ pattern = "camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce437bb74ac4eeae" }]
 
-[[env.production.email_routing.bindings]]
+[[env.production.send_email]]
 name = "SEND_EMAIL"
-type = "send_email"
-address = "contacto@camuss0.dev"
+destination_address = "contacto@camuss0.dev"

@@ -1,11 +1,9 @@
 /**
  * Contact Form Worker — Cloudflare Workers + Email Routing
- *
- * 1. Deploy with `wrangler deploy`
- * 2. Set up Email Routing: create contacto@tudominio.com → forward to your inbox
- * 3. Add send_email binding in wrangler.toml (see below)
- * 4. Update the workerUrl in ContactSection.astro to point to this Worker
+ * Deploy: `npx wrangler deploy --env production`
  */
+
+import { EmailMessage } from "cloudflare:email";
 
 export default {
   async fetch(request, env) {
@@ -29,23 +27,39 @@ export default {
       );
     }
 
-    await env.SEND_EMAIL.send({
-      from: { name: "Portfolio Contact", email: "contacto@camuss0.dev" },
-      to: [{ email: "camussovalentin10@gmail.com" }],
-      subject: `[Portfolio] ${subject || "Nuevo mensaje"} de ${name}`,
-      html: `
-        <p><strong>Nombre:</strong> ${escape(name)}</p>
-        <p><strong>Email:</strong> ${escape(email)}</p>
-        <p><strong>Asunto:</strong> ${escape(subject || "Sin asunto")}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${escape(message).replace(/\n/g, "<br>")}</p>
-      `,
-    });
+    const htmlBody = `
+      <p><strong>Nombre:</strong> ${escape(name)}</p>
+      <p><strong>Email:</strong> ${escape(email)}</p>
+      <p><strong>Asunto:</strong> ${escape(subject || "Sin asunto")}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p>${escape(message).replace(/\n/g, "<br>")}</p>
+    `;
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { "content-type": "application/json" } }
-    );
+    const raw = [
+      "MIME-Version: 1.0",
+      "From: Portfolio Contact <contacto@camuss0.dev>",
+      "To: camussovalentin10@gmail.com",
+      "Subject: =?UTF-8?B?" + btoa(unescape(encodeURIComponent(`[Portfolio] ${subject || "Nuevo mensaje"} de ${name}`))) + "?=",
+      "Content-Type: text/html; charset=utf-8",
+      "",
+      `<html><body>${htmlBody}</body></html>`,
+    ].join("\r\n");
+
+    try {
+      await env.SEND_EMAIL.send(
+        new EmailMessage("contacto@camuss0.dev", "camussovalentin10@gmail.com", raw)
+      );
+
+      return new Response(
+        JSON.stringify({ success: true }),
+        { status: 200, headers: { "content-type": "application/json" } }
+      );
+    } catch (e) {
+      return new Response(
+        JSON.stringify({ error: e.message }),
+        { status: 500, headers: { "content-type": "application/json" } }
+      );
+    }
   },
 };
 
