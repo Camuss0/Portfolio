@@ -55,6 +55,8 @@ const genericMap: [string, string][] = [
   ["AI services", "ai"],
   ["IA", "ai"],
   ["Turf", "map"],
+  ["Psychometric evaluation system", "psychometric"],
+  ["Sistema de evaluaciones psicométricas", "psychometric"],
   ["evaluaciones psicométricas", "ai"],
   ["psicométrica", "ai"],
   ["Diseño Responsive", "code"],
