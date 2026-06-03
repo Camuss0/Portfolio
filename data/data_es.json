@@ -292,14 +292,14 @@
     "frontend": [
       "Vue.js",
       "React",
+      "React Native",
       "JavaScript",
       "TypeScript",
       "HTML",
       "CSS",
       "Bootstrap",
       "Tailwind",
-      "Leaflet",
-      "Diseño Responsive"
+      "Leaflet"
     ],
     "backend": [
       "Laravel",
@@ -309,32 +309,27 @@
       "CodeIgniter",
       "MySQL",
       "PostgreSQL",
+      "Sequelize",
       "Socket.IO",
-      "Desarrollo de APIs",
-      "Sistemas en Tiempo Real",
-      "Autenticación",
-      "Control de Acceso Basado en Roles"
+      "Inertia.js"
     ],
-    "infrastructure": [
-      "Compilaciones Android",
-      "Actualizaciones OTA",
-      "Servicios en Segundo Plano"
+    "tools": [
+      "Git",
+      "GitHub",
+      "Postman",
+      "Cloudflare",
+      "Expo",
+      "Android Studio"
     ],
-    "automation": [
-      "Generación de PDF",
-      "Exportaciones a Excel",
-      "Sistemas de Notificaciones",
-      "Flujos de Chatbot",
-      "Colas Offline"
+    "integrations": [
+      "Twilio",
+      "WhatsApp",
+      "Google Calendar",
+      "Mailgun",
+      "OpenAI",
+      "Mapbox"
     ],
-    "ai_tools": ["Codex", "Opencode"],
-    "other": [
-      "Rastreo GPS",
-      "Mapas",
-      "Integración con Twilio",
-      "Integración con WhatsApp",
-      "Interfaces Geoespaciales"
-    ]
+    "ai_tools": ["Codex", "Opencode"]
   },
   "studies": [
     {

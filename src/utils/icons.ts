@@ -1,6 +1,7 @@
 const brandIcons: Record<string, string> = {
   "Vue.js": "vuedotjs",
   "Vue": "vuedotjs",
+  "React Native": "reactnative",
   "React": "react",
   "Laravel": "laravel",
   "Leaflet": "leaflet",
@@ -10,6 +11,7 @@ const brandIcons: Record<string, string> = {
   "Socket.IO": "socketdotio",
   "PostgreSQL": "postgresql",
   "Sequelize": "sequelize",
+  "Inertia.js": "inertia",
   "Twilio": "twilio",
   "WhatsApp": "whatsapp",
   "Android Studio": "androidstudio",
@@ -25,6 +27,11 @@ const brandIcons: Record<string, string> = {
   "Tailwind": "tailwindcss",
   "Mailgun": "mailgun",
   "OpenAI": "openai",
+  "Mapbox": "mapbox",
+  "Git": "git",
+  "GitHub": "github",
+  "Postman": "postman",
+  "Cloudflare": "cloudflare",
 };
 
 const genericIcons: Record<string, string> = {
@@ -81,8 +88,10 @@ const genericMap: [string, string][] = [
   ["Notification Systems", "code"],
   ["Flujos de Chatbot", "ai"],
   ["Chatbot Workflows", "ai"],
-  ["Colas Offline", "code"],
-  ["Offline Queues", "code"],
+  ["Sincronización Offline", "code"],
+  ["Offline Sync", "code"],
+  ["Geocercas", "map"],
+  ["Geofencing", "map"],
   ["Interfaces Geoespaciales", "map"],
   ["Geospatial Interfaces", "map"],
   ["Actualizaciones OTA", "code"],

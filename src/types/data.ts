@@ -70,10 +70,9 @@ export interface Certification {
 export interface Skills {
   frontend: string[];
   backend: string[];
-  infrastructure: string[];
-  automation: string[];
+  tools: string[];
+  integrations: string[];
   ai_tools: string[];
-  other: string[];
 }
 
 export interface PortfolioData {

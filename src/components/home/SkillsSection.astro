@@ -12,10 +12,9 @@ const { skills, lang } = Astro.props;
 const categories: [string, string[]][] = [
   ["skill.frontend", skills.frontend],
   ["skill.backend", skills.backend],
-  ["skill.infrastructure", skills.infrastructure],
-  ["skill.automation", skills.automation],
+  ["skill.tools", skills.tools],
+  ["skill.integrations", skills.integrations],
   ["skill.aiTools", skills.ai_tools],
-  ["skill.other", skills.other],
 ].filter(([, items]) => items.length > 0);
 ---
 
