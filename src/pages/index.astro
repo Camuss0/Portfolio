@@ -158,6 +158,10 @@ const dataEn: PortfolioData = JSON.parse(rawEn);
         el.style.display = isEn ? "" : "none";
       });
 
+      document.querySelectorAll("[data-aria-label-es]").forEach(function(el) {
+        el.setAttribute("aria-label", el.getAttribute(isEn ? "data-aria-label-en" : "data-aria-label-es") || el.getAttribute("aria-label"));
+      });
+
       document.querySelectorAll(".language-btn").forEach(function(btn) {
         btn.classList.toggle("lang-active", btn.getAttribute("data-lang") === lang);
       });

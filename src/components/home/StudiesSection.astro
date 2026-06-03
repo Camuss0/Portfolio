@@ -36,10 +36,10 @@ const { studies, certifications, lang } = Astro.props;
             <div class="flex items-center gap-3 flex-wrap">
               <h3 class="text-[0.9375rem] text-[#f4f4f5] font-semibold">{study.title}</h3>
               {study.completed && (
-                <span class="text-[0.625rem] font-medium tracking-wide text-[#f97316] bg-[#f97316]/10 px-2 py-0.5 rounded-full uppercase">Completado</span>
+                <span class="text-[0.625rem] font-medium tracking-wide text-[#f97316] bg-[#f97316]/10 px-2 py-0.5 rounded-full uppercase">{t(lang, "study.completed")}</span>
               )}
               {!study.completed && (
-                <span class="text-[0.625rem] font-medium tracking-wide text-[#7a7a85] bg-[#1f1f22] px-2 py-0.5 rounded-full uppercase">Incompleto</span>
+                <span class="text-[0.625rem] font-medium tracking-wide text-[#7a7a85] bg-[#1f1f22] px-2 py-0.5 rounded-full uppercase">{t(lang, "study.incomplete")}</span>
               )}
             </div>
             <p class="text-[0.75rem] text-[#71717a] mt-1">{study.institution}</p>
