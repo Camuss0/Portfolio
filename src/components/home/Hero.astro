@@ -131,10 +131,10 @@ const personal = lang === "en" ? personalEn : personalEs;
             <ellipse class="ball-highlight" cx="32" cy="28" rx="14" ry="9" fill="rgba(255,255,255,0.1)" transform="rotate(-18, 32, 28)"/>
           </svg>
         </div>
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" class="text-orange-500/40 mt-5">
+        <div id="ball-shadow" class="shadow-pulse w-7 h-[6px] rounded-full" style="background: rgba(0,0,0,0.85); margin-top: 12px;"></div>
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" class="text-orange-500/40" style="margin: 10px 0;">
           <path d="M1 1l6 7 6-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <div id="ball-shadow" class="shadow-pulse w-7 h-[6px] rounded-full" style="background: rgba(0,0,0,0.85); margin-top: 6px;"></div>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@ const personal = lang === "en" ? personalEn : personalEs;
 
     var canvas = document.getElementById('dot-canvas');
     if (!canvas) return;
-    var TOP_OFFSET = 10;
+    var TOP_OFFSET = 0;
     var ctx = canvas.getContext('2d');
     var w = 0, h = 0, dpr = 1, dots = [];
     var mouse = { x: -9999, y: -9999 };
