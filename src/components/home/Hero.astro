@@ -41,9 +41,9 @@ const personal = lang === "en" ? personalEn : personalEs;
               </div>
             </div>
             <h2 class="reveal text-[#f4f4f5] text-[clamp(5rem,17vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
-            <div class="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start sm:max-w-[520px]">
+            <div class="flex flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start">
               {personalEs.specialties.map((s, i) => (
-                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60 text-center truncate" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
+                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60 text-center whitespace-nowrap" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
               ))}
             </div>
             <div class="reveal flex flex-wrap gap-3 mt-8 justify-center lg:justify-start" style="transition-delay: 400ms;">
@@ -81,9 +81,9 @@ const personal = lang === "en" ? personalEn : personalEs;
               </div>
             </div>
             <h2 class="reveal text-[#f4f4f5] text-[clamp(5rem,17vw,9.5rem)] font-bold leading-[1.05] -tracking-[0.03em]" style="font-family: 'Inter', system-ui, sans-serif; transition-delay: 100ms;">Camusso</h2>
-            <div class="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start sm:max-w-[520px]">
+            <div class="flex flex-wrap gap-2 mt-6 sm:mt-8 justify-center lg:justify-start">
               {personalEn.specialties.map((s, i) => (
-                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60 text-center truncate" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
+                <span class="reveal px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[0.6875rem] sm:text-[0.8125rem] text-[#a1a1aa] border border-[#3f3f46]/70 bg-[#111113]/60 text-center whitespace-nowrap" style={`transition-delay: ${250 + i * 60}ms`}>{s}</span>
               ))}
             </div>
             <div class="reveal flex flex-wrap gap-3 mt-8 justify-center lg:justify-start" style="transition-delay: 400ms;">
