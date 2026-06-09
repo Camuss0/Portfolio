@@ -4,7 +4,10 @@ compatibility_date = "2025-05-01"
 account_id = "210dd9fed80c3bdc063672dd08484e55"
 
 [env.production]
-routes = [{ pattern = "camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce437bb74ac4eeae" }]
+routes = [
+  { pattern = "camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce437bb74ac4eeae" },
+  { pattern = "www.camuss0.dev/api/contact", zone_id = "d486c305d04e3960ce437bb74ac4eeae" },
+]
 
 [[env.production.send_email]]
 name = "SEND_EMAIL"
