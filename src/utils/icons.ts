@@ -33,6 +33,7 @@ const brandIcons: Record<string, string> = {
   "Postman": "postman",
   "Cloudflare": "cloudflare",
   "Docker": "docker",
+  "Python": "python",
 };
 
 const genericIcons: Record<string, string> = {

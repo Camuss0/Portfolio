@@ -289,7 +289,8 @@
       "PostgreSQL",
       "Sequelize",
       "Socket.IO",
-      "Inertia.js"
+      "Inertia.js",
+      "Python"
     ],
     "tools": [
       "Git",
