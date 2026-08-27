@@ -40,3 +40,7 @@ pnpm-debug.log*
 
 # Wrangler
 .wrangler/
+
+# AI agent config
+.agents/
+AGENTS.md
