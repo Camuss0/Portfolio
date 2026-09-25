@@ -257,6 +257,19 @@
   ],
   "experience": [
     {
+      "title": "Desarrollador Web Freelance",
+      "period": "May 2026 - Actualidad",
+      "description": "Desarrollo sitios web y sistemas a medida para comercios y profesionales, adaptados a las necesidades de cada cliente. Me encargo del proceso completo: relevamiento de necesidades, diseño y desarrollo de demos funcionales y personalizadas, despliegue y mantenimiento continuo (hosting, DNS, SSL y seguridad). Desarrollo full stack, con especial foco en backend y arquitectura de sistemas.",
+      "skills_demonstrated": [
+        "Desarrollo Full Stack",
+        "Arquitectura de Sistemas",
+        "Desarrollo Backend",
+        "Despliegue y Mantenimiento",
+        "Integración con APIs",
+        "Gestión de Clientes"
+      ]
+    },
+    {
       "title": "Desarrollador Full Stack",
       "company": "TiNegocios",
       "company_logo": "/images/clients/tinegociosLogo.jpg",

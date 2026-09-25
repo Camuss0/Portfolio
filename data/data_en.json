@@ -235,6 +235,19 @@
   ],
   "experience": [
     {
+      "title": "Freelance Web Developer",
+      "period": "May 2026 - Present",
+      "description": "I build custom websites and systems for local businesses and professionals, tailored to each client's needs. I own the full process: requirements gathering, design and development of personalized working demos, deployment and ongoing maintenance (hosting, DNS, SSL and security). Full-stack development, with a special focus on backend and systems architecture.",
+      "skills_demonstrated": [
+        "Full Stack Development",
+        "Systems Architecture",
+        "Backend Development",
+        "Deployment & Maintenance",
+        "API Integration",
+        "Client Management"
+      ]
+    },
+    {
       "title": "Full Stack Developer",
       "company": "TiNegocios",
       "company_logo": "/images/clients/tinegociosLogo.jpg",
